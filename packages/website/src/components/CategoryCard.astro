@@ -1,5 +1,5 @@
 ---
-import type { Category } from "@astro-nav/shared";
+import type { Category, NavItem as NavItemType } from "@astro-nav/shared";
 import NavItem from "./NavItem.astro";
 
 interface Props {
@@ -11,8 +11,11 @@ const { category, index } = Astro.props;
 ---
 
 <div class="my-3 scroll-mt-nav" id={`category-${index}`}>
-    <h2 class="text-gray-800 mb-3 pb-2 border-b border-gray-200 flex items-center gap-2 text-lg">
-        <iconify-icon icon={category.icon} class="text-lg text-primary"></iconify-icon>
+    <h2
+        class="text-gray-800 mb-3 pb-2 border-b border-gray-200 flex items-center gap-2 text-lg"
+    >
+        <iconify-icon icon={category.icon} class="text-lg text-primary"
+        ></iconify-icon>
         {category.name}
     </h2>
 
@@ -20,7 +23,7 @@ const { category, index } = Astro.props;
         category.subCategories ? (
             <div class="bg-white rounded-lg p-2 shadow-sm">
                 <div class="flex gap-2 mb-3 border-b border-gray-200 pb-2 overflow-x-auto">
-                    {category.subCategories.map((sub, subIndex) => (
+                    {category.subCategories.map((sub: { name: string; items: NavItemType[] }, subIndex: number) => (
                         <button
                             class="tab-button bg-transparent border-none px-3 py-1.5 text-sm text-gray-600 cursor-pointer rounded transition-all duration-300 whitespace-nowrap hover:bg-gray-100 hover:text-primary data-[active=true]:bg-primary data-[active=true]:text-white"
                             data-tab={`tab-${index}-${subIndex}`}
@@ -33,7 +36,7 @@ const { category, index } = Astro.props;
                     ))}
                 </div>
                 <div class="relative">
-                    {category.subCategories.map((subCategory, subIndex) => (
+                    {category.subCategories.map((subCategory: { name: string; items: NavItemType[] }, subIndex: number) => (
                         <div
                             class="tab-content grid grid-cols-2 gap-1 w-full p-1 justify-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
                             id={`tab-${index}-${subIndex}`}
@@ -43,7 +46,7 @@ const { category, index } = Astro.props;
                                     : "display: none;"
                             }
                         >
-                            {subCategory.items.map((item) => (
+                            {subCategory.items.map((item: NavItemType) => (
                                 <NavItem {...item} />
                             ))}
                         </div>
@@ -52,7 +55,7 @@ const { category, index } = Astro.props;
             </div>
         ) : (
             <div class="grid grid-cols-2 gap-1 w-full p-1 justify-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                {category.items?.map((item) => (
+                {category.items?.map((item: NavItemType) => (
                     <NavItem {...item} />
                 ))}
             </div>

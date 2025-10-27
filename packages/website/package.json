@@ -6,11 +6,17 @@
   "description": "User-facing navigation website",
   "scripts": {
     "dev": "astro dev",
+    "dev:sync": "node scripts/sync-config.js --watch",
     "build": "astro build",
     "preview": "astro preview",
     "clean": "rimraf dist .astro",
     "type-check": "astro check",
-    "prebuild": "node scripts/sync-config.js"
+    "prebuild": "node scripts/sync-config.js",
+    "sync-config": "node scripts/sync-config.js",
+    "test": "vitest --run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --run --coverage"
   },
   "dependencies": {
     "@astro-nav/shared": "workspace:*",
@@ -22,6 +28,9 @@
     "@astrojs/check": "^0.9.5",
     "rimraf": "^5.0.5",
     "@tailwindcss/vite": "^4.0.0-beta.7",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.3",
+    "@vitest/ui": "^4.0.3",
+    "happy-dom": "^15.11.7"
   }
 }

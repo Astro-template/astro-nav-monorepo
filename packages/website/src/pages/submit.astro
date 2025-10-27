@@ -1,0 +1,372 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// 定义默认分类选项
+const allCategories = [
+  { name: 'Affiliate工具', count: 0 },
+  { name: '营销软件', count: 0 },
+  { name: '数据分析', count: 0 },
+  { name: '内容创作', count: 0 },
+  { name: '社交媒体', count: 0 },
+  { name: '电商平台', count: 0 },
+  { name: '支付工具', count: 0 },
+  { name: 'SEO工具', count: 0 },
+  { name: '邮件营销', count: 0 },
+  { name: '广告平台', count: 0 },
+  { name: '设计工具', count: 0 },
+  { name: '其他工具', count: 0 }
+];
+---
+
+<Layout title="提交收录 - Affiliate导航" description="提交您的Affiliate营销工具或资源，加入我们的导航网站。">
+  <div class="bg-white p-8 rounded-xl shadow-md mt-20 w-full max-w-none">
+    <h1 class="text-gray-800 mb-8 text-center text-2xl font-semibold">Affiliate工具提交</h1>
+    
+    <div class="flex gap-4 mb-8 border-b-2 border-gray-200 pb-4">
+      <button class="tab-button bg-primary text-white px-6 py-3 text-base rounded-md cursor-pointer transition-all duration-300 border-none" data-tab="website">网站</button>
+      <button class="tab-button bg-transparent text-gray-600 px-6 py-3 text-base rounded-md cursor-pointer transition-all duration-300 border-none hover:bg-gray-100 hover:text-primary" data-tab="wechat">公众号</button>
+      <button class="tab-button bg-transparent text-gray-600 px-6 py-3 text-base rounded-md cursor-pointer transition-all duration-300 border-none hover:bg-gray-100 hover:text-primary" data-tab="resource">资源</button>
+    </div>
+
+    <form class="tab-content block" id="website-form">
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">网站名称 *</label>
+        <input type="text" name="website-name" required placeholder="请输入网站名称" 
+               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">网站链接 *</label>
+        <input type="url" name="website-url" required placeholder="https://example.com" 
+               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">网站图标</label>
+        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
+          <input type="file" accept="image/*" id="website-icon" name="website-icon" class="hidden" />
+          <label for="website-icon" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
+            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
+            <span>点击上传图标</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">选择分类 *</label>
+        <select name="website-category" required 
+                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
+          <option value="">请选择分类</option>
+          {allCategories.map(cat => (
+            <option value={cat.name}>{cat.name} ({cat.count})</option>
+          ))}
+        </select>
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">网站介绍</label>
+        <textarea name="website-description" rows="4" placeholder="请输入网站介绍..." 
+                  class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary resize-y"></textarea>
+      </div>
+
+      <button type="submit" class="submit-button bg-primary text-white border-none px-8 py-4 rounded-md text-base cursor-pointer transition-colors duration-300 w-full hover:bg-primary-light disabled:bg-gray-400 disabled:cursor-not-allowed">
+        提交网站
+      </button>
+    </form>
+
+    <form class="tab-content hidden" id="wechat-form">
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">公众号名称 *</label>
+        <input type="text" name="wechat-name" required placeholder="请输入公众号名称" 
+               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">公众号ID</label>
+        <input type="text" name="wechat-id" placeholder="请输入公众号ID（可选）" 
+               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">公众号图标</label>
+        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
+          <input type="file" accept="image/*" id="wechat-icon" name="wechat-icon" class="hidden" />
+          <label for="wechat-icon" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
+            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
+            <span>点击上传图标</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">选择分类 *</label>
+        <select name="wechat-category" required 
+                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
+          <option value="">请选择分类</option>
+          {allCategories.map(cat => (
+            <option value={cat.name}>{cat.name} ({cat.count})</option>
+          ))}
+        </select>
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">公众号二维码</label>
+        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
+          <input type="file" accept="image/*" id="wechat-qr" name="wechat-qr" class="hidden" />
+          <label for="wechat-qr" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
+            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
+            <span>点击上传二维码</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">公众号介绍</label>
+        <textarea name="wechat-description" rows="4" placeholder="请输入公众号介绍..." 
+                  class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary resize-y"></textarea>
+      </div>
+
+      <button type="submit" class="submit-button bg-primary text-white border-none px-8 py-4 rounded-md text-base cursor-pointer transition-colors duration-300 w-full hover:bg-primary-light disabled:bg-gray-400 disabled:cursor-not-allowed">
+        提交公众号
+      </button>
+    </form>
+
+    <form class="tab-content hidden" id="resource-form">
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">资源名称 *</label>
+        <input type="text" name="resource-name" required placeholder="请输入资源名称" 
+               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">资源链接</label>
+        <input type="url" name="resource-url" placeholder="https://example.com（可选）" 
+               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">资源类型 *</label>
+        <select name="resource-type" required 
+                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
+          <option value="">请选择资源类型</option>
+          <option value="tool">工具软件</option>
+          <option value="template">模板素材</option>
+          <option value="course">教程课程</option>
+          <option value="ebook">电子书籍</option>
+          <option value="other">其他资源</option>
+        </select>
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">资源图标</label>
+        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
+          <input type="file" accept="image/*" id="resource-icon" name="resource-icon" class="hidden" />
+          <label for="resource-icon" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
+            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
+            <span>点击上传图标</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">选择分类 *</label>
+        <select name="resource-category" required 
+                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
+          <option value="">请选择分类</option>
+          {allCategories.map(cat => (
+            <option value={cat.name}>{cat.name} ({cat.count})</option>
+          ))}
+        </select>
+        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
+      </div>
+
+      <div class="form-group mb-6">
+        <label class="block text-gray-800 mb-2 font-medium">资源介绍(使用说明)</label>
+        <textarea name="resource-description" rows="4" placeholder="请输入资源介绍..." 
+                  class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary resize-y"></textarea>
+      </div>
+
+      <button type="submit" class="submit-button bg-primary text-white border-none px-8 py-4 rounded-md text-base cursor-pointer transition-colors duration-300 w-full hover:bg-primary-light disabled:bg-gray-400 disabled:cursor-not-allowed">
+        提交资源
+      </button>
+    </form>
+  </div>
+</Layout>
+
+<script>
+  // 处理标签切换
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      
+      // 更新按钮状态
+      tabButtons.forEach(btn => {
+        btn.classList.remove('bg-primary', 'text-white');
+        btn.classList.add('bg-transparent', 'text-gray-600', 'hover:bg-gray-100', 'hover:text-primary');
+      });
+      button.classList.remove('bg-transparent', 'text-gray-600', 'hover:bg-gray-100', 'hover:text-primary');
+      button.classList.add('bg-primary', 'text-white');
+      
+      // 更新内容显示
+      tabContents.forEach(content => {
+        content.classList.remove('block');
+        content.classList.add('hidden');
+        if (content.id === `${tabId}-form`) {
+          content.classList.remove('hidden');
+          content.classList.add('block');
+        }
+      });
+    });
+  });
+
+  // 处理文件上传预览
+  document.querySelectorAll('input[type="file"]').forEach(input => {
+    input.addEventListener('change', function() {
+      const fileInput = this;
+      const file = fileInput.files && fileInput.files[0];
+
+      if (file) {
+        console.log('Selected file:', file.name);
+        // 更新上传提示文字
+        const uploadBox = fileInput.closest('.upload-box');
+        const uploadTrigger = uploadBox && uploadBox.querySelector('.upload-trigger span');
+        if (uploadTrigger) {
+          uploadTrigger.textContent = `已选择: ${file.name}`;
+        }
+      }
+    });
+  });
+
+  // 处理表单提交
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formType = this.id.replace('-form', '');
+
+      // 基本验证
+      const requiredFields = this.querySelectorAll('[required]');
+      let isValid = true;
+
+      requiredFields.forEach(field => {
+        const formGroup = field.closest('.form-group');
+        let fieldValue = '';
+
+        // 安全获取字段值
+        try {
+          fieldValue = (field as any).value || '';
+        } catch (e) {
+          fieldValue = '';
+        }
+
+        if (formGroup) {
+          const errorMessage = formGroup.querySelector('.error-message');
+          if (!fieldValue.trim()) {
+            formGroup.classList.add('error');
+            if (errorMessage) {
+              errorMessage.classList.remove('hidden');
+            }
+            isValid = false;
+          } else {
+            formGroup.classList.remove('error');
+            if (errorMessage) {
+              errorMessage.classList.add('hidden');
+            }
+          }
+        }
+      });
+
+      if (!isValid) {
+        alert('请填写所有必填字段');
+        return;
+      }
+
+      // 显示提交状态
+      const submitButton = this.querySelector('.submit-button');
+      if (submitButton) {
+        const originalText = submitButton.textContent || '';
+        submitButton.textContent = '提交中...';
+        if (submitButton.tagName === 'BUTTON') {
+          submitButton.setAttribute('disabled', 'true');
+        }
+
+        // 模拟提交过程
+        setTimeout(() => {
+          alert(`${formType === 'website' ? '网站' : formType === 'wechat' ? '公众号' : '资源'}提交成功！我们会尽快审核。`);
+
+          // 重置表单
+          this.reset();
+
+          // 重置文件上传显示
+          this.querySelectorAll('.upload-trigger span').forEach(span => {
+            if (span.textContent && span.textContent.includes('已选择:')) {
+              span.textContent = span.textContent.includes('图标') ? '点击上传图标' : '点击上传二维码';
+            }
+          });
+
+          // 恢复按钮
+          submitButton.textContent = originalText;
+          if (submitButton.tagName === 'BUTTON') {
+            submitButton.removeAttribute('disabled');
+          }
+        }, 2000);
+      }
+    });
+  });
+
+  // 实时验证
+  document.querySelectorAll('input[required], select[required]').forEach(field => {
+    field.addEventListener('blur', function() {
+      const formGroup = this.closest('.form-group');
+      let fieldValue = '';
+      try {
+        fieldValue = (this as any).value || '';
+      } catch (e) {
+        fieldValue = '';
+      }
+
+      if (formGroup) {
+        const errorMessage = formGroup.querySelector('.error-message');
+        if (!fieldValue.trim()) {
+          formGroup.classList.add('error');
+          if (errorMessage) {
+            errorMessage.classList.remove('hidden');
+          }
+        } else {
+          formGroup.classList.remove('error');
+          if (errorMessage) {
+            errorMessage.classList.add('hidden');
+          }
+        }
+      }
+    });
+
+    field.addEventListener('input', function() {
+      const formGroup = this.closest('.form-group');
+      let fieldValue = '';
+      try {
+        fieldValue = (this as any).value || '';
+      } catch (e) {
+        fieldValue = '';
+      }
+
+      if (formGroup && fieldValue.trim()) {
+        formGroup.classList.remove('error');
+        const errorMessage = formGroup.querySelector('.error-message');
+        if (errorMessage) {
+          errorMessage.classList.add('hidden');
+        }
+      }
+    });
+  });
+</script>

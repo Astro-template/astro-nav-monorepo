@@ -68,21 +68,23 @@ export function convertNavigationData(categories: Category[]) {
 }
 
 // 反向转换：将新格式转换回旧格式（用于向后兼容）
-export function convertMenuItemToCategory(menuItem: MenuItem): Category {
+export function convertMenuItemToCategory(menuItem: any): Category {
   if (menuItem.type === 'tabs' && menuItem.submenu) {
     return {
       name: menuItem.name,
       icon: menuItem.icon,
-      subCategories: menuItem.submenu.map(sub => ({
+      subCategories: menuItem.submenu.map((sub: any) => ({
         name: sub.name,
-        items: sub.sites.map(convertSiteToNavItem)
+        // 支持优化格式的 previewSites 和完整格式的 sites
+        items: ((sub.previewSites || sub.sites) || []).map(convertSiteToNavItem)
       }))
     };
   } else {
     return {
       name: menuItem.name,
       icon: menuItem.icon,
-      items: menuItem.sites ? menuItem.sites.map(convertSiteToNavItem) : []
+      // 支持优化格式的 previewSites 和完整格式的 sites
+      items: ((menuItem.previewSites || menuItem.sites) || []).map(convertSiteToNavItem)
     };
   }
 }
