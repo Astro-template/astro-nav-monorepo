@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  /* 自定义颜色 */
+  --color-primary: #2937f0;
+  --color-primary-light: #4e5ff3;
+  
+  /* 自定义尺寸 */
+  --width-sidebar: 200px;
+  --height-nav: 60px;
+  --scroll-margin-nav: 100px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: rgb(243 244 246);
+    font-family: system-ui, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* 自定义滚动条样式 */
+@layer utilities {
+  /* 自定义尺寸工具类 */
+  .w-sidebar {
+    width: var(--width-sidebar);
+  }
+  
+  .ml-sidebar {
+    margin-left: var(--width-sidebar);
+  }
+  
+  .left-sidebar {
+    left: var(--width-sidebar);
+  }
+  
+  .h-nav {
+    height: var(--height-nav);
+  }
+  
+  .scroll-mt-nav {
+    scroll-margin-top: var(--scroll-margin-nav);
+  }
+  
+  /* 滚动条样式 */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
+    background-color: rgb(156 163 175);
+    border-radius: 4px;
+  }
+  
+  .scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: rgb(243 244 246);
+  }
+  
+  .scrollbar-thumb-primary:hover::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+  }
+}

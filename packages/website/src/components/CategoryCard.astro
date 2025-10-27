@@ -1,0 +1,102 @@
+---
+import type { Category } from "@astro-nav/shared";
+import NavItem from "./NavItem.astro";
+
+interface Props {
+    category: Category;
+    index: number;
+}
+
+const { category, index } = Astro.props;
+---
+
+<div class="my-3 scroll-mt-nav" id={`category-${index}`}>
+    <h2 class="text-gray-800 mb-3 pb-2 border-b border-gray-200 flex items-center gap-2 text-lg">
+        <iconify-icon icon={category.icon} class="text-lg text-primary"></iconify-icon>
+        {category.name}
+    </h2>
+
+    {
+        category.subCategories ? (
+            <div class="bg-white rounded-lg p-2 shadow-sm">
+                <div class="flex gap-2 mb-3 border-b border-gray-200 pb-2 overflow-x-auto">
+                    {category.subCategories.map((sub, subIndex) => (
+                        <button
+                            class="tab-button bg-transparent border-none px-3 py-1.5 text-sm text-gray-600 cursor-pointer rounded transition-all duration-300 whitespace-nowrap hover:bg-gray-100 hover:text-primary data-[active=true]:bg-primary data-[active=true]:text-white"
+                            data-tab={`tab-${index}-${subIndex}`}
+                            data-active={subIndex === 0}
+                            data-category={index}
+                            data-subindex={subIndex}
+                        >
+                            {sub.name}
+                        </button>
+                    ))}
+                </div>
+                <div class="relative">
+                    {category.subCategories.map((subCategory, subIndex) => (
+                        <div
+                            class="tab-content grid grid-cols-2 gap-1 w-full p-1 justify-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
+                            id={`tab-${index}-${subIndex}`}
+                            style={
+                                subIndex === 0
+                                    ? "display: grid;"
+                                    : "display: none;"
+                            }
+                        >
+                            {subCategory.items.map((item) => (
+                                <NavItem {...item} />
+                            ))}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ) : (
+            <div class="grid grid-cols-2 gap-1 w-full p-1 justify-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+                {category.items?.map((item) => (
+                    <NavItem {...item} />
+                ))}
+            </div>
+        )
+    }
+</div>
+
+<script>
+    function setupTabs() {
+        const tabButtons = document.querySelectorAll(".tab-button");
+
+        tabButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const tabId = button.getAttribute("data-tab");
+                const parentCard = button.closest(".my-3");
+
+                if (tabId && parentCard) {
+                    // 更新所有按钮状态
+                    parentCard
+                        .querySelectorAll(".tab-button")
+                        .forEach((btn) => {
+                            btn.setAttribute("data-active", "false");
+                        });
+
+                    // 设置当前按钮为激活状态
+                    button.setAttribute("data-active", "true");
+
+                    // 更新内容显示
+                    parentCard
+                        .querySelectorAll(".tab-content")
+                        .forEach((content: Element) => {
+                            if (content instanceof HTMLElement) {
+                                content.style.display = "none";
+                            }
+                        });
+
+                    const tabContent = document.getElementById(tabId);
+                    if (tabContent instanceof HTMLElement) {
+                        tabContent.style.display = "grid";
+                    }
+                }
+            });
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", setupTabs);
+</script>

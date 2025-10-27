@@ -1,0 +1,160 @@
+---
+import { getMenuItems, convertMenuItemToCategory } from "@astro-nav/shared";
+import { getConfig } from "../utils/config";
+
+// 获取配置数据并转换为旧格式以保持兼容性
+const config = getConfig();
+const menuItems = getMenuItems(config);
+const navigationData = menuItems.map(convertMenuItemToCategory);
+
+// 辅助函数：计算项目总数
+function getItemCount(category: any): number {
+    if (category.items) {
+        return category.items.length;
+    }
+    if (category.subCategories) {
+        return category.subCategories.reduce(
+            (total: number, sub: any) => total + sub.items.length,
+            0,
+        );
+    }
+    return 0;
+}
+---
+
+<aside class="fixed left-0 top-0 w-sidebar h-screen bg-white border-r border-gray-200 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-primary">
+    <div class="p-4">
+        <div class="py-4 pb-6 text-center border-b border-gray-200 mb-4">
+            <div class="w-14 h-14 mx-auto mb-3 bg-linear-to-br from-primary to-primary-light rounded-[14px] flex items-center justify-center shadow-lg shadow-primary/20">
+                <span class="text-white text-3xl font-bold drop-shadow-md">A</span>
+            </div>
+            <h1 class="text-lg text-primary font-semibold m-0">Affiliate导航</h1>
+            <p class="text-xs text-gray-600 mt-1.5 m-0">专业的Affiliate营销导航</p>
+        </div>
+        <div class="flex flex-col gap-1.5">
+            {
+                navigationData.map((category, index) => (
+                    <div class="mb-2">
+                        <a href={`/#category-${index}`} class="flex justify-between items-center px-3 py-2.5 text-gray-800 no-underline rounded-md transition-all duration-300 hover:bg-gray-100 hover:text-primary group" data-navigate-home>
+                            <div class="flex items-center gap-2.5">
+                                <iconify-icon
+                                    icon={category.icon}
+                                    class="text-lg text-gray-600 group-hover:text-primary"
+                                />
+                                <span>{category.name}</span>
+                            </div>
+                            <span class="text-sm text-gray-600">
+                                ({getItemCount(category)})
+                            </span>
+                        </a>
+                        {category.subCategories && (
+                            <div class="ml-8 mt-0.5 flex flex-col gap-0.5">
+                                {category.subCategories.map((sub, subIndex) => (
+                                    <a
+                                        href={`/#category-${index}-tab-${subIndex}`}
+                                        class="subcategory-link flex justify-between items-center px-2.5 py-1.5 text-gray-600 no-underline rounded-md text-[0.85rem] transition-all duration-300 hover:bg-gray-100 hover:text-primary"
+                                        data-category={index}
+                                        data-tab={subIndex}
+                                        data-navigate-home
+                                    >
+                                        {sub.name}
+                                        <span class="text-sm text-gray-600">
+                                            ({sub.items.length})
+                                        </span>
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</aside>
+
+<style>
+    .subcategory-link.active {
+        background: #f5f5f5;
+        color: #2937f0;
+    }
+</style>
+
+<script>
+    // 处理导航到首页的链接
+    function handleNavigateHome(event: Event) {
+        const link = event.currentTarget as HTMLAnchorElement;
+        const href = link.getAttribute("href");
+        
+        if (!href) return;
+        
+        // 如果当前不在首页，需要先导航到首页
+        if (window.location.pathname !== '/') {
+            event.preventDefault();
+            window.location.href = href;
+            return;
+        }
+        
+        // 如果已经在首页，让默认行为处理 hash 跳转
+    }
+
+    function handleTabClick(event: Event) {
+        const link = event.target as HTMLAnchorElement;
+        const href = link.getAttribute("href");
+
+        if (!href) return;
+
+        // 如果不在首页，让浏览器直接导航（会触发页面加载和 hash 处理）
+        if (window.location.pathname !== '/') {
+            return; // 让默认行为处理
+        }
+
+        // 在首页时，阻止默认行为并手动处理
+        event.preventDefault();
+
+        try {
+            const categoryIndex = link.getAttribute("data-category");
+            const tabIndex = link.getAttribute("data-tab");
+
+            if (!categoryIndex || !tabIndex) return;
+
+            // 更新所有子菜单的激活状态
+            document
+                .querySelectorAll(".subcategory-link")
+                .forEach((link) => {
+                    link.classList.remove("active");
+                });
+
+            // 设置当前子菜单为激活状态
+            link.classList.add("active");
+
+            // 找到对应的标签按钮并点击
+            const tabButton = document.querySelector(
+                `#category-${categoryIndex} .tab-button[data-tab="tab-${categoryIndex}-${tabIndex}"]`,
+            ) as HTMLElement;
+
+            if (tabButton) {
+                tabButton.click();
+            }
+
+            // 滚动到对应的分类
+            const categoryElement = document.getElementById(`category-${categoryIndex}`);
+            if (categoryElement) {
+                categoryElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+
+            // 更新 URL hash（不触发页面跳转）
+            history.replaceState(null, '', href);
+        } catch (error) {
+            console.error("Error handling tab click:", error);
+        }
+    }
+
+    // 为所有带 data-navigate-home 属性的链接添加事件监听
+    document.querySelectorAll('[data-navigate-home]').forEach((link) => {
+        link.addEventListener("click", handleNavigateHome);
+    });
+
+    document.querySelectorAll(".subcategory-link").forEach((link) => {
+        link.addEventListener("click", handleTabClick);
+    });
+</script>

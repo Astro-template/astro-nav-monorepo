@@ -1,0 +1,27 @@
+{
+  "name": "@astro-nav/website",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "description": "User-facing navigation website",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "clean": "rimraf dist .astro",
+    "type-check": "astro check",
+    "prebuild": "node scripts/sync-config.js"
+  },
+  "dependencies": {
+    "@astro-nav/shared": "workspace:*",
+    "astro": "^5.15.1",
+    "@astrojs/sitemap": "^3.2.2",
+    "tailwindcss": "^4.0.0-beta.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "rimraf": "^5.0.5",
+    "@tailwindcss/vite": "^4.0.0-beta.7",
+    "typescript": "^5.9.3"
+  }
+}

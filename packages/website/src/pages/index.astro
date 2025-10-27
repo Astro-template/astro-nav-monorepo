@@ -1,0 +1,120 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { getMenuItems, getSiteInfo, convertMenuItemToCategory } from '@astro-nav/shared';
+import { getConfig } from '../utils/config';
+
+// 获取配置数据
+const config = getConfig();
+const siteInfo = getSiteInfo(config);
+const menuItems = getMenuItems(config);
+
+// 转换为旧格式以保持组件兼容性
+const navigationData = menuItems.map(convertMenuItemToCategory);
+---
+
+<Layout
+  title={siteInfo.title + " - " + siteInfo.description}
+  description={siteInfo.description}
+>
+  <div class="fixed top-0 right-0 left-sidebar h-nav bg-white border-b border-gray-200 z-100 px-4 flex items-center">
+    <div class="flex gap-6">
+      <a href="/" class="nav-link active text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary">
+        首页
+      </a>
+      <a href="/submit" class="nav-link text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary">
+        提交收录
+      </a>
+    </div>
+  </div>
+  
+  <div class="pt-8 pr-2 pb-8 pl-4">
+    <div class="mt-20 mb-8 max-w-[600px] text-left">
+      <input 
+        type="text" 
+        placeholder="搜索导航内容..." 
+        class="w-full px-6 py-4 border-2 border-gray-200 rounded-lg text-base outline-none transition-colors duration-300 focus:border-primary"
+      />
+    </div>
+    
+    {navigationData.map((category, index) => (
+      <CategoryCard category={category} index={index} />
+    ))}
+  </div>
+</Layout>
+
+<style>
+  .nav-link.active {
+    color: #2937f0;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #2937f0;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    main {
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    .fixed {
+      left: 0;
+    }
+  }
+</style>
+
+<script>
+  // 处理页面加载时的 hash，激活对应的分类和 tab
+  function handleHashOnLoad() {
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    // 解析 hash，支持两种格式：
+    // 1. #category-2 (只有分类)
+    // 2. #category-2-tab-1 (分类 + tab)
+    const match = hash.match(/#category-(\d+)(?:-tab-(\d+))?/);
+    if (!match) return;
+
+    const categoryIndex = match[1];
+    const tabIndex = match[2];
+
+    // 滚动到对应的分类
+    const categoryElement = document.getElementById(`category-${categoryIndex}`);
+    if (categoryElement) {
+      setTimeout(() => {
+        categoryElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    // 如果有 tab 信息，激活对应的 tab
+    if (tabIndex !== undefined) {
+      setTimeout(() => {
+        const tabButton = document.querySelector(
+          `#category-${categoryIndex} .tab-button[data-tab="tab-${categoryIndex}-${tabIndex}"]`
+        ) as HTMLElement;
+
+        if (tabButton) {
+          tabButton.click();
+        }
+      }, 200);
+    }
+  }
+
+  // 页面加载完成后处理 hash
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', handleHashOnLoad);
+  } else {
+    handleHashOnLoad();
+  }
+
+  // 监听 hash 变化
+  window.addEventListener('hashchange', handleHashOnLoad);
+</script>

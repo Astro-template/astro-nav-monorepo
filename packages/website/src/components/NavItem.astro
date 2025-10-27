@@ -1,0 +1,76 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  url?: string;
+  logo?: string;
+}
+
+const { title, description, url } = Astro.props;
+const detailUrl = `/sites/${encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-'))}`;
+
+// 从URL获取favicon的多个来源
+function getFaviconUrls(url: string) {
+  try {
+    const domain = new URL(url).hostname;
+    return [
+      `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
+      `https://icon.horse/icon/${domain}`,
+      `https://favicon.yandex.net/favicon/${domain}`,
+      `https://${domain}/favicon.ico`,
+      `https://${domain}/favicon.png`
+    ];
+  } catch {
+    return null;
+  }
+}
+
+const faviconUrls = url ? getFaviconUrls(url) : null;
+const defaultLogo = title.charAt(0).toUpperCase();
+---
+
+<div class="w-[180px] h-[50px] p-2 border border-gray-200 rounded bg-white transition-all duration-300 shadow-sm hover:-translate-y-0.5 hover:shadow-md hover:border-primary relative group">
+  <a href={detailUrl} class="no-underline block h-full">
+    <div class="flex items-center gap-2 h-full">
+      <div class="w-6 h-6 rounded-full overflow-hidden shrink-0 flex items-center justify-center bg-gray-100">
+        {faviconUrls ? (
+          <>
+            <img 
+              src={faviconUrls[0]} 
+              alt={title} 
+              class="w-full h-full object-cover"
+              onerror={`
+                const urls = ${JSON.stringify(faviconUrls)};
+                const currentIndex = urls.indexOf(this.src);
+                if (currentIndex < urls.length - 1) {
+                  this.src = urls[currentIndex + 1];
+                } else {
+                  this.style.display='none';
+                  this.nextElementSibling.style.display='flex';
+                }
+              `}
+            />
+            <div class="hidden w-full h-full bg-linear-to-br from-primary to-primary-light text-white items-center justify-center text-xs font-bold">
+              {defaultLogo}
+            </div>
+          </>
+        ) : (
+          <div class="w-full h-full bg-linear-to-br from-primary to-primary-light text-white flex items-center justify-center text-xs font-bold">
+            {defaultLogo}
+          </div>
+        )}
+      </div>
+      <div class="flex-1 min-w-0 pr-5 flex flex-col justify-center">
+        <div class="text-xs text-gray-800 mb-0.5 truncate group-hover:text-primary">
+          <strong>{title}</strong>
+        </div>
+        {description && <p class="text-[11px] text-gray-600 m-0 truncate">{description}</p>}
+      </div>
+    </div>
+  </a>
+  {url && (
+    <a href={url} target="_blank" rel="noopener" class="absolute right-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 flex items-center justify-center text-primary no-underline" title="直达网站">
+      <iconify-icon icon="mdi:arrow-right" class="text-xs"></iconify-icon>
+    </a>
+  )}
+</div>
