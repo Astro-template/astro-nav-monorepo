@@ -58,11 +58,18 @@ const navigationData = menuItems.map(convertMenuItemToCategory);
     const categoryIndex = match[1];
     const tabIndex = match[2];
 
-    // 滚动到对应的分类
+    // 滚动到对应的分类，考虑固定导航栏的高度
     const categoryElement = document.getElementById(`category-${categoryIndex}`);
     if (categoryElement) {
       setTimeout(() => {
-        categoryElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const navHeight = 60; // 导航栏高度
+        const elementPosition = categoryElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight; // 紧贴导航栏
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }, 100);
     }
 

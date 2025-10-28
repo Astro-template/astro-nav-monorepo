@@ -88,7 +88,29 @@ function getItemCount(category: any): number {
             return;
         }
         
-        // 如果已经在首页，让默认行为处理 hash 跳转
+        // 如果已经在首页，阻止默认行为并手动处理滚动
+        event.preventDefault();
+        
+        // 解析 hash 获取分类索引
+        const match = href.match(/#category-(\d+)/);
+        if (!match) return;
+        
+        const categoryIndex = match[1];
+        const categoryElement = document.getElementById(`category-${categoryIndex}`);
+        
+        if (categoryElement) {
+            const navHeight = 60; // 导航栏高度
+            const elementPosition = categoryElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navHeight; // 紧贴导航栏
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+            
+            // 更新 URL hash
+            history.replaceState(null, '', href);
+        }
     }
 
     function handleTabClick(event: Event) {
@@ -130,10 +152,17 @@ function getItemCount(category: any): number {
                 tabButton.click();
             }
 
-            // 滚动到对应的分类
+            // 滚动到对应的分类，考虑固定导航栏的高度
             const categoryElement = document.getElementById(`category-${categoryIndex}`);
             if (categoryElement) {
-                categoryElement.scrollIntoView({ behavior: "smooth", block: "start" });
+                const navHeight = 60; // 导航栏高度
+                const elementPosition = categoryElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navHeight; // 紧贴导航栏
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
             }
 
             // 更新 URL hash（不触发页面跳转）
