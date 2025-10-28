@@ -15,13 +15,16 @@ const CONFIG_FILES = [
   'config.json',
   'config-optimized.json',
   'config-traditional.json'
-];
+] as const;
+
+type ConfigFileName = typeof CONFIG_FILES[number];
 
 /**
  * 复制单个配置文件
- * @param {string} filename - 文件名
+ * @param filename - 文件名
+ * @returns 是否成功复制
  */
-async function copyConfigFile(filename) {
+async function copyConfigFile(filename: ConfigFileName): Promise<boolean> {
   const sourcePath = join(SOURCE_DIR, filename);
   const targetPath = join(TARGET_DIR, filename);
 
@@ -40,15 +43,17 @@ async function copyConfigFile(filename) {
     console.log(`✅ 已同步: ${filename}`);
     return true;
   } catch (error) {
-    console.error(`❌ 复制失败 ${filename}:`, error.message);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error(`❌ 复制失败 ${filename}:`, errorMessage);
     return false;
   }
 }
 
 /**
  * 同步所有配置文件
+ * @returns 成功同步的文件数量
  */
-async function syncAllConfigs() {
+async function syncAllConfigs(): Promise<number> {
   console.log('🔄 开始同步配置文件...');
   console.log(`   源目录: ${SOURCE_DIR}`);
   console.log(`   目标目录: ${TARGET_DIR}`);
@@ -68,7 +73,7 @@ async function syncAllConfigs() {
 /**
  * 监听配置文件变化（开发模式）
  */
-async function watchConfigs() {
+async function watchConfigs(): Promise<void> {
   console.log('');
   console.log('👀 监听配置文件变化...');
   console.log('   按 Ctrl+C 停止监听');
@@ -81,17 +86,19 @@ async function watchConfigs() {
       const { eventType, filename } = event;
       
       // 只处理我们关心的配置文件
-      if (filename && CONFIG_FILES.includes(filename)) {
+      if (filename && CONFIG_FILES.includes(filename as ConfigFileName)) {
         console.log(`📝 检测到变化: ${filename} (${eventType})`);
-        await copyConfigFile(filename);
+        await copyConfigFile(filename as ConfigFileName);
       }
     }
   } catch (error) {
-    if (error.code === 'ENOENT') {
+    const err = error as NodeJS.ErrnoException;
+    if (err.code === 'ENOENT') {
       console.error('❌ 配置目录不存在:', SOURCE_DIR);
       console.error('   请确保 shared/config 目录已创建');
     } else {
-      console.error('❌ 监听失败:', error.message);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error('❌ 监听失败:', errorMessage);
     }
     process.exit(1);
   }
@@ -100,7 +107,7 @@ async function watchConfigs() {
 /**
  * 主函数
  */
-async function main() {
+async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const watchMode = args.includes('--watch') || args.includes('-w');
 
@@ -143,9 +150,17 @@ async function main() {
   }
 }
 
-// 运行主函数
-main().catch(error => {
-  console.error('');
-  console.error('❌ 发生错误:', error);
-  process.exit(1);
-});
+// 只在直接运行时执行主函数
+if (import.meta.url === `file://${process.argv[1]}` || import.meta.url.endsWith('sync-config.ts')) {
+  // 检查是否在测试环境中
+  if (!process.env.VITEST) {
+    main().catch(error => {
+      console.error('');
+      console.error('❌ 发生错误:', error);
+      process.exit(1);
+    });
+  }
+}
+
+// 导出函数供测试使用
+export { copyConfigFile, syncAllConfigs, SOURCE_DIR, TARGET_DIR, CONFIG_FILES };

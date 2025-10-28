@@ -31,15 +31,18 @@ const navigationData = menuItems.map(convertMenuItemToCategory);
   <div class="pt-8 pr-2 pb-8 pl-4">
     <div class="mt-20 mb-8 max-w-[600px] text-left">
       <input 
+        id="search-input"
         type="text" 
         placeholder="搜索导航内容..." 
         class="w-full px-6 py-4 border-2 border-gray-200 rounded-lg text-base outline-none transition-colors duration-300 focus:border-primary"
       />
     </div>
     
-    {navigationData.map((category, index) => (
-      <CategoryCard category={category} index={index} />
-    ))}
+    <div id="categories-container">
+      {navigationData.map((category, index) => (
+        <CategoryCard category={category} index={index} />
+      ))}
+    </div>
   </div>
 </Layout>
 
@@ -97,3 +100,5 @@ const navigationData = menuItems.map(convertMenuItemToCategory);
   // 监听 hash 变化
   window.addEventListener('hashchange', handleHashOnLoad);
 </script>
+
+<script src="../scripts/search.ts"></script>

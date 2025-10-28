@@ -1,16 +1,23 @@
-# 配置同步脚本
+# 脚本工具
 
 ## 概述
 
-`sync-config.js` 脚本用于将配置文件从 `shared/config` 目录同步到 `website/static` 目录。
+本目录包含 website 包使用的 TypeScript 脚本工具：
 
-## 功能
+- **sync-config.ts**: 配置文件同步工具
+- **verify-website.ts**: 网站功能验证工具
+
+## sync-config.ts - 配置同步工具
+
+### 功能
 
 - ✅ 自动复制配置文件
 - ✅ 支持多个配置文件（config.json, config-optimized.json, config-traditional.json）
 - ✅ 开发模式文件监听
 - ✅ 友好的错误提示
 - ✅ 构建前自动同步
+- ✅ TypeScript 类型安全
+- ✅ 完整的单元测试覆盖
 
 ## 使用方法
 
@@ -23,7 +30,7 @@ pnpm sync-config
 或直接运行：
 
 ```bash
-node scripts/sync-config.js
+tsx scripts/sync-config.ts
 ```
 
 ### 2. 监听模式（开发时使用）
@@ -35,7 +42,7 @@ pnpm dev:sync
 或直接运行：
 
 ```bash
-node scripts/sync-config.js --watch
+tsx scripts/sync-config.ts --watch
 ```
 
 在监听模式下，脚本会持续运行并监听 `shared/config` 目录的变化，自动同步更新的配置文件。
@@ -142,12 +149,68 @@ pnpm dev
 2. 检查文件系统权限
 3. 在 Windows 上可能需要管理员权限
 
+## verify-website.ts - 网站验证工具
+
+### 功能
+
+- ✅ 验证配置文件格式
+- ✅ 验证页面文件存在性
+- ✅ 验证组件文件完整性
+- ✅ 验证 Tailwind CSS 使用
+- ✅ 验证依赖配置
+- ✅ TypeScript 类型安全
+
+### 使用方法
+
+```bash
+pnpm verify
+```
+
+或直接运行：
+
+```bash
+tsx scripts/verify-website.ts
+```
+
+### 验证项目
+
+1. **配置文件验证**
+   - 检查 config.json 等文件是否存在
+   - 验证 JSON 格式是否正确
+
+2. **页面文件验证**
+   - 检查 index.astro、submit.astro 等页面
+
+3. **组件验证**
+   - 检查 Sidebar、CategoryCard、NavItem 等组件
+
+4. **样式验证**
+   - 检查 Tailwind CSS 类的使用
+   - 验证全局样式文件
+
+5. **配置验证**
+   - 检查 astro.config.mjs 配置
+   - 验证端口、输出模式等设置
+
+6. **依赖验证**
+   - 检查必需的依赖包
+   - 验证版本兼容性
+
 ## 技术细节
 
+### sync-config.ts
+- 使用 TypeScript 编写，完整类型安全
 - 使用 Node.js 原生 `fs/promises` API
 - 使用 `fs.watch` 实现文件监听
 - 支持跨平台（Windows、macOS、Linux）
-- 零依赖（只使用 Node.js 内置模块）
+- 零外部依赖（只使用 Node.js 内置模块）
+- 通过 tsx 运行
+
+### verify-website.ts
+- 使用 TypeScript 编写
+- 全面的文件和配置检查
+- 友好的错误提示
+- 支持 CI/CD 集成
 
 ## 相关脚本
 
@@ -155,4 +218,23 @@ pnpm dev
 - `pnpm dev:sync` - 启动配置监听
 - `pnpm build` - 构建项目（自动同步配置）
 - `pnpm sync-config` - 手动同步配置
+- `pnpm verify` - 验证网站配置
+- `pnpm test` - 运行单元测试
 - `pnpm prebuild` - 构建前钩子（自动调用）
+
+## 测试
+
+所有脚本都有完整的单元测试覆盖：
+
+```bash
+# 运行所有测试
+pnpm test
+
+# 运行测试并查看覆盖率
+pnpm test:coverage
+
+# 监听模式运行测试
+pnpm test:watch
+```
+
+测试文件位于 `tests/unit/scripts/` 目录。

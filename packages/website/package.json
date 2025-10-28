@@ -6,13 +6,14 @@
   "description": "User-facing navigation website",
   "scripts": {
     "dev": "astro dev",
-    "dev:sync": "node scripts/sync-config.js --watch",
+    "dev:sync": "tsx scripts/sync-config.ts --watch",
     "build": "astro build",
     "preview": "astro preview",
     "clean": "rimraf dist .astro",
     "type-check": "astro check",
-    "prebuild": "node scripts/sync-config.js",
-    "sync-config": "node scripts/sync-config.js",
+    "prebuild": "tsx scripts/sync-config.ts",
+    "sync-config": "tsx scripts/sync-config.ts",
+    "verify": "tsx scripts/verify-website.ts",
     "test": "vitest --run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
@@ -20,19 +21,20 @@
   },
   "dependencies": {
     "@astro-nav/shared": "workspace:*",
-    "astro": "^5.15.1",
     "@astrojs/sitemap": "^3.2.2",
-    "tailwindcss": "^4.0.0-beta.7",
-    "qrcode": "^1.5.4"
+    "astro": "^5.15.1",
+    "qrcode": "^1.5.4",
+    "tailwindcss": "^4.0.0-beta.7"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
-    "rimraf": "^5.0.5",
     "@tailwindcss/vite": "^4.0.0-beta.7",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.3",
+    "@types/qrcode": "^1.5.5",
     "@vitest/ui": "^4.0.3",
     "happy-dom": "^15.11.7",
-    "@types/qrcode": "^1.5.5"
+    "rimraf": "^5.0.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.3"
   }
 }
