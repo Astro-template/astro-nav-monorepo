@@ -4,15 +4,23 @@ import { getConfig } from '../../../src/utils/config';
 // Mock the config.json import
 vi.mock('../../../src/utils/config', () => ({
   getConfig: vi.fn(() => ({
-    siteInfo: {
+    site: {
       title: 'Test Navigation',
       description: 'Test Description',
-      keywords: ['test', 'navigation']
+      logo: {
+        text: 'Test Logo',
+        href: '/'
+      }
+    },
+    categoryMap: {
+      'category-1': 'Category 1'
     },
     menuItems: [
       {
         name: 'Category 1',
+        href: '/category-1',
         icon: 'icon1',
+        type: 'single' as const,
         sites: [
           {
             title: 'Site 1',
@@ -32,16 +40,16 @@ describe('config utils', () => {
       const config = getConfig();
       
       expect(config).toBeDefined();
-      expect(config.siteInfo).toBeDefined();
+      expect(config.site).toBeDefined();
       expect(config.menuItems).toBeDefined();
     });
 
     it('should return site info with correct structure', () => {
       const config = getConfig();
       
-      expect(config.siteInfo).toHaveProperty('title');
-      expect(config.siteInfo).toHaveProperty('description');
-      expect(config.siteInfo.title).toBe('Test Navigation');
+      expect(config.site).toHaveProperty('title');
+      expect(config.site).toHaveProperty('description');
+      expect(config.site.title).toBe('Test Navigation');
     });
 
     it('should return menu items as an array', () => {
@@ -56,17 +64,20 @@ describe('config utils', () => {
       const firstItem = config.menuItems[0];
       
       expect(firstItem).toHaveProperty('name');
-      expect(firstItem).toHaveProperty('sites');
-      expect(Array.isArray(firstItem.sites)).toBe(true);
+      expect(firstItem).toHaveProperty('type');
+      expect(firstItem.type).toBe('single');
     });
 
     it('should have valid site structure in menu items', () => {
       const config = getConfig();
-      const firstSite = config.menuItems[0].sites[0];
+      const firstItem = config.menuItems[0];
       
-      expect(firstSite).toHaveProperty('title');
-      expect(firstSite).toHaveProperty('url');
-      expect(firstSite).toHaveProperty('description');
+      if (firstItem.sites && firstItem.sites.length > 0) {
+        const firstSite = firstItem.sites[0];
+        expect(firstSite).toHaveProperty('title');
+        expect(firstSite).toHaveProperty('url');
+        expect(firstSite).toHaveProperty('description');
+      }
     });
   });
 });

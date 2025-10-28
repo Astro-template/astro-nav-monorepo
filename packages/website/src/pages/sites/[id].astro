@@ -1,0 +1,617 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getMenuItems, getSiteInfo } from '@astro-nav/shared';
+import type { MenuItem, Site } from '@astro-nav/shared';
+import { getConfig } from '../../utils/config';
+import QRCodeModal from '../../components/QRCodeModal.astro';
+
+export async function getStaticPaths() {
+  const config = getConfig();
+  const menuItems = getMenuItems(config);
+
+  const paths: Array<{
+    params: { id: string };
+    props: {
+      currentSite: Site;
+      relatedSites: Site[];
+      menuItemName: string;
+      subMenuName?: string;
+    };
+  }> = [];
+
+  // 遍历所有菜单项
+  for (const menuItem of menuItems) {
+    // 处理单个菜单类型的 sites
+    if (menuItem.sites && menuItem.sites.length > 0) {
+      menuItem.sites.forEach((site) => {
+        const siteId = site.title.toLowerCase().replace(/\s+/g, '-');
+        paths.push({
+          params: { id: siteId },
+          props: {
+            currentSite: site,
+            relatedSites: menuItem.sites!.filter((s) => s.title !== site.title),
+            menuItemName: menuItem.name,
+          },
+        });
+      });
+    }
+
+    // 处理子菜单类型的 sites
+    if (menuItem.submenu && menuItem.submenu.length > 0) {
+      menuItem.submenu.forEach((subMenu) => {
+        if (subMenu.sites && subMenu.sites.length > 0) {
+          subMenu.sites.forEach((site) => {
+            const siteId = site.title.toLowerCase().replace(/\s+/g, '-');
+            paths.push({
+              params: { id: siteId },
+              props: {
+                currentSite: site,
+                relatedSites: subMenu.sites!.filter((s) => s.title !== site.title),
+                menuItemName: menuItem.name,
+                subMenuName: subMenu.name,
+              },
+            });
+          });
+        }
+      });
+    }
+  }
+
+  return paths;
+}
+
+interface Props {
+  currentSite: Site;
+  relatedSites: Site[];
+  menuItemName: string;
+  subMenuName?: string;
+}
+
+const { currentSite, relatedSites, menuItemName, subMenuName } = Astro.props;
+---
+
+<Layout
+  title={`${currentSite.title} - Affiliate导航`}
+  description={currentSite.description}
+  type="article"
+>
+  <div class="layout">
+    <main>
+      <div class="top-nav">
+        <div class="nav-links">
+          <a href="/" class="nav-link">首页</a>
+          <a href="/submit" class="nav-link">提交收录</a>
+        </div>
+      </div>
+
+      <div class="detail-container">
+        <div class="breadcrumb">
+          <a href="/">首页</a>
+          <span>/</span>
+          <a href={`/#${menuItemName}`}>
+            {menuItemName}
+          </a>
+          {subMenuName && (
+            <>
+              <span>/</span>
+              <span>{subMenuName}</span>
+            </>
+          )}
+        </div>
+
+        <div class="detail-header">
+          <div class="header-content">
+            <div class="site-logo">
+              {currentSite.url && currentSite.url !== '#' ? (
+                <>
+                  <img
+                    src={`https://www.google.com/s2/favicons?domain=${new URL(currentSite.url).hostname}&sz=128`}
+                    alt={currentSite.title}
+                    class="logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                  />
+                  <div class="default-logo" style="display: none;">
+                    {currentSite.title.charAt(0).toUpperCase()}
+                  </div>
+                </>
+              ) : (
+                <div class="default-logo">
+                  {currentSite.title.charAt(0).toUpperCase()}
+                </div>
+              )}
+            </div>
+            <div class="header-text">
+              <h1>{currentSite.title}</h1>
+              <p class="description">{currentSite.description}</p>
+              <div class="actions">
+                <a
+                  href={currentSite.url}
+                  class="action-button primary"
+                  target="_blank"
+                  rel="noopener"
+                  style={currentSite.url === '#' ? "opacity: 0.5; pointer-events: none;" : ""}
+                >
+                  <span class="button-content">
+                    链接直达
+                    <iconify-icon icon="mdi:arrow-right" class="arrow-icon"></iconify-icon>
+                  </span>
+                </a>
+                <button class="action-button" id="showQRCode" data-url={currentSite.url}>
+                  <span class="button-content">
+                    手机查看
+                    <iconify-icon icon="mdi:qrcode-scan" class="qr-icon"></iconify-icon>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {currentSite.details?.intro && (
+          <div class="section">
+            <h2>产品介绍</h2>
+            <p>{currentSite.details.intro}</p>
+          </div>
+        )}
+
+        {currentSite.details?.pricing && (
+          <div class="section">
+            <h2>价格信息</h2>
+            <p>{currentSite.details.pricing}</p>
+          </div>
+        )}
+
+        {currentSite.features && (
+          <div class="features section">
+            <h2>主要特点</h2>
+            <ul>
+              {currentSite.features.map(feature => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div class="two-columns">
+          {currentSite.details?.pros && (
+            <div class="pros section">
+              <h2>优点</h2>
+              <ul>
+                {currentSite.details.pros.map(pro => (
+                  <li>{pro}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {currentSite.details?.cons && (
+            <div class="cons section">
+              <h2>缺点</h2>
+              <ul>
+                {currentSite.details.cons.map(con => (
+                  <li>{con}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+
+        {currentSite.details?.tips && (
+          <div class="section tips">
+            <h2>使用建议</h2>
+            <ul>
+              {currentSite.details.tips.map(tip => (
+                <li>{tip}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div class="related">
+          <h2>相关导航</h2>
+          <div class="related-grid">
+            {relatedSites.map(item => (
+              <a
+                href={`/sites/${encodeURIComponent(item.title.toLowerCase().replace(/\s+/g, '-'))}`}
+                class="related-item"
+              >
+                <strong>{item.title}</strong>
+                <span>{item.description}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <QRCodeModal title={currentSite.title} url={currentSite.url || '#'} />
+</Layout>
+
+<style>
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  main {
+    flex: 1;
+    padding: 2rem 0.5rem 2rem 1rem;
+    max-width: 100%;
+  }
+
+  .top-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 60px;
+    background: white;
+    border-bottom: 1px solid #eaeaea;
+    z-index: 100;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .nav-link {
+    color: #666;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: #2937f0;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #2937f0;
+    border-radius: 2px;
+  }
+
+  .detail-container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 2rem;
+    margin: 4rem auto 0;
+    width: 800px;
+    max-width: 100%;
+  }
+
+  .detail-header {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .header-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .site-logo {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    padding: 24px;
+  }
+
+  .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 1;
+  }
+
+  .default-logo {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #2937f0, #4e5ff3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    font-weight: bold;
+    opacity: 1;
+  }
+
+  .header-text {
+    flex: 1;
+    text-align: left;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0 0 1rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    color: #666;
+    margin: 0 0 2rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .features {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 8px;
+  }
+
+  .features h2 {
+    color: #333;
+    margin: 0 0 1rem;
+  }
+
+  .features ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .features li {
+    margin: 0.5rem 0;
+    color: #666;
+  }
+
+  .related {
+    margin-top: 3rem;
+    width: 100%;
+  }
+
+  .related h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .related-item {
+    padding: 1rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    background: white;
+  }
+
+  .related-item:hover {
+    border-color: #2937f0;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .related-item strong {
+    color: #2937f0;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .related-item span {
+    color: #666;
+    font-size: 0.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 1200px) {
+    .related-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .related-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 576px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    main {
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    .top-nav {
+      left: 0;
+    }
+
+    .detail-container {
+      width: 100%;
+      margin: 0 1rem;
+    }
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+    color: #666;
+  }
+
+  .breadcrumb a {
+    color: #2937f0;
+    text-decoration: none;
+  }
+
+  .breadcrumb span {
+    margin: 0 0.5rem;
+  }
+
+  .section {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    width: 100%;
+  }
+
+  .section h2 {
+    color: #333;
+    margin: 0 0 1rem;
+    font-size: 1.5rem;
+  }
+
+  .section p {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  .section ul {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+
+  .section li {
+    color: #666;
+    margin: 0.5rem 0;
+    line-height: 1.5;
+  }
+
+  .pros li::marker {
+    color: #22c55e;
+  }
+
+  .cons li::marker {
+    color: #ef4444;
+  }
+
+  .tips {
+    background: #f8fafc;
+  }
+
+  .tips li::marker {
+    color: #2937f0;
+  }
+
+  @media (max-width: 768px) {
+    .two-columns {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .action-button {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .button-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .arrow-icon, .qr-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .action-button.primary {
+    background: #2937f0;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .action-button.primary:hover {
+    background: #4e5ff3;
+  }
+
+  .action-button.primary:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  .action-button:not(.primary) {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .action-button:not(.primary):hover {
+    background: #eee;
+  }
+
+  .action-button:not(.primary):hover .qr-icon {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    main {
+      margin-left: 0;
+      max-width: 100%;
+    }
+
+    .top-nav {
+      left: 0;
+    }
+  }
+</style>

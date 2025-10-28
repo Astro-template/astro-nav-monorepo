@@ -52,10 +52,11 @@ function getItemCount(category: any): number {
                                 {category.subCategories.map((sub, subIndex) => (
                                     <a
                                         href={`/#category-${index}-tab-${subIndex}`}
-                                        class="subcategory-link flex justify-between items-center px-2.5 py-1.5 text-gray-600 no-underline rounded-md text-[0.85rem] transition-all duration-300 hover:bg-gray-100 hover:text-primary"
+                                        class="subcategory-link flex justify-between items-center px-2.5 py-1.5 text-gray-600 no-underline rounded-md text-[0.85rem] transition-all duration-300 hover:bg-gray-100 hover:text-primary data-[active=true]:bg-gray-100 data-[active=true]:text-primary"
                                         data-category={index}
                                         data-tab={subIndex}
                                         data-navigate-home
+                                        data-active="false"
                                     >
                                         {sub.name}
                                         <span class="text-sm text-gray-600">
@@ -71,13 +72,6 @@ function getItemCount(category: any): number {
         </div>
     </div>
 </aside>
-
-<style>
-    .subcategory-link.active {
-        background: #f5f5f5;
-        color: #2937f0;
-    }
-</style>
 
 <script>
     // 处理导航到首页的链接
@@ -121,11 +115,11 @@ function getItemCount(category: any): number {
             document
                 .querySelectorAll(".subcategory-link")
                 .forEach((link) => {
-                    link.classList.remove("active");
+                    link.setAttribute("data-active", "false");
                 });
 
             // 设置当前子菜单为激活状态
-            link.classList.add("active");
+            link.setAttribute("data-active", "true");
 
             // 找到对应的标签按钮并点击
             const tabButton = document.querySelector(

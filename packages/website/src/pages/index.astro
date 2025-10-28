@@ -19,10 +19,10 @@ const navigationData = menuItems.map(convertMenuItemToCategory);
 >
   <div class="fixed top-0 right-0 left-sidebar h-nav bg-white border-b border-gray-200 z-100 px-4 flex items-center">
     <div class="flex gap-6">
-      <a href="/" class="nav-link active text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary">
+      <a href="/" data-active="true" class="nav-link text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary data-[active=true]:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-sm data-[active=true]:after:block after:hidden">
         首页
       </a>
-      <a href="/submit" class="nav-link text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary">
+      <a href="/submit" data-active="false" class="nav-link text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary data-[active=true]:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-sm data-[active=true]:after:block after:hidden">
         提交收录
       </a>
     </div>
@@ -42,34 +42,6 @@ const navigationData = menuItems.map(convertMenuItemToCategory);
     ))}
   </div>
 </Layout>
-
-<style>
-  .nav-link.active {
-    color: #2937f0;
-  }
-
-  .nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #2937f0;
-    border-radius: 2px;
-  }
-
-  @media (max-width: 768px) {
-    main {
-      margin-left: 0;
-      max-width: 100%;
-    }
-
-    .fixed {
-      left: 0;
-    }
-  }
-</style>
 
 <script>
   // 处理页面加载时的 hash，激活对应的分类和 tab

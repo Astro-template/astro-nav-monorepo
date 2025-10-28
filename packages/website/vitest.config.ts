@@ -14,11 +14,11 @@ export default defineConfig({
         '.astro/',
         '**/*.d.ts',
         '**/*.config.*',
-        '**/scripts/**',
-        '**/static/**'
+        '**/static/**',
+        'tests/**'
       ]
     },
-    include: ['src/**/*.{test,spec}.{js,ts}'],
+    include: ['tests/**/*.{test,spec}.{js,ts}', 'src/**/*.{test,spec}.{js,ts}'],
     exclude: ['node_modules', 'dist', '.astro']
   },
   resolve: {
