@@ -1,0 +1,44 @@
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-xl font-bold">分类管理</h2>
+  <button class="btn btn-primary btn-sm" onclick="document.getElementById('add-cat-modal').showModal()">+ 新增分类</button>
+</div>
+
+<div class="overflow-x-auto bg-base-100 rounded-box shadow">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+        <th>图标</th>
+        <th>名称</th>
+        <th>Slug</th>
+        <th>网站数</th>
+        <th>排序</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#categories}}
+      <tr>
+        <td>{{icon}}</td>
+        <td class="font-medium">{{name}}</td>
+        <td class="text-xs font-mono">{{slug}}</td>
+        <td><span class="badge badge-ghost badge-sm">{{siteCount}}</span></td>
+        <td>{{sort_order}}</td>
+      </tr>
+      {{/categories}}
+    </tbody>
+  </table>
+</div>
+
+<dialog id="add-cat-modal" class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold mb-4">新增分类</h3>
+    <form hx-post="/api/categories" hx-swap="none" class="space-y-3">
+      <input type="text" name="name" placeholder="分类名称" required class="input input-bordered input-sm w-full" />
+      <input type="text" name="slug" placeholder="slug (英文)" required class="input input-bordered input-sm w-full" />
+      <input type="text" name="icon" placeholder="图标 (emoji)" class="input input-bordered input-sm w-full" />
+      <div class="modal-action">
+        <form method="dialog"><button class="btn btn-sm">取消</button></form>
+        <button type="submit" class="btn btn-primary btn-sm">创建</button>
+      </div>
+    </form>
+  </div>
+</dialog>
