@@ -118,31 +118,59 @@ export class KVPublisher implements IPublisher {
   constructor(private readonly db: D1Database, private readonly kv: KVNamespace) {}
 
   async publish(): Promise<NavData> {
-    const { results: categories } = await this.db.prepare("SELECT * FROM categories ORDER BY sort_order ASC").all<CategoryRow>();
+    const { results: allCategories } = await this.db.prepare("SELECT * FROM categories ORDER BY sort_order ASC").all<CategoryRow>();
     const { results: sites } = await this.db
       .prepare(`SELECT * FROM sites WHERE status = '${SITE_STATUS.APPROVED}' ORDER BY sort_order ASC, created_at DESC`)
       .all<SiteRow>();
 
+    const cats = allCategories || [];
+    const allSites = sites || [];
+
+    // Separate top-level and child categories
+    const topLevel = cats.filter((c) => !c.parent_id);
+    const children = cats.filter((c) => c.parent_id);
+
+    const mapSite = (s: SiteRow) => ({
+      id: s.id,
+      title: s.title,
+      url: s.url,
+      description: s.description,
+      logo: s.logo,
+      tags: JSON.parse(s.tags || "[]") as string[],
+      featured: s.featured === 1,
+    });
+
     const navData: NavData = {
-      categories: (categories || []).map((cat) => ({
-        id: cat.id,
-        name: cat.name,
-        slug: cat.slug,
-        icon: cat.icon,
-        sites: (sites || [])
-          .filter((s) => s.category_id === cat.id)
-          .map((s) => ({
-            id: s.id,
-            title: s.title,
-            url: s.url,
-            description: s.description,
-            logo: s.logo,
-            tags: JSON.parse(s.tags || "[]") as string[],
-            featured: s.featured === 1,
-          })),
-      })),
+      categories: topLevel.map((cat) => {
+        const subs = children.filter((c) => c.parent_id === cat.id);
+        if (subs.length > 0) {
+          // Has subcategories (tabs)
+          return {
+            id: cat.id,
+            name: cat.name,
+            slug: cat.slug,
+            icon: cat.icon,
+            sites: [],
+            subCategories: subs.map((sub) => ({
+              id: sub.id,
+              name: sub.name,
+              slug: sub.slug,
+              icon: sub.icon,
+              sites: allSites.filter((s) => s.category_id === sub.id).map(mapSite),
+            })),
+          };
+        }
+        // No subcategories (single)
+        return {
+          id: cat.id,
+          name: cat.name,
+          slug: cat.slug,
+          icon: cat.icon,
+          sites: allSites.filter((s) => s.category_id === cat.id).map(mapSite),
+        };
+      }),
       generatedAt: new Date().toISOString(),
-      totalSites: sites?.length || 0,
+      totalSites: allSites.length,
     };
 
     await this.kv.put(KV_KEY.NAV_SITES, JSON.stringify(navData));

@@ -7,7 +7,9 @@ CREATE TABLE IF NOT EXISTS categories (
   description TEXT DEFAULT '',
   icon TEXT DEFAULT '',
   sort_order INTEGER DEFAULT 0,
-  created_at TEXT DEFAULT (datetime('now'))
+  parent_id TEXT DEFAULT NULL,
+  created_at TEXT DEFAULT (datetime('now')),
+  FOREIGN KEY (parent_id) REFERENCES categories(id)
 );
 
 CREATE TABLE IF NOT EXISTS sites (
@@ -43,3 +45,4 @@ CREATE TABLE IF NOT EXISTS sites (
 CREATE INDEX IF NOT EXISTS idx_sites_status ON sites(status);
 CREATE INDEX IF NOT EXISTS idx_sites_category ON sites(category_id);
 CREATE INDEX IF NOT EXISTS idx_sites_featured ON sites(featured);
+CREATE INDEX IF NOT EXISTS idx_categories_parent ON categories(parent_id);

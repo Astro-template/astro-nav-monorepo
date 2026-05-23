@@ -1,0 +1,43 @@
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-xl font-bold">添加网站</h2>
+</div>
+
+<div class="bg-base-100 rounded-box shadow p-6">
+  <form hx-post="/api/admin/sites" hx-swap="none" hx-ext="ignore:json-enc" hx-encoding="application/x-www-form-urlencoded" class="space-y-4 max-w-lg">
+    <div>
+      <label class="fieldset-label">网站名称 *</label>
+      <input type="text" name="title" required class="input input-bordered input-sm w-full" placeholder="Ahrefs"/>
+    </div>
+    <div>
+      <label class="fieldset-label">URL *</label>
+      <input type="url" name="url" required class="input input-bordered input-sm w-full" placeholder="https://ahrefs.com"/>
+    </div>
+    <div>
+      <label class="fieldset-label">描述 *</label>
+      <textarea name="description" required rows="2" class="textarea textarea-bordered textarea-sm w-full" placeholder="一句话介绍（10-200字）"></textarea>
+    </div>
+    <div>
+      <label class="fieldset-label">分类 *</label>
+      <select name="category_id" required class="select select-bordered select-sm w-full">
+        {{#categories}}
+        <option value="{{id}}">{{icon}} {{name}}</option>
+        {{/categories}}
+      </select>
+    </div>
+    <div>
+      <label class="fieldset-label">Logo URL</label>
+      <input type="url" name="logo" class="input input-bordered input-sm w-full" placeholder="https://example.com/logo.png"/>
+    </div>
+    <div>
+      <label class="fieldset-label">标签</label>
+      <input type="text" name="tags" class="input input-bordered input-sm w-full" placeholder="逗号分隔，如：SEO,免费"/>
+    </div>
+    <div class="flex gap-2">
+      <label class="label cursor-pointer gap-2">
+        <input type="checkbox" name="featured" value="1" class="checkbox checkbox-xs"/>
+        <span class="label-text">精选</span>
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">添加</button>
+  </form>
+</div>

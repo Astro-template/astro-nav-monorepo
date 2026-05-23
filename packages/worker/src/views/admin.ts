@@ -3,6 +3,7 @@ import type { SiteRow, CategoryRow } from "../types";
 import pendingTemplate from "../templates/partials/pending.mustache";
 import sitesTemplate from "../templates/partials/sites.mustache";
 import categoriesTemplate from "../templates/partials/categories.mustache";
+import addSiteTemplate from "../templates/partials/add-site.mustache";
 
 export function renderPending(pending: SiteRow[], approvedCount: number): string {
   return Mustache.render(pendingTemplate, {
@@ -25,6 +26,10 @@ export function renderSites(sites: SiteRow[]): string {
 
 export function renderCategories(categories: (CategoryRow & { siteCount: number })[]): string {
   return Mustache.render(categoriesTemplate, { categories });
+}
+
+export function renderAddSite(categories: (CategoryRow & { siteCount: number })[]): string {
+  return Mustache.render(addSiteTemplate, { categories });
 }
 
 function statusBadge(status: string): string {

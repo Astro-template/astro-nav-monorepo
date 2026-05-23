@@ -1,7 +1,7 @@
 import type { RouteContext } from "../router";
 import type { ISiteRepository, ICategoryRepository } from "../repositories";
 import { layout } from "../lib/layout";
-import { renderPending, renderSites, renderCategories } from "../views/admin";
+import { renderPending, renderSites, renderCategories, renderAddSite } from "../views/admin";
 
 export function createAdminPages(sites: ISiteRepository, categories: ICategoryRepository) {
   return {
@@ -27,6 +27,12 @@ export function createAdminPages(sites: ISiteRepository, categories: ICategoryRe
       const cats = await categories.listAll();
       ctx.logger.info("admin_categories", { count: cats.length });
       return layout("分类管理", renderCategories(cats));
+    },
+
+    async addSite(ctx: RouteContext): Promise<Response> {
+      const cats = await categories.listAll();
+      ctx.logger.info("admin_add_site");
+      return layout("添加网站", renderAddSite(cats));
     },
   };
 }

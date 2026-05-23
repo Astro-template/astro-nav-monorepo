@@ -1,80 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import { getNavData } from '../utils/config';
 
 const navigationData = await getNavData();
 ---
 
-<Layout
-  title="Affiliate导航 - 专业的导航网站"
-  description="专业的Affiliate营销导航网站"
->
-  <div class="fixed top-0 right-0 left-sidebar h-nav bg-white border-b border-gray-200 z-100 px-4 flex items-center">
-    <div class="flex gap-6">
-      <a href="/" data-active="true" class="nav-link text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary data-[active=true]:text-primary after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary after:rounded-sm data-[active=true]:after:block after:hidden">
-        首页
-      </a>
-      <a href="/submit" class="nav-link text-gray-600 no-underline text-[0.95rem] py-2 transition-colors duration-300 relative hover:text-primary">
-        提交收录
-      </a>
+<Layout title="Affiliate导航 - 专业的Affiliate营销导航网站" description="专业的Affiliate营销导航网站">
+  <Sidebar />
+  <main class="page-main">
+    <div class="top-nav">
+      <div class="nav-links">
+        <a href="/" class="nav-link active">首页</a>
+        <a href="/submit" class="nav-link">提交收录</a>
+      </div>
     </div>
-  </div>
-  
-  <div class="pt-8 pr-2 pb-8 pl-4">
-    <div class="mt-20 mb-8 max-w-[600px] text-left">
-      <input 
-        id="search-input"
-        type="text" 
-        placeholder="搜索导航内容..." 
-        class="w-full px-6 py-4 border-2 border-gray-200 rounded-lg text-base outline-none transition-colors duration-300 focus:border-primary"
-      />
+
+    <div class="search-box">
+      <input type="text" placeholder="搜索导航内容..." class="search-input" id="search-input" />
     </div>
-    
-    <div id="categories-container">
-      {navigationData.map((category, index) => (
-        <CategoryCard category={category} index={index} />
-      ))}
-    </div>
-  </div>
+
+    {navigationData.map((category, index) => (
+      <CategoryCard category={category} index={index} />
+    ))}
+  </main>
 </Layout>
 
-<script>
-  function handleHashOnLoad() {
-    const hash = window.location.hash;
-    if (!hash) return;
-    const match = hash.match(/#category-(\d+)(?:-tab-(\d+))?/);
-    if (!match) return;
-
-    const categoryIndex = match[1];
-    const tabIndex = match[2];
-
-    const categoryElement = document.getElementById(`category-${categoryIndex}`);
-    if (categoryElement) {
-      setTimeout(() => {
-        const navHeight = 60;
-        const elementPosition = categoryElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-      }, 100);
-    }
-
-    if (tabIndex !== undefined) {
-      setTimeout(() => {
-        const tabButton = document.querySelector(
-          `#category-${categoryIndex} .tab-button[data-tab="tab-${categoryIndex}-${tabIndex}"]`
-        ) as HTMLElement;
-        if (tabButton) tabButton.click();
-      }, 200);
-    }
+<style>
+  .search-box { margin: 5rem 0 2rem 0; max-width: 600px; }
+  .search-input {
+    width: 100%; padding: 1rem 1.5rem; border: 2px solid var(--border);
+    border-radius: var(--radius-lg); font-size: 1rem; outline: none;
+    transition: border-color 0.3s ease;
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', handleHashOnLoad);
-  } else {
-    handleHashOnLoad();
-  }
-  window.addEventListener('hashchange', handleHashOnLoad);
-</script>
+  .search-input:focus { border-color: var(--accent); }
+</style>
 
 <script src="../scripts/search.ts"></script>

@@ -13,6 +13,8 @@ export interface CategoryRow {
   slug: string;
   description: string;
   icon: string;
+  type: "single" | "tabs";
+  parent_id: string | null;
   sort_order: number;
   created_at: string;
 }
@@ -24,7 +26,9 @@ export interface SiteRow {
   description: string;
   logo: string;
   category_id: string;
-  tags: string; // JSON array string
+  tags: string;         // JSON array
+  advantages: string;   // JSON array
+  details: string;      // JSON object {intro, pricing, pros[], cons[], tips[]}
   submitter_name: string;
   submitter_email: string;
   submitter_reason: string;
@@ -62,21 +66,32 @@ export interface UpdateSiteBody {
 }
 
 // KV stored format
+export interface NavSite {
+  id: string;
+  title: string;
+  url: string;
+  description: string;
+  logo: string;
+  tags: string[];
+  featured: boolean;
+}
+
+export interface NavSubCategory {
+  id: string;
+  name: string;
+  slug: string;
+  icon: string;
+  sites: NavSite[];
+}
+
 export interface NavData {
   categories: {
     id: string;
     name: string;
     slug: string;
     icon: string;
-    sites: {
-      id: string;
-      title: string;
-      url: string;
-      description: string;
-      logo: string;
-      tags: string[];
-      featured: boolean;
-    }[];
+    sites: NavSite[];
+    subCategories?: NavSubCategory[];
   }[];
   generatedAt: string;
   totalSites: number;
