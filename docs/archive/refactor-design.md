@@ -1,3 +1,13 @@
+> ⚠️ **已归档（重构前设计蓝图，勿作现状参考）**
+>
+> 本文是重构**动工前**的设计文档，描述的是"计划怎么做"，非"实际实现"。重构已落地，以下内容已与代码不符：
+> - schema 仍是 v1（无 `parent_id`/`type`/`advantages`/`details`）；实际以 `migrations/0002` 的 v2 分层结构为准。
+> - 提到保留 `packages/admin` 并改调 Worker API；实际该包已删除，后台由 Worker SSR（Mustache）承载。
+> - `/admin/publish` 实际是 `POST /api/sites/publish`。
+>
+> 当前部署/开发以 [../quick-start.md](../quick-start.md)、[../deployment.md](../deployment.md) 为准。
+> 保留本文仅为记录当初的架构决策与理由（KV/D1 选型、费用估算、独立 Worker 方案等）。
+
 # astro-nav 重构设计：用户提交 + Worker + 数据库
 
 ## 背景
