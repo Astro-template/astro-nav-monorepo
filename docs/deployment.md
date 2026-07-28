@@ -26,12 +26,18 @@ npx wrangler kv namespace create NAV_KV
 
 # 3. 更新 wrangler.toml 中的 database_id 和 KV id
 
-# 4. 执行数据库迁移 + 导入数据（一键按顺序跑 0001→0002→0003）
+# 4a. 建表（migrations，只有表结构，灌完是空库）
 pnpm db:migrate:remote
+
+# 4b. 灌一套导航数据（seeds，二选一，互斥！不要都跑）
+pnpm db:seed:aff:remote      # Affiliate 导航（167 站点）
+# pnpm db:seed:eooce:remote  # 或：老王导航 nav.eooce.com（269 站点）
 
 # 5. 部署 Worker
 npx wrangler deploy
 ```
+
+> ⚠️ 第 4 步是两小步：`db:migrate` 只建表，必须再跑一个 `db:seed:*` 才有数据。两个 seed 互斥，后跑的会清空先跑的。
 
 ### 日常更新
 
@@ -120,7 +126,8 @@ npx wrangler d1 execute astro-nav-db --remote --file=./path/to/data.sql
 ```bash
 # 后端
 cd packages/worker
-pnpm db:migrate:local
+pnpm db:migrate:local        # 建表
+pnpm db:seed:aff:local       # 灌数据（二选一，另一个是 db:seed:eooce:local）
 npx wrangler dev --port 8787
 
 # 前端

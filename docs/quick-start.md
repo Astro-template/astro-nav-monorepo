@@ -60,9 +60,12 @@ npx wrangler whoami   # 确认已登录
 
 ```bash
 cd packages/worker
-# 一键建表 + 导入数据（本地库，存在 .wrangler/state 目录，跟线上隔离）
-# 按顺序跑 0001 建表 → 0002 升级结构 → 0003 导入数据
+# 本地库存在 .wrangler/state 目录，跟线上隔离。分两步：
+# 第 1 步 建表（0001 建表 → 0002 升级 v2 → 0004 设置表）
 pnpm db:migrate:local
+# 第 2 步 灌一套数据（二选一，互斥，别都跑）
+pnpm db:seed:aff:local        # Affiliate 导航（167 站点）
+# pnpm db:seed:eooce:local    # 或：老王导航（269 站点）
 ```
 
 ### 1.2 启动后台
@@ -208,8 +211,11 @@ npx wrangler kv namespace create NAV_KV
 
 # 3. 把上面两个 id 填进 wrangler.toml 的 database_id / kv_namespaces.id
 
-# 4. 给云端库建表 + 导入数据（一键按顺序跑 0001→0002→0003）
+# 4a. 给云端库建表（migrations，只有表结构）
 pnpm db:migrate:remote
+# 4b. 灌一套数据（seeds，二选一，互斥，后跑的会清空先跑的）
+pnpm db:seed:aff:remote       # Affiliate 导航（167 站点）
+# pnpm db:seed:eooce:remote   # 或：老王导航（269 站点）
 
 # 5. 部署 Worker
 npx wrangler deploy

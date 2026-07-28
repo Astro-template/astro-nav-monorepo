@@ -30,16 +30,28 @@ npx wrangler deploy
 D1 数据库名：astro-nav-db
 KV namespace binding：KV
 
-### 数据库迁移
+### 数据库：两步，先建表再灌数据
 
-一键按顺序跑完 0001（建表 v1）→ 0002（升级到 v2 结构）→ 0003（导入数据）：
+**结构（migrations）和内容（seeds）是分开的，顺序不能反。**
+
+**第 1 步 — 建表（必跑）。** `migrations/` 只含表结构：`0001` 建 v1 表 → `0002` DROP 重建为 v2 结构（以它为准）→ `0004` 站点设置表。`db:migrate` 不再包含任何数据。
 
 ```bash
 pnpm --filter @astro-nav/worker db:migrate:remote   # 线上库
 pnpm --filter @astro-nav/worker db:migrate:local    # 本地库
 ```
 
-migration 文件职责：`0001`/`0002` 是表结构（0002 会 DROP 重建，以它为准），`0003` 是数据（16 分类 + 269 站点，幂等）。
+**第 2 步 — 灌一套导航数据（seeds，二选一）。** `seeds/` 下每个文件是一整套导航内容，**开头都会 `DELETE FROM sites/categories` 整站替换，互斥，绝不能同时跑**：
+
+```bash
+# A) Affiliate 导航（16 分类 / 167 站点，带 advantages/details）
+pnpm --filter @astro-nav/worker db:seed:aff:remote     # 或 :local
+
+# B) 老王导航 nav.eooce.com（16 分类 / 269 站点）
+pnpm --filter @astro-nav/worker db:seed:eooce:remote   # 或 :local
+```
+
+> ⚠️ 部署者注意：`db:migrate` 只建表、灌完是空库；必须再选一个 `db:seed:*` 才有数据。**不要**把两个 seed 都跑——后跑的会清空先跑的。想换数据集，直接重跑另一个 seed 即可（它自带清空）。新增导航数据集时，在 `seeds/` 加文件并配一对 `db:seed:<名字>:local|remote` 脚本，不要写进 `migrations/`。
 
 ### 发布数据到 KV（让前端能读到最新数据）
 
