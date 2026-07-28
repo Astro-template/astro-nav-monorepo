@@ -8,7 +8,8 @@
     "build": "tsc --noEmit",
     "deploy": "wrangler deploy",
     "type-check": "tsc --noEmit",
-    "db:migrate:local": "wrangler d1 execute astro-nav-db --local --file=./migrations/0001_init.sql"
+    "db:migrate:local": "wrangler d1 execute astro-nav-db --local -y --file=./migrations/0001_init.sql && wrangler d1 execute astro-nav-db --local -y --file=./migrations/0002_v2_schema.sql && wrangler d1 execute astro-nav-db --local -y --file=./migrations/0003_import_eooce.sql && wrangler d1 execute astro-nav-db --local -y --file=./migrations/0004_site_settings.sql",
+    "db:migrate:remote": "wrangler d1 execute astro-nav-db --remote -y --file=./migrations/0001_init.sql && wrangler d1 execute astro-nav-db --remote -y --file=./migrations/0002_v2_schema.sql && wrangler d1 execute astro-nav-db --remote -y --file=./migrations/0003_import_eooce.sql && wrangler d1 execute astro-nav-db --remote -y --file=./migrations/0004_site_settings.sql"
   },
   "dependencies": {
     "mustache": "^4.2.0"

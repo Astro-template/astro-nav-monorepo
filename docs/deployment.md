@@ -26,9 +26,8 @@ npx wrangler kv namespace create NAV_KV
 
 # 3. 更新 wrangler.toml 中的 database_id 和 KV id
 
-# 4. 执行数据库迁移
-npx wrangler d1 execute astro-nav-db --remote --file=./migrations/0001_init.sql
-npx wrangler d1 execute astro-nav-db --remote --file=./migrations/0002_v2_schema.sql
+# 4. 执行数据库迁移 + 导入数据（一键按顺序跑 0001→0002→0003）
+pnpm db:migrate:remote
 
 # 5. 部署 Worker
 npx wrangler deploy
@@ -121,7 +120,7 @@ npx wrangler d1 execute astro-nav-db --remote --file=./path/to/data.sql
 ```bash
 # 后端
 cd packages/worker
-npx wrangler d1 execute astro-nav-db --local --file=./migrations/0001_init.sql
+pnpm db:migrate:local
 npx wrangler dev --port 8787
 
 # 前端

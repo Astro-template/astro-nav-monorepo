@@ -32,10 +32,14 @@ KV namespace binding：KV
 
 ### 数据库迁移
 
+一键按顺序跑完 0001（建表 v1）→ 0002（升级到 v2 结构）→ 0003（导入数据）：
+
 ```bash
-npx wrangler d1 execute astro-nav-db --remote --file=./migrations/0001_init.sql
-npx wrangler d1 execute astro-nav-db --remote --file=./migrations/0002_v2_schema.sql
+pnpm --filter @astro-nav/worker db:migrate:remote   # 线上库
+pnpm --filter @astro-nav/worker db:migrate:local    # 本地库
 ```
+
+migration 文件职责：`0001`/`0002` 是表结构（0002 会 DROP 重建，以它为准），`0003` 是数据（16 分类 + 269 站点，幂等）。
 
 ### 发布数据到 KV（让前端能读到最新数据）
 
