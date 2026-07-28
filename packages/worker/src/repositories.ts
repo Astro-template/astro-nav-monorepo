@@ -1,5 +1,5 @@
-import type { CategoryRow, SiteRow, CreateSiteBody, UpdateSiteBody, NavData } from "./types";
-import { KV_KEY, SITE_STATUS } from "./constants";
+import type { CategoryRow, SiteRow, CreateSiteBody, UpdateSiteBody, NavData, SiteSettings } from "./types";
+import { KV_KEY, SITE_STATUS, DEFAULT_SETTINGS, SETTINGS_KEY } from "./constants";
 
 // --- Interfaces ---
 
@@ -20,6 +20,11 @@ export interface ICategoryRepository {
 
 export interface IPublisher {
   publish(): Promise<NavData>;
+}
+
+export interface ISettingsRepository {
+  get(): Promise<SiteSettings>;
+  save(settings: SiteSettings): Promise<void>;
 }
 
 // --- D1 Implementations ---
@@ -114,14 +119,46 @@ export class D1CategoryRepository implements ICategoryRepository {
   }
 }
 
+export class D1SettingsRepository implements ISettingsRepository {
+  constructor(private readonly db: D1Database) {}
+
+  async get(): Promise<SiteSettings> {
+    const { results } = await this.db.prepare("SELECT key, value FROM site_settings").all<{ key: string; value: string }>();
+    const map = new Map((results || []).map((r) => [r.key, r.value]));
+    return {
+      title: map.get(SETTINGS_KEY.title) ?? DEFAULT_SETTINGS.title,
+      description: map.get(SETTINGS_KEY.description) ?? DEFAULT_SETTINGS.description,
+      logoText: map.get(SETTINGS_KEY.logoText) ?? DEFAULT_SETTINGS.logoText,
+    };
+  }
+
+  async save(settings: SiteSettings): Promise<void> {
+    const entries: [string, string][] = [
+      [SETTINGS_KEY.title, settings.title],
+      [SETTINGS_KEY.description, settings.description],
+      [SETTINGS_KEY.logoText, settings.logoText],
+    ];
+    const stmt = this.db.prepare(
+      "INSERT INTO site_settings (key, value, updated_at) VALUES (?, ?, datetime('now')) " +
+      "ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at"
+    );
+    await this.db.batch(entries.map(([k, v]) => stmt.bind(k, v)));
+  }
+}
+
 export class KVPublisher implements IPublisher {
-  constructor(private readonly db: D1Database, private readonly kv: KVNamespace) {}
+  constructor(
+    private readonly db: D1Database,
+    private readonly kv: KVNamespace,
+    private readonly settings: ISettingsRepository,
+  ) {}
 
   async publish(): Promise<NavData> {
     const { results: allCategories } = await this.db.prepare("SELECT * FROM categories ORDER BY sort_order ASC").all<CategoryRow>();
     const { results: sites } = await this.db
       .prepare(`SELECT * FROM sites WHERE status = '${SITE_STATUS.APPROVED}' ORDER BY sort_order ASC, created_at DESC`)
       .all<SiteRow>();
+    const site = await this.settings.get();
 
     const cats = allCategories || [];
     const allSites = sites || [];
@@ -141,6 +178,7 @@ export class KVPublisher implements IPublisher {
     });
 
     const navData: NavData = {
+      site,
       categories: topLevel.map((cat) => {
         const subs = children.filter((c) => c.parent_id === cat.id);
         if (subs.length > 0) {

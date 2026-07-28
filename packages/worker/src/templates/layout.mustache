@@ -37,6 +37,7 @@
         <li><a href="/admin/pending">📋 待审核</a></li>
         <li><a href="/admin/sites">🌐 所有网站</a></li>
         <li><a href="/admin/categories">📁 分类管理</a></li>
+        <li><a href="/admin/settings">⚙️ 站点设置</a></li>
       </ul>
       <div class="p-4 border-t border-base-300">
         <select class="select select-xs w-full mb-2" onchange="document.documentElement.setAttribute('data-theme',this.value);localStorage.setItem('theme',this.value)">
@@ -63,6 +64,16 @@ document.body.addEventListener("htmx:afterRequest", function(e) {
     if (d.message) showToast("✅ " + d.message, true);
     if (d.error) showToast("❌ " + d.error, false);
   } catch {}
+});
+// 增删改成功后自动刷新列表（发布操作除外，不影响当前页）
+document.body.addEventListener("htmx:afterRequest", function(e) {
+  const cfg = e.detail.requestConfig; if (!cfg) return;
+  const verb = (cfg.verb || "").toLowerCase();
+  const path = cfg.path || "";
+  if (verb === "get") return;
+  if (path.includes("/publish")) return;
+  const isMutation = path.includes("/api/sites") || path.includes("/api/admin/categories");
+  if (isMutation && e.detail.successful) setTimeout(() => location.reload(), 600);
 });
 document.body.addEventListener("htmx:beforeRequest", function(e) {
   const btn = e.detail.elt; if (btn.tagName === "BUTTON") btn.classList.add("loading", "loading-spinner");

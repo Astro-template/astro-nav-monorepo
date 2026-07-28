@@ -31,3 +31,16 @@ export const SITE_STATUS = {
   APPROVED: "approved",
   REJECTED: "rejected",
 } as const;
+
+// site_settings 表的 key 与 SiteSettings 字段的映射
+export const SETTINGS_KEY = {
+  title: "site_title",
+  description: "site_description",
+  logoText: "logo_text",
+} as const;
+
+export const DEFAULT_SETTINGS = {
+  title: "导航站",
+  description: "一个简洁的导航站",
+  logoText: "导航站",
+} as const;

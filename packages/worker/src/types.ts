@@ -84,7 +84,14 @@ export interface NavSubCategory {
   sites: NavSite[];
 }
 
+export interface SiteSettings {
+  title: string;
+  description: string;
+  logoText: string;
+}
+
 export interface NavData {
+  site: SiteSettings;
   categories: {
     id: string;
     name: string;
