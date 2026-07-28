@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import type { Site } from '@astro-nav/shared';
 import { getMenuItems, getConfig } from '../../utils/config';
 import QRCodeModal from '../../components/QRCodeModal.astro';
+import { buildLogoCandidates } from '../../utils/logo';
 
 export async function getStaticPaths() {
   const menuItems = getMenuItems(getConfig());
@@ -67,6 +68,7 @@ interface Props {
 
 const { currentSite, relatedSites, menuItemName, subMenuName } = Astro.props;
 const siteInfo = getConfig().site;
+const logoUrls = buildLogoCandidates(currentSite.url, currentSite.logo);
 ---
 
 <Layout
@@ -101,13 +103,18 @@ const siteInfo = getConfig().site;
         <div class="detail-header">
           <div class="header-content">
             <div class="site-logo">
-              {currentSite.url && currentSite.url !== '#' ? (
+              {logoUrls.length > 0 ? (
                 <>
                   <img
-                    src={`https://www.google.com/s2/favicons?domain=${new URL(currentSite.url).hostname}&sz=128`}
+                    src={logoUrls[0]}
                     alt={currentSite.title}
                     class="logo-img"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    onerror={`
+                      const urls = ${JSON.stringify(logoUrls)};
+                      const ci = urls.indexOf(this.src);
+                      if (ci < urls.length - 1) { this.src = urls[ci + 1]; }
+                      else { this.style.display='none'; this.nextElementSibling.style.display='flex'; }
+                    `}
                   />
                   <div class="default-logo" style="display: none;">
                     {currentSite.title.charAt(0).toUpperCase()}

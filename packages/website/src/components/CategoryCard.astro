@@ -37,7 +37,7 @@ const { category, index } = Astro.props;
             style={subIndex === 0 ? "display: grid;" : "display: none;"}
           >
             {subCategory.items.map((item: NavItemType) => (
-              <NavItem title={item.title} description={item.description} url={item.url} />
+              <NavItem title={item.title} description={item.description} url={item.url} logo={item.logo} />
             ))}
           </div>
         ))}
@@ -46,7 +46,7 @@ const { category, index } = Astro.props;
   ) : (
     <div class="items-grid">
       {category.items?.map((item: NavItemType) => (
-        <NavItem title={item.title} description={item.description} url={item.url} />
+        <NavItem title={item.title} description={item.description} url={item.url} logo={item.logo} />
       ))}
     </div>
   )}

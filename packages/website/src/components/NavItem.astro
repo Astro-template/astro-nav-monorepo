@@ -1,25 +1,17 @@
 ---
+import { buildLogoCandidates } from '../utils/logo';
+
 interface Props {
   title: string;
   description?: string;
   url?: string;
+  logo?: string;
 }
 
-const { title, description, url } = Astro.props;
+const { title, description, url, logo } = Astro.props;
 const detailUrl = `/sites/${encodeURIComponent(title.toLowerCase().replace(/[\s/]+/g, '-'))}`;
 
-function getFaviconUrls(url: string) {
-  try {
-    const domain = new URL(url).hostname;
-    return [
-      `https://www.google.com/s2/favicons?domain=${domain}&sz=128`,
-      `https://icon.horse/icon/${domain}`,
-      `https://${domain}/favicon.ico`,
-    ];
-  } catch { return null; }
-}
-
-const faviconUrls = url ? getFaviconUrls(url) : null;
+const logoUrls = buildLogoCandidates(url, logo);
 const defaultLogo = title.charAt(0).toUpperCase();
 ---
 
@@ -27,13 +19,14 @@ const defaultLogo = title.charAt(0).toUpperCase();
   <a href={detailUrl} class="nav-content">
     <div class="url-content">
       <div class="url-img">
-        {faviconUrls ? (
-          <img 
-            src={faviconUrls[0]} 
-            alt={title} 
+        {logoUrls.length > 0 ? (
+          <img
+            src={logoUrls[0]}
+            alt={title}
             class="logo"
+            loading="lazy"
             onerror={`
-              const urls = ${JSON.stringify(faviconUrls)};
+              const urls = ${JSON.stringify(logoUrls)};
               const ci = urls.indexOf(this.src);
               if (ci < urls.length - 1) { this.src = urls[ci + 1]; }
               else { this.style.display='none'; this.nextElementSibling.style.display='flex'; }
