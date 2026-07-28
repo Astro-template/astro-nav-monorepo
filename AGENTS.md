@@ -56,7 +56,7 @@ pnpm --filter @astro-nav/worker db:seed:eooce:remote   # 或 :local
 ### 发布数据到 KV（让前端能读到最新数据）
 
 ```bash
-curl -X POST https://astro-nav-api.ouraihub.workers.dev/api/sites/publish -H "Authorization: Bearer admin"
+curl -X POST https://astro-nav-api.ouraihub.workers.dev/api/sites/publish -H "Authorization: Bearer $ADMIN_TOKEN"
 ```
 
 ## 部署前端（Pages）
@@ -97,7 +97,7 @@ npx wrangler pages deploy dist --project-name=astro-nav --commit-dirty=true
 | 路径 | 允许放什么 |
 |------|-----------| 
 | `packages/*/src/` | 各包源码 |
-| `docs/` | 设计文档 |
+| `docs/` | 设计/部署文档（索引见 `docs/README.md`，历史文档归 `docs/archive/`） |
 
 **根目录允许的文件（不得新增）：**
 
