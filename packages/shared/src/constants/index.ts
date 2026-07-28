@@ -86,8 +86,6 @@ export const SUCCESS_MESSAGES = {
  */
 export const CONFIG_PATHS = {
   DEFAULT: '/config.json',
-  OPTIMIZED: '/config-optimized.json',
-  TRADITIONAL: '/config-traditional.json',
   CATEGORIES_DIR: '/categories'
 } as const;
 
