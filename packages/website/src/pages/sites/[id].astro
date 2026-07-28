@@ -1,13 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { getMenuItems, getSiteInfo } from '@astro-nav/shared';
-import type { MenuItem, Site } from '@astro-nav/shared';
-import { getConfig } from '../../utils/config';
+import type { Site } from '@astro-nav/shared';
+import { getMenuItems, getConfig } from '../../utils/config';
 import QRCodeModal from '../../components/QRCodeModal.astro';
 
 export async function getStaticPaths() {
-  const config = getConfig();
-  const menuItems = getMenuItems(config);
+  const menuItems = getMenuItems(getConfig());
 
   const paths: Array<{
     params: { id: string };
@@ -24,7 +22,7 @@ export async function getStaticPaths() {
     // 处理单个菜单类型的 sites
     if (menuItem.sites && menuItem.sites.length > 0) {
       menuItem.sites.forEach((site) => {
-        const siteId = site.title.toLowerCase().replace(/\s+/g, '-');
+        const siteId = site.title.toLowerCase().replace(/[\s/]+/g, '-');
         paths.push({
           params: { id: siteId },
           props: {
@@ -41,7 +39,7 @@ export async function getStaticPaths() {
       menuItem.submenu.forEach((subMenu) => {
         if (subMenu.sites && subMenu.sites.length > 0) {
           subMenu.sites.forEach((site) => {
-            const siteId = site.title.toLowerCase().replace(/\s+/g, '-');
+            const siteId = site.title.toLowerCase().replace(/[\s/]+/g, '-');
             paths.push({
               params: { id: siteId },
               props: {
@@ -68,10 +66,11 @@ interface Props {
 }
 
 const { currentSite, relatedSites, menuItemName, subMenuName } = Astro.props;
+const siteInfo = getConfig().site;
 ---
 
 <Layout
-  title={`${currentSite.title} - Affiliate导航`}
+  title={`${currentSite.title} - ${siteInfo.title}`}
   description={currentSite.description}
   type="article"
 >
@@ -212,7 +211,7 @@ const { currentSite, relatedSites, menuItemName, subMenuName } = Astro.props;
           <div class="related-grid">
             {relatedSites.map(item => (
               <a
-                href={`/sites/${encodeURIComponent(item.title.toLowerCase().replace(/\s+/g, '-'))}`}
+                href={`/sites/${encodeURIComponent(item.title.toLowerCase().replace(/[\s/]+/g, '-'))}`}
                 class="related-item"
               >
                 <strong>{item.title}</strong>
