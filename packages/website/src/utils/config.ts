@@ -1,20 +1,22 @@
-import type { SiteConfig } from '@astro-nav/shared';
+import type { SiteConfig, Category } from '@astro-nav/shared';
+import { convertMenuItemToCategory, getSiteInfo, getMenuItems, getAllSites, searchSites } from '@astro-nav/shared';
 import configData from '../../static/config.json';
+import { buildSlugMap, siteKey } from './slug';
 
-// 获取完整配置
+// 唯一数据源：static/config.json（由 scripts/sync-config.ts 在 dev/build 前从 worker 生成）
+const config = configData as SiteConfig;
+const slugMap = buildSlugMap(config);
+
 export function getConfig(): SiteConfig {
-  return configData as SiteConfig;
+  return config;
 }
 
-// 导出其他辅助函数
-export { 
-  getSiteInfo, 
-  getMenuItems, 
-  getMenuItemByName,
-  getAllSites,
-  getSiteByUrl,
-  searchSites,
-  getCategoryMap,
-  getCategoryName,
-  getStats
-} from '@astro-nav/shared';
+export function getSiteSlug(title: string, url?: string): string {
+  return slugMap.get(siteKey(title, url)) ?? '';
+}
+
+export async function getNavData(): Promise<Category[]> {
+  return config.menuItems.map(convertMenuItemToCategory);
+}
+
+export { getSiteInfo, getMenuItems, getAllSites, searchSites };

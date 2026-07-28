@@ -1,0 +1,9 @@
+# 复制为 .dev.vars（已 gitignore）用于本地 wrangler dev。
+# 线上不要用这个文件，用 npx wrangler secret put <NAME> 注入。
+
+# 后台密码（务必改成强随机值，不要用 admin）
+ADMIN_TOKEN=change-me
+
+# Turnstile 密钥。1x0000000000000000000000000000000AA 是官方「总是通过」的测试密钥，
+# 仅供本地开发；线上必须换成 Cloudflare 后台申请的真实 secret，否则人机验证形同关闭。
+TURNSTILE_SECRET=1x0000000000000000000000000000000AA

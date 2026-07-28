@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "private": true,
-  "description": "Shared types, utilities, and constants for Astro Nav monorepo",
+  "description": "Shared types and utilities for Astro Nav monorepo",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -18,15 +18,10 @@
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "import": "./dist/utils/index.js"
-    },
-    "./constants": {
-      "types": "./dist/constants/index.d.ts",
-      "import": "./dist/constants/index.js"
     }
   },
   "files": [
-    "dist",
-    "config"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",

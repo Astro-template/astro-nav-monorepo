@@ -1,4 +1,4 @@
-import { copyFile, mkdir, watch } from 'fs/promises';
+import { readFile, writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -6,161 +6,162 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// 定义源目录和目标目录
-const SOURCE_DIR = join(__dirname, '../../shared/config');
 const TARGET_DIR = join(__dirname, '../static');
+const CONFIG_PATH = join(TARGET_DIR, 'config.json');
+const API_BASE = process.env.PUBLIC_API_URL || '';
 
-// 需要同步的配置文件列表
-const CONFIG_FILES = [
-  'config.json',
-  'config-optimized.json',
-  'config-traditional.json'
-] as const;
+// ---- worker /api/nav 的数据结构 ----
+interface NavSite {
+  title: string;
+  url: string;
+  description: string;
+  logo?: string;
+  tags?: string[];
+  featured?: boolean;
+  advantages?: string[];
+  details?: Record<string, unknown>;
+}
+interface NavSubCategory { name: string; icon: string; sites: NavSite[]; }
+interface NavCategory { name: string; slug?: string; icon: string; sites: NavSite[]; subCategories?: NavSubCategory[]; }
+interface NavSiteSettings { title: string; description: string; logoText: string; }
+interface NavData { site?: NavSiteSettings; categories: NavCategory[]; totalSites: number; }
 
-type ConfigFileName = typeof CONFIG_FILES[number];
-
-/**
- * 复制单个配置文件
- * @param filename - 文件名
- * @returns 是否成功复制
- */
-async function copyConfigFile(filename: ConfigFileName): Promise<boolean> {
-  const sourcePath = join(SOURCE_DIR, filename);
-  const targetPath = join(TARGET_DIR, filename);
-
-  // 检查源文件是否存在
-  if (!existsSync(sourcePath)) {
-    console.warn(`⚠️  配置文件不存在: ${filename}`);
-    return false;
-  }
-
-  try {
-    // 确保目标目录存在
-    await mkdir(TARGET_DIR, { recursive: true });
-    
-    // 复制文件
-    await copyFile(sourcePath, targetPath);
-    console.log(`✅ 已同步: ${filename}`);
-    return true;
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    console.error(`❌ 复制失败 ${filename}:`, errorMessage);
-    return false;
-  }
+// ---- config.json 结构（前端唯一数据源）----
+interface ConfigSite {
+  title: string; description: string; url: string;
+  logo?: string; advantages?: string[]; details?: Record<string, unknown>;
+}
+interface ConfigSubMenu { name: string; href: string; icon: string; sites: ConfigSite[]; }
+interface ConfigMenuItem {
+  name: string; href: string; icon: string;
+  type: 'single' | 'tabs'; sites?: ConfigSite[]; submenu?: ConfigSubMenu[];
+}
+interface SiteConfig {
+  site: { title: string; description: string; logo: { text: string; href: string } };
+  categoryMap: Record<string, string>;
+  menuItems: ConfigMenuItem[];
 }
 
-/**
- * 同步所有配置文件
- * @returns 成功同步的文件数量
- */
-async function syncAllConfigs(): Promise<number> {
-  console.log('🔄 开始同步配置文件...');
-  console.log(`   源目录: ${SOURCE_DIR}`);
-  console.log(`   目标目录: ${TARGET_DIR}`);
-  console.log('');
+const PLACEHOLDER = '#';
 
-  let successCount = 0;
-  for (const filename of CONFIG_FILES) {
-    const success = await copyConfigFile(filename);
-    if (success) successCount++;
-  }
-
-  console.log('');
-  console.log(`📦 同步完成: ${successCount}/${CONFIG_FILES.length} 个文件`);
-  return successCount;
+function mapSite(s: NavSite): ConfigSite {
+  return {
+    title: s.title,
+    description: s.description,
+    url: s.url || PLACEHOLDER,
+    ...(s.logo ? { logo: s.logo } : {}),
+    ...(s.advantages ? { advantages: s.advantages } : {}),
+    ...(s.details ? { details: s.details } : {}),
+  };
 }
 
-/**
- * 监听配置文件变化（开发模式）
- */
-async function watchConfigs(): Promise<void> {
-  console.log('');
-  console.log('👀 监听配置文件变化...');
-  console.log('   按 Ctrl+C 停止监听');
-  console.log('');
-
-  try {
-    const watcher = watch(SOURCE_DIR, { recursive: false });
-    
-    for await (const event of watcher) {
-      const { eventType, filename } = event;
-      
-      // 只处理我们关心的配置文件
-      if (filename && CONFIG_FILES.includes(filename as ConfigFileName)) {
-        console.log(`📝 检测到变化: ${filename} (${eventType})`);
-        await copyConfigFile(filename as ConfigFileName);
-      }
+function navToMenuItems(data: NavData): ConfigMenuItem[] {
+  return data.categories.map((cat): ConfigMenuItem => {
+    const base = `#${cat.name}`;
+    if (cat.subCategories && cat.subCategories.length > 0) {
+      return {
+        name: cat.name,
+        href: base,
+        icon: cat.icon,
+        type: 'tabs',
+        submenu: cat.subCategories.map((sub): ConfigSubMenu => ({
+          name: sub.name,
+          href: `${base}-${sub.name}`,
+          icon: sub.icon,
+          sites: sub.sites.map(mapSite),
+        })),
+      };
     }
-  } catch (error) {
-    const err = error as NodeJS.ErrnoException;
-    if (err.code === 'ENOENT') {
-      console.error('❌ 配置目录不存在:', SOURCE_DIR);
-      console.error('   请确保 shared/config 目录已创建');
-    } else {
-      const errorMessage = error instanceof Error ? error.message : String(error);
-      console.error('❌ 监听失败:', errorMessage);
-    }
-    process.exit(1);
+    return {
+      name: cat.name,
+      href: base,
+      icon: cat.icon,
+      type: 'single',
+      sites: cat.sites.map(mapSite),
+    };
+  });
+}
+
+function buildCategoryMap(menuItems: ConfigMenuItem[]): Record<string, string> {
+  const map: Record<string, string> = {};
+  for (const item of menuItems) map[item.name] = item.name;
+  return map;
+}
+
+async function readExistingConfig(): Promise<SiteConfig | null> {
+  if (!existsSync(CONFIG_PATH)) return null;
+  try {
+    return JSON.parse(await readFile(CONFIG_PATH, 'utf-8')) as SiteConfig;
+  } catch {
+    return null;
   }
 }
 
-/**
- * 主函数
- */
+const DEFAULT_SITE: SiteConfig['site'] = {
+  title: '导航站',
+  description: '导航站',
+  logo: { text: '导航站', href: '/' },
+};
+
 async function main(): Promise<void> {
-  const args = process.argv.slice(2);
-  const watchMode = args.includes('--watch') || args.includes('-w');
-
-  console.log('');
   console.log('═══════════════════════════════════════');
-  console.log('  配置文件同步工具');
+  console.log('  生成 config.json（数据源：worker /api/nav）');
   console.log('═══════════════════════════════════════');
-  console.log('');
 
-  // 检查源目录是否存在
-  if (!existsSync(SOURCE_DIR)) {
-    console.error('❌ 错误: 配置源目录不存在');
-    console.error(`   路径: ${SOURCE_DIR}`);
-    console.error('');
-    console.error('💡 提示: 请先创建 shared/config 目录并添加配置文件');
+  const existing = await readExistingConfig();
+
+  if (!API_BASE) {
+    if (existing) {
+      console.log('⚠️  未设置 PUBLIC_API_URL，保留现有 static/config.json 不变。');
+      return;
+    }
+    throw new Error('未设置 PUBLIC_API_URL 且不存在 config.json，无法生成数据。请在 .env 配置 PUBLIC_API_URL。');
+  }
+
+  let navData: NavData;
+  try {
+    const res = await fetch(`${API_BASE}/api/nav`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    navData = await res.json() as NavData;
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    if (existing) {
+      console.warn(`⚠️  抓取 worker 失败(${msg})，保留现有 config.json 兜底。`);
+      return;
+    }
+    throw new Error(`抓取 worker 失败(${msg})，且无 config.json 兜底。请确认 ${API_BASE} 可访问。`);
+  }
+
+  const menuItems = navToMenuItems(navData);
+  // 站点品牌来自 worker 的 site_settings（在后台「站点设置」编辑）；
+  // 缺失时沿用现有 config.json，再退到默认值。
+  const site: SiteConfig['site'] = navData.site
+    ? {
+        title: navData.site.title,
+        description: navData.site.description,
+        logo: { text: navData.site.logoText || navData.site.title, href: '/' },
+      }
+    : existing?.site ?? DEFAULT_SITE;
+  const config: SiteConfig = {
+    site,
+    categoryMap: buildCategoryMap(menuItems),
+    menuItems,
+  };
+
+  await mkdir(TARGET_DIR, { recursive: true });
+  await writeFile(CONFIG_PATH, JSON.stringify(config, null, 2), 'utf-8');
+
+  const siteCount = navData.totalSites ?? 0;
+  console.log(`✅ 已写入 ${CONFIG_PATH}`);
+  console.log(`   分类 ${menuItems.length} 个，网站 ${siteCount} 个（数据源 ${API_BASE}）`);
+}
+
+if (!process.env.VITEST) {
+  main().catch((error) => {
+    console.error('❌ 生成 config.json 失败:', error instanceof Error ? error.message : error);
     process.exit(1);
-  }
-
-  // 执行初始同步
-  const syncedCount = await syncAllConfigs();
-
-  // 如果没有文件被同步，给出提示
-  if (syncedCount === 0) {
-    console.log('');
-    console.log('💡 提示: shared/config 目录中没有找到配置文件');
-    console.log('   请确保以下文件存在:');
-    CONFIG_FILES.forEach(file => console.log(`   - ${file}`));
-  }
-
-  // 如果是监听模式，继续监听文件变化
-  if (watchMode) {
-    await watchConfigs();
-  } else {
-    console.log('');
-    console.log('✨ 完成！');
-    console.log('');
-    console.log('💡 提示: 使用 --watch 或 -w 参数启用文件监听模式');
-    console.log('   例如: node scripts/sync-config.js --watch');
-    console.log('');
-  }
+  });
 }
 
-// 只在直接运行时执行主函数
-if (import.meta.url === `file://${process.argv[1]}` || import.meta.url.endsWith('sync-config.ts')) {
-  // 检查是否在测试环境中
-  if (!process.env.VITEST) {
-    main().catch(error => {
-      console.error('');
-      console.error('❌ 发生错误:', error);
-      process.exit(1);
-    });
-  }
-}
+export { navToMenuItems, buildCategoryMap, mapSite };
 
-// 导出函数供测试使用
-export { copyConfigFile, syncAllConfigs, SOURCE_DIR, TARGET_DIR, CONFIG_FILES };

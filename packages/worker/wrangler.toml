@@ -1,0 +1,26 @@
+name = "astro-nav-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-05"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+ADMIN_USER = "kiro"
+
+# ADMIN_TOKEN / TURNSTILE_SECRET 是密钥，不能放 [vars]（明文且入库）。
+# 线上用 secret 注入，本地开发放 .dev.vars（已 gitignore）：
+#   npx wrangler secret put ADMIN_TOKEN
+#   npx wrangler secret put TURNSTILE_SECRET
+
+[[d1_databases]]
+binding = "DB"
+database_name = "astro-nav-db"
+database_id = "fb7ca92b-f574-49d4-be0d-afb7cc203621"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "a85b15282a1f4040ab4e71154de304d0"
+
+[[rules]]
+type = "Text"
+globs = ["**/*.mustache", "**/*.island.js"]
+fallthrough = true

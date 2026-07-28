@@ -79,39 +79,13 @@ packages/website/static/
 
 ## 开发建议
 
-### 并行开发模式
-
-如果你需要同时开发 admin 和 website，并希望配置变更能实时同步：
-
-**终端 1 - 运行 admin（生成配置）：**
-```bash
-cd packages/admin
-pnpm dev
-```
-
-**终端 2 - 监听配置变化：**
-```bash
-cd packages/website
-pnpm dev:sync
-```
-
-**终端 3 - 运行 website：**
-```bash
-cd packages/website
-pnpm dev
-```
-
-这样，当你在 admin 中生成新配置时，配置会自动同步到 website，然后 Astro 的热重载会自动刷新页面。
-
-### 单独开发 website
-
-如果只开发 website，不需要运行监听脚本，直接运行：
+### 开发 website
 
 ```bash
 pnpm dev
 ```
 
-配置文件会在构建时自动同步。
+`pnpm dev` 会先跑 `sync-config`（从 Worker 拉取导航数据），再启动 Astro dev server。配置文件也会在构建时（`prebuild`）自动同步。
 
 ## 故障排查
 

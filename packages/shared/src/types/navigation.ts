@@ -2,6 +2,7 @@ export interface NavItem {
   title: string;
   url: string;
   description: string;
+  logo?: string;
   details?: {
     intro?: string;
     pricing?: string;

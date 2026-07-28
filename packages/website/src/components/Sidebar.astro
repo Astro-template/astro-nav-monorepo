@@ -1,183 +1,134 @@
 ---
-import { getMenuItems, convertMenuItemToCategory } from "@astro-nav/shared";
-import { getConfig } from "../utils/config";
+import type { Category } from '@astro-nav/shared';
+import { getNavData, getConfig } from '../utils/config';
 
-// 获取配置数据并转换为旧格式以保持兼容性
-const config = getConfig();
-const menuItems = getMenuItems(config);
-const navigationData = menuItems.map(convertMenuItemToCategory);
+const navigationData = await getNavData();
+const site = getConfig().site;
 
-// 辅助函数：计算项目总数
-function getItemCount(category: any): number {
-    if (category.items) {
-        return category.items.length;
-    }
-    if (category.subCategories) {
-        return category.subCategories.reduce(
-            (total: number, sub: any) => total + sub.items.length,
-            0,
-        );
-    }
-    return 0;
+function getItemCount(category: Category): number {
+  if (category.items) return category.items.length;
+  if (category.subCategories) {
+    return category.subCategories.reduce((total, sub) => total + sub.items.length, 0);
+  }
+  return 0;
 }
 ---
 
-<aside class="fixed left-0 top-0 w-sidebar h-screen bg-white border-r border-gray-200 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 hover:scrollbar-thumb-primary">
-    <div class="p-4">
-        <div class="py-4 pb-6 text-center border-b border-gray-200 mb-4">
-            <div class="w-14 h-14 mx-auto mb-3 bg-linear-to-br from-primary to-primary-light rounded-[14px] flex items-center justify-center shadow-lg shadow-primary/20">
-                <span class="text-white text-3xl font-bold drop-shadow-md">A</span>
-            </div>
-            <h1 class="text-lg text-primary font-semibold m-0">Affiliate导航</h1>
-            <p class="text-xs text-gray-600 mt-1.5 m-0">专业的Affiliate营销导航</p>
-        </div>
-        <div class="flex flex-col gap-1.5">
-            {
-                navigationData.map((category, index) => (
-                    <div class="mb-2">
-                        <a href={`/#category-${index}`} class="flex justify-between items-center px-3 py-2.5 text-gray-800 no-underline rounded-md transition-all duration-300 hover:bg-gray-100 hover:text-primary group" data-navigate-home>
-                            <div class="flex items-center gap-2.5">
-                                <iconify-icon
-                                    icon={category.icon}
-                                    class="text-lg text-gray-600 group-hover:text-primary"
-                                />
-                                <span>{category.name}</span>
-                            </div>
-                            <span class="text-sm text-gray-600">
-                                ({getItemCount(category)})
-                            </span>
-                        </a>
-                        {category.subCategories && (
-                            <div class="ml-8 mt-0.5 flex flex-col gap-0.5">
-                                {category.subCategories.map((sub, subIndex) => (
-                                    <a
-                                        href={`/#category-${index}-tab-${subIndex}`}
-                                        class="subcategory-link flex justify-between items-center px-2.5 py-1.5 text-gray-600 no-underline rounded-md text-[0.85rem] transition-all duration-300 hover:bg-gray-100 hover:text-primary data-[active=true]:bg-gray-100 data-[active=true]:text-primary"
-                                        data-category={index}
-                                        data-tab={subIndex}
-                                        data-navigate-home
-                                        data-active="false"
-                                    >
-                                        {sub.name}
-                                        <span class="text-sm text-gray-600">
-                                            ({sub.items.length})
-                                        </span>
-                                    </a>
-                                ))}
-                            </div>
-                        )}
-                    </div>
-                ))
-            }
-        </div>
+<aside class="sidebar">
+  <div class="sidebar-content">
+    <div class="logo-container">
+      <div class="logo">
+        <span class="logo-icon">{site.logo.text.charAt(0)}</span>
+      </div>
+      <h1 class="logo-text">{site.logo.text}</h1>
+      <p class="logo-subtitle">{site.description}</p>
     </div>
+    <div class="category-list">
+      {navigationData.map((category, index) => (
+        <div class="category-wrapper">
+          <a href={`/#category-${index}`} class="category-link">
+            <div class="category-info">
+              <iconify-icon icon={category.icon} class="category-icon"></iconify-icon>
+              <span>{category.name}</span>
+            </div>
+            <span class="item-count">({getItemCount(category)})</span>
+          </a>
+          {category.subCategories && (
+            <div class="subcategory-list">
+              {category.subCategories.map((sub, subIndex) => (
+                <a 
+                  href={`/#category-${index}`} 
+                  class="subcategory-link"
+                  data-category={index}
+                  data-tab={subIndex}
+                >
+                  {sub.name}
+                  <span class="item-count">({sub.items.length})</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
 </aside>
 
+<style>
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    z-index: 200;
+  }
+  .sidebar-content { padding: 1rem; }
+  .logo-container {
+    padding: 1rem 0 1.5rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1rem;
+  }
+  .logo {
+    width: 56px; height: 56px; margin: 0 auto 0.8rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 12px rgba(41, 55, 240, 0.2);
+  }
+  .logo-icon { color: white; font-size: 1.8rem; font-weight: bold; }
+  .logo-text { font-size: 1.1rem; color: var(--accent); margin: 0; font-weight: 600; }
+  .logo-subtitle { font-size: 0.8rem; color: var(--text-muted); margin: 0.4rem 0 0 0; }
+  .category-list { display: flex; flex-direction: column; gap: 0.4rem; }
+  .category-link {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.6rem 0.8rem; color: var(--text); text-decoration: none;
+    border-radius: var(--radius); transition: all 0.3s ease; font-size: 0.9rem;
+  }
+  .category-info { display: flex; align-items: center; gap: 0.6rem; }
+  .category-icon { font-size: 1.1rem; color: var(--text-muted); }
+  .category-link:hover { background: #f5f5f5; color: var(--accent); }
+  .category-link:hover .category-icon { color: var(--accent); }
+  .item-count { font-size: 0.8rem; color: var(--text-hint); }
+  .category-wrapper { margin-bottom: 0.2rem; }
+  .subcategory-list {
+    margin-left: 2rem; margin-top: 0.2rem;
+    display: flex; flex-direction: column; gap: 0.2rem;
+  }
+  .subcategory-link {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.4rem 0.6rem; color: var(--text-muted); text-decoration: none;
+    border-radius: var(--radius); font-size: 0.85rem; transition: all 0.3s ease;
+  }
+  .subcategory-link:hover { background: #f5f5f5; color: var(--accent); }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb { background: #ddd; border-radius: 3px; }
+  .sidebar::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+  }
+</style>
+
 <script>
-    // 处理导航到首页的链接
-    function handleNavigateHome(event: Event) {
-        const link = event.currentTarget as HTMLAnchorElement;
-        const href = link.getAttribute("href");
-        
-        if (!href) return;
-        
-        // 如果当前不在首页，需要先导航到首页
-        if (window.location.pathname !== '/') {
-            event.preventDefault();
-            window.location.href = href;
-            return;
-        }
-        
-        // 如果已经在首页，阻止默认行为并手动处理滚动
-        event.preventDefault();
-        
-        // 解析 hash 获取分类索引
-        const match = href.match(/#category-(\d+)/);
-        if (!match) return;
-        
-        const categoryIndex = match[1];
-        const categoryElement = document.getElementById(`category-${categoryIndex}`);
-        
-        if (categoryElement) {
-            const navHeight = 60; // 导航栏高度
-            const elementPosition = categoryElement.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.pageYOffset - navHeight; // 紧贴导航栏
+  document.querySelectorAll('.subcategory-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const el = e.currentTarget as HTMLElement;
+      const categoryIndex = el.getAttribute('data-category');
+      const tabIndex = el.getAttribute('data-tab');
+      if (!categoryIndex || !tabIndex) return;
 
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-            
-            // 更新 URL hash
-            history.replaceState(null, '', href);
-        }
-    }
+      const tabButton = document.querySelector(
+        `#category-${categoryIndex} .tab-button[data-tab="tab-${categoryIndex}-${tabIndex}"]`
+      ) as HTMLElement;
+      if (tabButton) tabButton.click();
 
-    function handleTabClick(event: Event) {
-        const link = event.target as HTMLAnchorElement;
-        const href = link.getAttribute("href");
-
-        if (!href) return;
-
-        // 如果不在首页，让浏览器直接导航（会触发页面加载和 hash 处理）
-        if (window.location.pathname !== '/') {
-            return; // 让默认行为处理
-        }
-
-        // 在首页时，阻止默认行为并手动处理
-        event.preventDefault();
-
-        try {
-            const categoryIndex = link.getAttribute("data-category");
-            const tabIndex = link.getAttribute("data-tab");
-
-            if (!categoryIndex || !tabIndex) return;
-
-            // 更新所有子菜单的激活状态
-            document
-                .querySelectorAll(".subcategory-link")
-                .forEach((link) => {
-                    link.setAttribute("data-active", "false");
-                });
-
-            // 设置当前子菜单为激活状态
-            link.setAttribute("data-active", "true");
-
-            // 找到对应的标签按钮并点击
-            const tabButton = document.querySelector(
-                `#category-${categoryIndex} .tab-button[data-tab="tab-${categoryIndex}-${tabIndex}"]`,
-            ) as HTMLElement;
-
-            if (tabButton) {
-                tabButton.click();
-            }
-
-            // 滚动到对应的分类，考虑固定导航栏的高度
-            const categoryElement = document.getElementById(`category-${categoryIndex}`);
-            if (categoryElement) {
-                const navHeight = 60; // 导航栏高度
-                const elementPosition = categoryElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navHeight; // 紧贴导航栏
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-
-            // 更新 URL hash（不触发页面跳转）
-            history.replaceState(null, '', href);
-        } catch (error) {
-            console.error("Error handling tab click:", error);
-        }
-    }
-
-    // 为所有带 data-navigate-home 属性的链接添加事件监听
-    document.querySelectorAll('[data-navigate-home]').forEach((link) => {
-        link.addEventListener("click", handleNavigateHome);
+      const categoryElement = document.getElementById(`category-${categoryIndex}`);
+      if (categoryElement) categoryElement.scrollIntoView({ behavior: 'smooth' });
     });
-
-    document.querySelectorAll(".subcategory-link").forEach((link) => {
-        link.addEventListener("click", handleTabClick);
-    });
+  });
 </script>

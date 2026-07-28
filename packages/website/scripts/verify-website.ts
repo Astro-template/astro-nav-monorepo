@@ -28,9 +28,7 @@ interface ConfigCheck {
 function verifyConfigFiles(): void {
   console.log('📋 验证配置文件...');
   const configFiles = [
-    'static/config.json',
-    'static/config-optimized.json',
-    'static/config-traditional.json'
+    'static/config.json'
   ];
 
   for (const file of configFiles) {

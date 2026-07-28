@@ -1,372 +1,164 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { getConfig } from '../utils/config';
 
-// 定义默认分类选项
-const allCategories = [
-  { name: 'Affiliate工具', count: 0 },
-  { name: '营销软件', count: 0 },
-  { name: '数据分析', count: 0 },
-  { name: '内容创作', count: 0 },
-  { name: '社交媒体', count: 0 },
-  { name: '电商平台', count: 0 },
-  { name: '支付工具', count: 0 },
-  { name: 'SEO工具', count: 0 },
-  { name: '邮件营销', count: 0 },
-  { name: '广告平台', count: 0 },
-  { name: '设计工具', count: 0 },
-  { name: '其他工具', count: 0 }
-];
+const API_BASE = import.meta.env.PUBLIC_API_URL || 'https://astro-nav-api.ouraihub.workers.dev';
+const site = getConfig().site;
 ---
 
-<Layout title="提交收录 - Affiliate导航" description="提交您的Affiliate营销工具或资源，加入我们的导航网站。">
-  <div class="bg-white p-8 rounded-xl shadow-md mt-20 w-full max-w-none">
-    <h1 class="text-gray-800 mb-8 text-center text-2xl font-semibold">Affiliate工具提交</h1>
-    
-    <div class="flex gap-4 mb-8 border-b-2 border-gray-200 pb-4">
-      <button class="tab-button bg-primary text-white px-6 py-3 text-base rounded-md cursor-pointer transition-all duration-300 border-none" data-tab="website">网站</button>
-      <button class="tab-button bg-transparent text-gray-600 px-6 py-3 text-base rounded-md cursor-pointer transition-all duration-300 border-none hover:bg-gray-100 hover:text-primary" data-tab="wechat">公众号</button>
-      <button class="tab-button bg-transparent text-gray-600 px-6 py-3 text-base rounded-md cursor-pointer transition-all duration-300 border-none hover:bg-gray-100 hover:text-primary" data-tab="resource">资源</button>
+<Layout title={`提交收录 - ${site.title}`} description="提交您的网站，加入导航收录。">
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <Sidebar />
+  <main class="page-main">
+    <div class="top-nav">
+      <div class="nav-links">
+        <a href="/" class="nav-link">首页</a>
+        <a href="/submit" class="nav-link active">提交收录</a>
+      </div>
     </div>
 
-    <form class="tab-content block" id="website-form">
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">网站名称 *</label>
-        <input type="text" name="website-name" required placeholder="请输入网站名称" 
-               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
+    <div class="form-container">
+      <h1>提交网站</h1>
 
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">网站链接 *</label>
-        <input type="url" name="website-url" required placeholder="https://example.com" 
-               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">网站图标</label>
-        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
-          <input type="file" accept="image/*" id="website-icon" name="website-icon" class="hidden" />
-          <label for="website-icon" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
-            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
-            <span>点击上传图标</span>
-          </label>
+      <form id="submit-form">
+        <div class="field">
+          <label>网站名称 *</label>
+          <input type="text" name="title" required maxlength="100" placeholder="请输入网站名称" />
         </div>
-      </div>
 
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">选择分类 *</label>
-        <select name="website-category" required 
-                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
-          <option value="">请选择分类</option>
-          {allCategories.map(cat => (
-            <option value={cat.name}>{cat.name} ({cat.count})</option>
-          ))}
-        </select>
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">网站介绍</label>
-        <textarea name="website-description" rows="4" placeholder="请输入网站介绍..." 
-                  class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary resize-y"></textarea>
-      </div>
-
-      <button type="submit" class="submit-button bg-primary text-white border-none px-8 py-4 rounded-md text-base cursor-pointer transition-colors duration-300 w-full hover:bg-primary-light disabled:bg-gray-400 disabled:cursor-not-allowed">
-        提交网站
-      </button>
-    </form>
-
-    <form class="tab-content hidden" id="wechat-form">
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">公众号名称 *</label>
-        <input type="text" name="wechat-name" required placeholder="请输入公众号名称" 
-               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">公众号ID</label>
-        <input type="text" name="wechat-id" placeholder="请输入公众号ID（可选）" 
-               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">公众号图标</label>
-        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
-          <input type="file" accept="image/*" id="wechat-icon" name="wechat-icon" class="hidden" />
-          <label for="wechat-icon" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
-            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
-            <span>点击上传图标</span>
-          </label>
+        <div class="field">
+          <label>网站 URL *</label>
+          <input type="url" name="url" required placeholder="https://example.com" />
         </div>
-      </div>
 
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">选择分类 *</label>
-        <select name="wechat-category" required 
-                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
-          <option value="">请选择分类</option>
-          {allCategories.map(cat => (
-            <option value={cat.name}>{cat.name} ({cat.count})</option>
-          ))}
-        </select>
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">公众号二维码</label>
-        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
-          <input type="file" accept="image/*" id="wechat-qr" name="wechat-qr" class="hidden" />
-          <label for="wechat-qr" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
-            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
-            <span>点击上传二维码</span>
-          </label>
+        <div class="field">
+          <label>一句话描述 * <span class="hint">(10-200字)</span></label>
+          <textarea name="description" required minlength="10" maxlength="200" rows="3" placeholder="简要介绍这个网站..."></textarea>
         </div>
-      </div>
 
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">公众号介绍</label>
-        <textarea name="wechat-description" rows="4" placeholder="请输入公众号介绍..." 
-                  class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary resize-y"></textarea>
-      </div>
-
-      <button type="submit" class="submit-button bg-primary text-white border-none px-8 py-4 rounded-md text-base cursor-pointer transition-colors duration-300 w-full hover:bg-primary-light disabled:bg-gray-400 disabled:cursor-not-allowed">
-        提交公众号
-      </button>
-    </form>
-
-    <form class="tab-content hidden" id="resource-form">
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">资源名称 *</label>
-        <input type="text" name="resource-name" required placeholder="请输入资源名称" 
-               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">资源链接</label>
-        <input type="url" name="resource-url" placeholder="https://example.com（可选）" 
-               class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary" />
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">资源类型 *</label>
-        <select name="resource-type" required 
-                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
-          <option value="">请选择资源类型</option>
-          <option value="tool">工具软件</option>
-          <option value="template">模板素材</option>
-          <option value="course">教程课程</option>
-          <option value="ebook">电子书籍</option>
-          <option value="other">其他资源</option>
-        </select>
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
-
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">资源图标</label>
-        <div class="upload-box border-2 border-dashed border-gray-200 rounded-md p-8 text-center transition-all duration-300 hover:border-primary">
-          <input type="file" accept="image/*" id="resource-icon" name="resource-icon" class="hidden" />
-          <label for="resource-icon" class="upload-trigger flex flex-col items-center gap-2 cursor-pointer text-gray-600">
-            <iconify-icon icon="mdi:cloud-upload" class="text-3xl text-primary"></iconify-icon>
-            <span>点击上传图标</span>
-          </label>
+        <div class="field">
+          <label>分类 *</label>
+          <select name="category_id" required id="category-select">
+            <option value="">加载中...</option>
+          </select>
         </div>
-      </div>
 
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">选择分类 *</label>
-        <select name="resource-category" required 
-                class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary">
-          <option value="">请选择分类</option>
-          {allCategories.map(cat => (
-            <option value={cat.name}>{cat.name} ({cat.count})</option>
-          ))}
-        </select>
-        <span class="error-message text-red-600 text-sm mt-1 hidden">此字段为必填项</span>
-      </div>
+        <div class="field">
+          <label>Logo URL</label>
+          <input type="url" name="logo" placeholder="https://example.com/logo.png（可选）" />
+        </div>
 
-      <div class="form-group mb-6">
-        <label class="block text-gray-800 mb-2 font-medium">资源介绍(使用说明)</label>
-        <textarea name="resource-description" rows="4" placeholder="请输入资源介绍..." 
-                  class="w-full px-3 py-3 border border-gray-200 rounded-md text-base outline-none transition-colors duration-300 focus:border-primary resize-y"></textarea>
-      </div>
+        <div class="field">
+          <label>标签</label>
+          <input type="text" name="tags" placeholder="用逗号分隔，如：SEO,免费,Chrome插件" />
+        </div>
 
-      <button type="submit" class="submit-button bg-primary text-white border-none px-8 py-4 rounded-md text-base cursor-pointer transition-colors duration-300 w-full hover:bg-primary-light disabled:bg-gray-400 disabled:cursor-not-allowed">
-        提交资源
-      </button>
-    </form>
-  </div>
+        <details class="extra-info">
+          <summary>提交者信息（可选）</summary>
+          <div class="field"><input type="text" name="submitter_name" placeholder="你的名字" /></div>
+          <div class="field"><input type="email" name="submitter_email" placeholder="你的邮箱" /></div>
+          <div class="field"><textarea name="submitter_reason" rows="2" placeholder="推荐理由"></textarea></div>
+        </details>
+
+        <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA"></div>
+
+        <button type="submit" id="submit-btn" class="btn-primary">提交</button>
+        <div id="submit-msg" class="msg hidden"></div>
+      </form>
+    </div>
+  </main>
 </Layout>
 
-<script>
-  // 处理标签切换
-  const tabButtons = document.querySelectorAll('.tab-button');
-  const tabContents = document.querySelectorAll('.tab-content');
+<style>
+  .form-container {
+    max-width: 560px; margin: 5rem auto 2rem; background: var(--bg-card);
+    padding: 2rem; border-radius: var(--radius-lg); box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  h1 { font-size: 1.5rem; color: var(--text); margin: 0 0 1.5rem; text-align: center; }
+  .field { margin-bottom: 1rem; }
+  .field label { display: block; font-size: 0.9rem; color: var(--text); margin-bottom: 0.3rem; font-weight: 500; }
+  .hint { font-size: 0.75rem; color: var(--text-hint); font-weight: normal; }
+  .field input, .field textarea, .field select {
+    width: 100%; padding: 0.6rem 0.8rem; border: 1px solid #ddd;
+    border-radius: var(--radius); font-size: 0.9rem; outline: none; transition: border-color 0.3s;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus { border-color: var(--accent); }
+  .extra-info { border: 1px solid var(--border-light); border-radius: var(--radius); padding: 0.8rem; margin-bottom: 1rem; }
+  .extra-info summary { cursor: pointer; color: var(--text-muted); font-size: 0.85rem; }
+  .extra-info .field { margin-top: 0.8rem; margin-bottom: 0.5rem; }
+  .msg { text-align: center; margin-top: 0.8rem; font-size: 0.9rem; }
+  .msg.success { color: #16a34a; }
+  .msg.error { color: #dc2626; }
+  .hidden { display: none; }
+</style>
 
-  tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const tabId = button.getAttribute('data-tab');
-      
-      // 更新按钮状态
-      tabButtons.forEach(btn => {
-        btn.classList.remove('bg-primary', 'text-white');
-        btn.classList.add('bg-transparent', 'text-gray-600', 'hover:bg-gray-100', 'hover:text-primary');
+<script define:vars={{ API_BASE }}>
+  const select = document.getElementById('category-select');
+  const form = document.getElementById('submit-form');
+  const btn = document.getElementById('submit-btn');
+  const msg = document.getElementById('submit-msg');
+
+  fetch(`${API_BASE}/api/categories`)
+    .then(r => r.json())
+    .then(data => {
+      select.innerHTML = '<option value="">请选择分类</option>' +
+        data.categories.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+    })
+    .catch(() => { select.innerHTML = '<option value="">加载失败，请刷新</option>'; });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = '提交中...';
+    msg.classList.add('hidden');
+
+    const fd = new FormData(form);
+    const turnstileToken = fd.get('cf-turnstile-response');
+    if (!turnstileToken) {
+      msg.textContent = '❌ 请完成验证码';
+      msg.className = 'msg error';
+      msg.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = '提交';
+      return;
+    }
+
+    const body = {
+      title: fd.get('title'),
+      url: fd.get('url'),
+      description: fd.get('description'),
+      category_id: fd.get('category_id'),
+      logo: fd.get('logo') || undefined,
+      tags: fd.get('tags') ? fd.get('tags').split(',').map(t => t.trim()).filter(Boolean) : undefined,
+      submitter_name: fd.get('submitter_name') || undefined,
+      submitter_email: fd.get('submitter_email') || undefined,
+      submitter_reason: fd.get('submitter_reason') || undefined,
+      turnstile_token: turnstileToken,
+    };
+
+    try {
+      const res = await fetch(`${API_BASE}/api/sites`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
       });
-      button.classList.remove('bg-transparent', 'text-gray-600', 'hover:bg-gray-100', 'hover:text-primary');
-      button.classList.add('bg-primary', 'text-white');
-      
-      // 更新内容显示
-      tabContents.forEach(content => {
-        content.classList.remove('block');
-        content.classList.add('hidden');
-        if (content.id === `${tabId}-form`) {
-          content.classList.remove('hidden');
-          content.classList.add('block');
-        }
-      });
-    });
-  });
-
-  // 处理文件上传预览
-  document.querySelectorAll('input[type="file"]').forEach(input => {
-    input.addEventListener('change', function() {
-      const fileInput = this;
-      const file = fileInput.files && fileInput.files[0];
-
-      if (file) {
-        console.log('Selected file:', file.name);
-        // 更新上传提示文字
-        const uploadBox = fileInput.closest('.upload-box');
-        const uploadTrigger = uploadBox && uploadBox.querySelector('.upload-trigger span');
-        if (uploadTrigger) {
-          uploadTrigger.textContent = `已选择: ${file.name}`;
-        }
+      const data = await res.json();
+      if (res.ok) {
+        msg.textContent = '✅ ' + data.message;
+        msg.className = 'msg success';
+        form.reset();
+      } else {
+        msg.textContent = '❌ ' + (data.error || '提交失败');
+        msg.className = 'msg error';
       }
-    });
-  });
-
-  // 处理表单提交
-  document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const formType = this.id.replace('-form', '');
-
-      // 基本验证
-      const requiredFields = this.querySelectorAll('[required]');
-      let isValid = true;
-
-      requiredFields.forEach(field => {
-        const formGroup = field.closest('.form-group');
-        let fieldValue = '';
-
-        // 安全获取字段值
-        try {
-          fieldValue = (field as any).value || '';
-        } catch (e) {
-          fieldValue = '';
-        }
-
-        if (formGroup) {
-          const errorMessage = formGroup.querySelector('.error-message');
-          if (!fieldValue.trim()) {
-            formGroup.classList.add('error');
-            if (errorMessage) {
-              errorMessage.classList.remove('hidden');
-            }
-            isValid = false;
-          } else {
-            formGroup.classList.remove('error');
-            if (errorMessage) {
-              errorMessage.classList.add('hidden');
-            }
-          }
-        }
-      });
-
-      if (!isValid) {
-        alert('请填写所有必填字段');
-        return;
-      }
-
-      // 显示提交状态
-      const submitButton = this.querySelector('.submit-button');
-      if (submitButton) {
-        const originalText = submitButton.textContent || '';
-        submitButton.textContent = '提交中...';
-        if (submitButton.tagName === 'BUTTON') {
-          submitButton.setAttribute('disabled', 'true');
-        }
-
-        // 模拟提交过程
-        setTimeout(() => {
-          alert(`${formType === 'website' ? '网站' : formType === 'wechat' ? '公众号' : '资源'}提交成功！我们会尽快审核。`);
-
-          // 重置表单
-          this.reset();
-
-          // 重置文件上传显示
-          this.querySelectorAll('.upload-trigger span').forEach(span => {
-            if (span.textContent && span.textContent.includes('已选择:')) {
-              span.textContent = span.textContent.includes('图标') ? '点击上传图标' : '点击上传二维码';
-            }
-          });
-
-          // 恢复按钮
-          submitButton.textContent = originalText;
-          if (submitButton.tagName === 'BUTTON') {
-            submitButton.removeAttribute('disabled');
-          }
-        }, 2000);
-      }
-    });
-  });
-
-  // 实时验证
-  document.querySelectorAll('input[required], select[required]').forEach(field => {
-    field.addEventListener('blur', function() {
-      const formGroup = this.closest('.form-group');
-      let fieldValue = '';
-      try {
-        fieldValue = (this as any).value || '';
-      } catch (e) {
-        fieldValue = '';
-      }
-
-      if (formGroup) {
-        const errorMessage = formGroup.querySelector('.error-message');
-        if (!fieldValue.trim()) {
-          formGroup.classList.add('error');
-          if (errorMessage) {
-            errorMessage.classList.remove('hidden');
-          }
-        } else {
-          formGroup.classList.remove('error');
-          if (errorMessage) {
-            errorMessage.classList.add('hidden');
-          }
-        }
-      }
-    });
-
-    field.addEventListener('input', function() {
-      const formGroup = this.closest('.form-group');
-      let fieldValue = '';
-      try {
-        fieldValue = (this as any).value || '';
-      } catch (e) {
-        fieldValue = '';
-      }
-
-      if (formGroup && fieldValue.trim()) {
-        formGroup.classList.remove('error');
-        const errorMessage = formGroup.querySelector('.error-message');
-        if (errorMessage) {
-          errorMessage.classList.add('hidden');
-        }
-      }
-    });
+    } catch {
+      msg.textContent = '❌ 网络错误，请重试';
+      msg.className = 'msg error';
+    } finally {
+      msg.classList.remove('hidden');
+      btn.disabled = false;
+      btn.textContent = '提交';
+    }
   });
 </script>

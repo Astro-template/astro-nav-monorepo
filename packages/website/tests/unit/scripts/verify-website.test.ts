@@ -56,12 +56,10 @@ describe('verify-website', () => {
   describe('Config File Validation', () => {
     it('should validate all required config files', () => {
       const configFiles = [
-        'config.json',
-        'config-optimized.json',
-        'config-traditional.json'
+        'config.json'
       ];
 
-      expect(configFiles.length).toBe(3);
+      expect(configFiles.length).toBe(1);
       expect(configFiles).toContain('config.json');
     });
   });

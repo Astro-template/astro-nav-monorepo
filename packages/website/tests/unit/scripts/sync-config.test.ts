@@ -14,12 +14,10 @@ describe('sync-config', () => {
 
   describe('File Operations', () => {
     it('should validate config file names', () => {
-      const configFiles = ['config.json', 'config-optimized.json', 'config-traditional.json'];
-      
-      expect(configFiles.length).toBe(3);
+      const configFiles = ['config.json'];
+
+      expect(configFiles.length).toBe(1);
       expect(configFiles).toContain('config.json');
-      expect(configFiles).toContain('config-optimized.json');
-      expect(configFiles).toContain('config-traditional.json');
     });
 
     it('should validate file paths', () => {
@@ -111,8 +109,8 @@ describe('sync-config', () => {
     });
 
     it('should validate file list', () => {
-      const files = ['config.json', 'config-optimized.json', 'config-traditional.json'];
-      
+      const files = ['config.json'];
+
       expect(Array.isArray(files)).toBe(true);
       expect(files.length).toBeGreaterThan(0);
       files.forEach(file => {
@@ -168,8 +166,8 @@ describe('sync-config', () => {
 
   describe('TypeScript Type Safety', () => {
     it('should enforce config file name types', () => {
-      type ConfigFileName = 'config.json' | 'config-optimized.json' | 'config-traditional.json';
-      
+      type ConfigFileName = 'config.json';
+
       const validFile: ConfigFileName = 'config.json';
       expect(validFile).toBe('config.json');
     });

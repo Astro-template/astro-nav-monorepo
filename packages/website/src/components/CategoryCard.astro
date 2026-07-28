@@ -3,103 +3,103 @@ import type { Category, NavItem as NavItemType } from "@astro-nav/shared";
 import NavItem from "./NavItem.astro";
 
 interface Props {
-    category: Category;
-    index: number;
+  category: Category;
+  index: number;
 }
 
 const { category, index } = Astro.props;
 ---
 
-<div class="my-3 scroll-mt-nav" id={`category-${index}`}>
-    <h2
-        class="text-gray-800 mb-3 pb-2 border-b border-gray-200 flex items-center gap-2 text-lg"
-    >
-        <iconify-icon icon={category.icon} class="text-lg text-primary"
-        ></iconify-icon>
-        {category.name}
-    </h2>
+<div class="category-card" id={`category-${index}`}>
+  <h2>
+    <iconify-icon icon={category.icon} class="category-icon"></iconify-icon>
+    {category.name}
+  </h2>
 
-    {
-        category.subCategories ? (
-            <div class="bg-white rounded-lg p-2 shadow-sm">
-                <div class="flex gap-2 mb-3 border-b border-gray-200 pb-2 overflow-x-auto">
-                    {category.subCategories.map((sub: { name: string; items: NavItemType[] }, subIndex: number) => (
-                        <button
-                            class="tab-button bg-transparent border-none px-3 py-1.5 text-sm text-gray-600 cursor-pointer rounded transition-all duration-300 whitespace-nowrap hover:bg-gray-100 hover:text-primary data-[active=true]:bg-primary data-[active=true]:text-white"
-                            data-tab={`tab-${index}-${subIndex}`}
-                            data-active={subIndex === 0}
-                            data-category={index}
-                            data-subindex={subIndex}
-                        >
-                            {sub.name}
-                        </button>
-                    ))}
-                </div>
-                <div class="relative">
-                    {category.subCategories.map((subCategory: { name: string; items: NavItemType[] }, subIndex: number) => (
-                        <div
-                            class="tab-content grid grid-cols-2 gap-1 w-full p-1 justify-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6"
-                            id={`tab-${index}-${subIndex}`}
-                            style={
-                                subIndex === 0
-                                    ? "display: grid;"
-                                    : "display: none;"
-                            }
-                        >
-                            {subCategory.items.map((item: NavItemType) => (
-                                <NavItem {...item} />
-                            ))}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        ) : (
-            <div class="grid grid-cols-2 gap-1 w-full p-1 justify-start md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
-                {category.items?.map((item: NavItemType) => (
-                    <NavItem {...item} />
-                ))}
-            </div>
-        )
-    }
+  {category.subCategories ? (
+    <div class="subcategories-tabs">
+      <div class="tabs">
+        {category.subCategories.map((sub, subIndex) => (
+          <button
+            class="tab-button"
+            data-tab={`tab-${index}-${subIndex}`}
+            data-active={subIndex === 0}
+          >
+            {sub.name}
+          </button>
+        ))}
+      </div>
+      <div class="tab-contents">
+        {category.subCategories.map((subCategory, subIndex) => (
+          <div
+            class="tab-content"
+            id={`tab-${index}-${subIndex}`}
+            style={subIndex === 0 ? "display: grid;" : "display: none;"}
+          >
+            {subCategory.items.map((item: NavItemType) => (
+              <NavItem title={item.title} description={item.description} url={item.url} logo={item.logo} />
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  ) : (
+    <div class="items-grid">
+      {category.items?.map((item: NavItemType) => (
+        <NavItem title={item.title} description={item.description} url={item.url} logo={item.logo} />
+      ))}
+    </div>
+  )}
 </div>
 
+<style>
+  .category-card { margin: 0.75rem 0; scroll-margin-top: 70px; }
+  h2 {
+    color: var(--text); margin-bottom: 0.75rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light); display: flex; align-items: center;
+    gap: 0.5rem; font-size: 1.1rem;
+  }
+  .category-icon { font-size: 1.1rem; color: var(--accent); }
+  .subcategories-tabs {
+    background: var(--bg-card); border-radius: var(--radius-lg); padding: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .tabs {
+    display: flex; gap: 0.5rem; margin-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; overflow-x: auto;
+  }
+  .tab-button {
+    background: none; border: none; padding: 0.35rem 0.75rem;
+    font-size: 0.9rem; color: var(--text-muted); cursor: pointer;
+    border-radius: 4px; transition: all 0.3s ease; white-space: nowrap;
+  }
+  .tab-button[data-active="true"] { background: var(--accent); color: white; }
+  .tab-button:hover:not([data-active="true"]) { background: #f5f5f5; color: var(--accent); }
+  .tab-content, .items-grid {
+    display: grid; grid-template-columns: repeat(6, 180px);
+    gap: 4px; padding: 0.25rem; justify-content: start;
+  }
+  @media (max-width: 1800px) { .tab-content, .items-grid { grid-template-columns: repeat(5, 180px); } }
+  @media (max-width: 1500px) { .tab-content, .items-grid { grid-template-columns: repeat(4, 180px); } }
+  @media (max-width: 1200px) { .tab-content, .items-grid { grid-template-columns: repeat(3, 180px); } }
+  @media (max-width: 768px) { .tab-content, .items-grid { grid-template-columns: repeat(2, 180px); } }
+</style>
+
 <script>
-    function setupTabs() {
-        const tabButtons = document.querySelectorAll(".tab-button");
+  document.querySelectorAll('.tab-button').forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      const parentCard = button.closest('.category-card');
+      if (!tabId || !parentCard) return;
 
-        tabButtons.forEach((button) => {
-            button.addEventListener("click", () => {
-                const tabId = button.getAttribute("data-tab");
-                const parentCard = button.closest(".my-3");
+      parentCard.querySelectorAll('.tab-button').forEach(btn => btn.setAttribute('data-active', 'false'));
+      button.setAttribute('data-active', 'true');
 
-                if (tabId && parentCard) {
-                    // 更新所有按钮状态
-                    parentCard
-                        .querySelectorAll(".tab-button")
-                        .forEach((btn) => {
-                            btn.setAttribute("data-active", "false");
-                        });
-
-                    // 设置当前按钮为激活状态
-                    button.setAttribute("data-active", "true");
-
-                    // 更新内容显示
-                    parentCard
-                        .querySelectorAll(".tab-content")
-                        .forEach((content: Element) => {
-                            if (content instanceof HTMLElement) {
-                                content.style.display = "none";
-                            }
-                        });
-
-                    const tabContent = document.getElementById(tabId);
-                    if (tabContent instanceof HTMLElement) {
-                        tabContent.style.display = "grid";
-                    }
-                }
-            });
-        });
-    }
-
-    document.addEventListener("DOMContentLoaded", setupTabs);
+      parentCard.querySelectorAll('.tab-content').forEach((el) => {
+        (el as HTMLElement).style.display = 'none';
+      });
+      const target = document.getElementById(tabId);
+      if (target) target.style.display = 'grid';
+    });
+  });
 </script>

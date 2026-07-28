@@ -95,6 +95,7 @@ export function convertSiteToNavItem(site: Site): NavItem {
     title: site.title,
     description: site.description,
     url: site.url || '#',
+    logo: site.logo,
     features: site.advantages,
     details: site.details
   };
