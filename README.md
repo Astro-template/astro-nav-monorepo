@@ -119,9 +119,7 @@ Main Astro-based website with server-side rendering.
 - Lazy loading and code splitting
 - Dynamic navigation with hash routing
 
-### @astro-nav/admin (Planned)
-
-Admin dashboard for content management.
+Admin dashboard is served directly by the Worker (`/admin/*`, server-rendered with Mustache), not a separate package.
 
 ## 🏗️ Architecture
 
