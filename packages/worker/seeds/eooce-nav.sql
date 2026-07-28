@@ -1,4 +1,12 @@
--- Imported from https://nav.eooce.com/ (老王导航)
+-- ============================================================
+-- SEED: 老王导航（nav.eooce.com）
+-- 来源：https://nav.eooce.com/
+--
+-- ⚠️ 这是「整站替换」型 seed：开头会清空 sites/categories。
+--    与 aff-nav.sql 互斥，二选一执行，不要同时跑。
+--    执行前必须已跑完 migrations（建表）。
+-- ============================================================
+
 DELETE FROM sites;
 DELETE FROM categories;
 
