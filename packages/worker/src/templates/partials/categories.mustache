@@ -88,6 +88,11 @@
 </dialog>
 
 <script>
+document.body.addEventListener("htmx:afterRequest", function(e) {
+  const path = e.detail.requestConfig && e.detail.requestConfig.path || "";
+  if (!path.includes("/api/admin/categories")) return;
+  if (e.detail.successful) setTimeout(() => location.reload(), 600);
+});
 window.iconPicker = {
   _dialog: null, _timer: null,
   open() {
