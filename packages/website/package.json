@@ -12,6 +12,8 @@
     "type-check": "astro check",
     "prebuild": "tsx --env-file-if-exists=.env scripts/sync-config.ts",
     "sync-config": "tsx --env-file-if-exists=.env scripts/sync-config.ts",
+    "use:aff": "tsx scripts/use-dataset.ts aff",
+    "use:eooce": "tsx scripts/use-dataset.ts eooce",
     "verify": "tsx scripts/verify-website.ts",
     "test": "vitest --run",
     "test:watch": "vitest",

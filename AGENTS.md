@@ -47,11 +47,22 @@ pnpm --filter @astro-nav/worker db:migrate:local    # 本地库
 # A) Affiliate 导航（16 分类 / 167 站点，带 advantages/details）
 pnpm --filter @astro-nav/worker db:seed:aff:remote     # 或 :local
 
-# B) 老王导航 nav.eooce.com（16 分类 / 269 站点）
+# B) 老王导航 nav.eooce.com（8 分类 / 269 站点）
 pnpm --filter @astro-nav/worker db:seed:eooce:remote   # 或 :local
 ```
 
 > ⚠️ 部署者注意：`db:migrate` 只建表、灌完是空库；必须再选一个 `db:seed:*` 才有数据。**不要**把两个 seed 都跑——后跑的会清空先跑的。想换数据集，直接重跑另一个 seed 即可（它自带清空）。新增导航数据集时，在 `seeds/` 加文件并配一对 `db:seed:<名字>:local|remote` 脚本，不要写进 `migrations/`。
+
+### 不部署 worker 的纯静态玩法
+
+每套数据集还有一份等价 JSON（`seeds/<名字>-nav.json`，由 SQL 生成），可直接当前端数据源：
+
+```bash
+pnpm --filter @astro-nav/website use:aff      # 或 use:eooce，拷成 static/config.json
+pnpm --filter @astro-nav/website build
+```
+
+这条路径**不要设 `PUBLIC_API_URL`**，否则 build 前的 sync-config 会抓 worker 覆盖掉。改了 SQL 后用 `pnpm --filter @astro-nav/worker seeds:json <名字>` 重新生成 JSON。细节见 `packages/worker/seeds/README.md`。
 
 ### 发布数据到 KV（让前端能读到最新数据）
 

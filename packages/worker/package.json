@@ -13,7 +13,8 @@
     "db:seed:aff:local": "wrangler d1 execute astro-nav-db --local -y --file=./seeds/aff-nav.sql",
     "db:seed:aff:remote": "wrangler d1 execute astro-nav-db --remote -y --file=./seeds/aff-nav.sql",
     "db:seed:eooce:local": "wrangler d1 execute astro-nav-db --local -y --file=./seeds/eooce-nav.sql",
-    "db:seed:eooce:remote": "wrangler d1 execute astro-nav-db --remote -y --file=./seeds/eooce-nav.sql"
+    "db:seed:eooce:remote": "wrangler d1 execute astro-nav-db --remote -y --file=./seeds/eooce-nav.sql",
+    "seeds:json": "node seeds/build-json.mjs"
   },
   "dependencies": {
     "mustache": "^4.2.0"

@@ -318,7 +318,17 @@ A：新加的默认是 `pending`（待审核），「所有网站」只显示 `a
 A：不是。发布是**全量重建**——把 D1 里当前所有 approved 网站重新生成一份完整 JSON，覆盖 KV。删掉的站发布后就消失，pending 的不会进去。
 
 **Q：数据必须用 D1 吗？能不能纯静态？**
-A：可以。不设 `PUBLIC_API_URL` 时，前端直接读 `static/config.json`。如果你的站数据很少、很少变，手写这个 JSON 文件 + 构建，是最简方案，连后端都不用部署。D1 后台是为「网页化管理、频繁增删改」准备的。
+A：可以，而且仓库自带两套现成数据集，一条命令装上就能构建，连后端都不用部署：
+
+```bash
+pnpm --filter @astro-nav/website use:aff      # Affiliate 导航，167 站点，含优缺点/价格等详情
+# pnpm --filter @astro-nav/website use:eooce  # 或：老王导航，269 站点
+pnpm --filter @astro-nav/website build
+```
+
+它把 `packages/worker/seeds/<名字>-nav.json` 拷成 `static/config.json`，和 `db:seed:*` 用的 SQL 同源。
+**这条路径下不要设 `PUBLIC_API_URL`** —— 设了 build 前会去抓 worker 并覆盖 `config.json`。
+数据很少、很少变的话，直接手写 `static/config.json` 也行。D1 后台是为「网页化管理、频繁增删改」准备的。
 
 **Q：本地数据和线上数据是一套吗？**
 A：不是。`--local` 操作的是本机 `.wrangler/state` 里的模拟库；`--remote` 才是云端真实库。两者完全隔离，互不影响。

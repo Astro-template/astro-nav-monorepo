@@ -1,0 +1,1756 @@
+{
+  "site": {
+    "title": "老王导航",
+    "description": "实用工具与资源导航",
+    "logo": {
+      "text": "老王导航",
+      "href": "/"
+    }
+  },
+  "categoryMap": {
+    "Home": "Home",
+    "Ai-stuff": "Ai-stuff",
+    "Cloud": "Cloud",
+    "Container": "Container",
+    "Software": "Software",
+    "Tools": "Tools",
+    "Mail & Domain": "Mail & Domain",
+    "Dev": "Dev"
+  },
+  "menuItems": [
+    {
+      "name": "Home",
+      "href": "#Home",
+      "icon": "mdi:home",
+      "type": "single",
+      "sites": [
+        {
+          "title": "Notification",
+          "description": "通知管理系统",
+          "url": "https://notification.eooce.xx.kg",
+          "logo": "https://img.icons8.com/ios-filled/150/228BE6/reminders.png"
+        },
+        {
+          "title": "Youtube",
+          "description": "全球最大的视频社区",
+          "url": "https://www.youtube.com",
+          "logo": "https://img.icons8.com/ios-filled/100/ff1d06/youtube-play.png"
+        },
+        {
+          "title": "Gmail",
+          "description": "",
+          "url": "https://mail.google.com",
+          "logo": "https://img.icons8.com/fluency/48/gmail-new.png"
+        },
+        {
+          "title": "GitHub",
+          "description": "全球最大的代码托管平台",
+          "url": "https://github.com",
+          "logo": "https://img.icons8.com/ios-filled/50/github.png"
+        },
+        {
+          "title": "ip.sb",
+          "description": "ip地址查询",
+          "url": "https://ip.ssss.nyc.mn",
+          "logo": "https://ip.sb/favicon-32x32.png"
+        },
+        {
+          "title": "Cloudflare",
+          "description": "全球最大的cdn服务商",
+          "url": "https://dash.cloudflare.com",
+          "logo": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/50/external-cloudflare-provides-content-delivery-network-services-ddos-mitigation-logo-color-tal-revivo.png"
+        },
+        {
+          "title": "自动访问系统",
+          "description": "自动访问系统",
+          "url": "https://matte.ct8.pl",
+          "logo": "https://matte.ct8.pl/favicon.ico"
+        },
+        {
+          "title": "Huggingface",
+          "description": "全球最大的开源模型托管平台",
+          "url": "https://huggingface.co",
+          "logo": "https://img.icons8.com/fluency/48/hugging-face_app.png"
+        },
+        {
+          "title": "ITDOG - 在线ping",
+          "description": "在线tcping",
+          "url": "https://www.itdog.cn/tcping",
+          "logo": "https://www.itdog.cn/favicon.ico"
+        },
+        {
+          "title": "Ping0",
+          "description": "ip地址查询",
+          "url": "https://ping0.cc",
+          "logo": "https://ping0.cc/favico.ico"
+        },
+        {
+          "title": "浏览器指纹",
+          "description": "浏览器指纹查询",
+          "url": "https://www.browserscan.net/zh",
+          "logo": "https://www.browserscan.net/favicon-32x32.png"
+        },
+        {
+          "title": "nezha面板",
+          "description": "nezha面板",
+          "url": "https://ssss.nyc.mn",
+          "logo": "https://nezha.wiki/logo.png"
+        },
+        {
+          "title": "Api测试",
+          "description": "在线api测试工具",
+          "url": "https://hoppscotch.io",
+          "logo": "https://hoppscotch.io/favicon.ico"
+        },
+        {
+          "title": "域名检查",
+          "description": "域名可用性查询",
+          "url": "https://who.cx",
+          "logo": "https://who.cx/favicon.ico"
+        },
+        {
+          "title": "域名比价",
+          "description": "域名价格比较",
+          "url": "https://www.nazhumi.com",
+          "logo": "https://www.nazhumi.com/favicon.ico"
+        },
+        {
+          "title": "NodeSeek",
+          "description": "主机论坛",
+          "url": "https://www.nodeseek.com",
+          "logo": "https://www.nodeseek.com/static/image/favicon/favicon-32x32.png"
+        },
+        {
+          "title": "Linux do",
+          "description": "新的理想型社区",
+          "url": "https://linux.do",
+          "logo": "https://linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png"
+        },
+        {
+          "title": "在线音乐",
+          "description": "在线音乐",
+          "url": "https://music.eooce.com",
+          "logo": "https://p3.music.126.net/tBTNafgjNnTL1KlZMt7lVA==/18885211718935735.jpg"
+        },
+        {
+          "title": "Nodeloc",
+          "description": "Nodeloc论坛",
+          "url": "https://www.nodeloc.com",
+          "logo": "https://www.nodeloc.com/uploads/default/original/3X/d/2/d2dbcb2628506da9299792c1d422c58c0f185528.svg"
+        },
+        {
+          "title": "Moontv",
+          "description": "Moontv",
+          "url": "https://moontv.cfapps.jp10.hana.ondemand.com",
+          "logo": "https://moontv.cfapps.jp10.hana.ondemand.com/favicon.ico"
+        },
+        {
+          "title": "订阅转换",
+          "description": "最好用的订阅转换工具",
+          "url": "https://sublink.eooce.com",
+          "logo": "https://img.icons8.com/color/96/link--v1.png"
+        },
+        {
+          "title": "webssh",
+          "description": "最好用的webssh终端管理工具",
+          "url": "https://ssh.eooce.com",
+          "logo": "https://img.icons8.com/fluency/240/ssh.png"
+        },
+        {
+          "title": "文件快递柜",
+          "description": "文件输出分享",
+          "url": "https://filebox.nnuu.nyc.mn",
+          "logo": "https://img.icons8.com/nolan/256/document.png"
+        },
+        {
+          "title": "真实地址生成",
+          "description": "基于当前ip生成真实的地址",
+          "url": "https://address.nnuu.nyc.mn",
+          "logo": "https://static11.meiguodizhi.com/favicon.ico"
+        }
+      ]
+    },
+    {
+      "name": "Ai-stuff",
+      "href": "#Ai-stuff",
+      "icon": "mdi:robot",
+      "type": "single",
+      "sites": [
+        {
+          "title": "ChatGPT",
+          "description": "OpenAI官方AI对话",
+          "url": "https://chat.openai.com",
+          "logo": "https://img.icons8.com/ios/100/FFFFFF/chatgpt.png"
+        },
+        {
+          "title": "Claude",
+          "description": "Anthropic Claude AI",
+          "url": "https://claude.ai",
+          "logo": "https://img.icons8.com/fluency/240/claude-ai.png"
+        },
+        {
+          "title": "Deepseek",
+          "description": "Deepseek AI搜索",
+          "url": "https://www.deepseek.com",
+          "logo": "https://cdn.deepseek.com/chat/icon.png"
+        },
+        {
+          "title": "Google Gemini",
+          "description": "Google Gemini大模型",
+          "url": "https://gemini.google.com",
+          "logo": "https://www.gstatic.com/lamda/images/gemini_sparkle_aurora_33f86dc0c0257da337c63.svg"
+        },
+        {
+          "title": "阿里千问",
+          "description": "阿里云千问大模型",
+          "url": "https://chat.qwenlm.ai",
+          "logo": "https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.11/favicon.ico"
+        },
+        {
+          "title": "Kimi",
+          "description": "月之暗面Moonshot AI",
+          "url": "https://www.kimi.com",
+          "logo": "https://www.kimi.com/favicon.ico"
+        },
+        {
+          "title": "问小白",
+          "description": "Deepseek三方平台",
+          "url": "https://www.wenxiaobai.com/chat",
+          "logo": "https://wy-static.wenxiaobai.com/wenxiaobai-web/production/3.12.14/_next/static/media/new_favicon.6d31cfe4.png"
+        },
+        {
+          "title": "Genspark",
+          "description": "",
+          "url": "https://www.genspark.ai/agents?type=moa_chat",
+          "logo": "https://www.genspark.ai/agents?type=moa_chat/favicon.ico"
+        },
+        {
+          "title": "AkashChat",
+          "description": "",
+          "url": "https://chat.akash.network",
+          "logo": "https://chat.akash.network/favicon.ico"
+        },
+        {
+          "title": "V0",
+          "description": "Vercel旗下前端Ai编程工具",
+          "url": "https://v0.dev/chat",
+          "logo": "https://v0.dev/assets/icon-light-32x32.png"
+        },
+        {
+          "title": "Same",
+          "description": "Ai快速仿站",
+          "url": "https://same.new",
+          "logo": "https://same.new/favicon.ico"
+        },
+        {
+          "title": "响指HaiSnap",
+          "description": "人人都能创造的AI零代码应用平台",
+          "url": "https://www.haisnap.com",
+          "logo": "https://www.haisnap.com/favicon.ico"
+        },
+        {
+          "title": "Readdy",
+          "description": "",
+          "url": "https://readdy.ai",
+          "logo": "https://static.readdy.ai/web/favicon-180.png"
+        },
+        {
+          "title": "Openrouter",
+          "description": "开放api平台",
+          "url": "https://openrouter.ai",
+          "logo": "https://openrouter.ai/favicon.ico"
+        },
+        {
+          "title": "Manus",
+          "description": "全场景Ai Agent",
+          "url": "https://manus.im",
+          "logo": "https://manus.im/icon.png"
+        },
+        {
+          "title": "Perplexity",
+          "description": "",
+          "url": "https://www.perplexity.ai",
+          "logo": "https://www.perplexity.ai/favicon.ico"
+        },
+        {
+          "title": "Grok",
+          "description": "马斯克出品的Ai",
+          "url": "https://grok.com",
+          "logo": "https://img.icons8.com/ios-filled/50/grok.png"
+        },
+        {
+          "title": "Copilot",
+          "description": "微软旗下Ai",
+          "url": "https://copilot.microsoft.com",
+          "logo": "https://copilot.microsoft.com/favicon.ico"
+        },
+        {
+          "title": "豆包",
+          "description": "字节旗下ai智能助手",
+          "url": "https://www.doubao.com/chat/",
+          "logo": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/logo-icon.png"
+        },
+        {
+          "title": "文心一言",
+          "description": "百度旗下ai聊天助手",
+          "url": "https://yiyan.baidu.com",
+          "logo": "https://eb-static.cdn.bcebos.com/logo/favicon.ico"
+        },
+        {
+          "title": "Jules",
+          "description": "Google旗下ai管理github项目",
+          "url": "https://jules.google.com",
+          "logo": "https://www.gstatic.com/labs-code/code-app/favicon-48x48.png"
+        },
+        {
+          "title": "硅基流动",
+          "description": "免费的大模型api平台",
+          "url": "https://cloud.siliconflow.cn",
+          "logo": "https://cloud.siliconflow.cn/favicon.ico"
+        },
+        {
+          "title": "Kilo Code",
+          "description": "亚马逊旗下ai编程工具",
+          "url": "https://www.kilocode.ai",
+          "logo": "https://www.kilocode.ai/favicon.ico"
+        },
+        {
+          "title": "Cursor",
+          "description": "目前很受欢迎的ai编程工具",
+          "url": "https://cursor.com",
+          "logo": "https://cursor.com/favicon.ico"
+        },
+        {
+          "title": "Ai一键换脸",
+          "description": "",
+          "url": "https://imgai.ai/zh",
+          "logo": "https://imgai.ai/zh/favicon.ico"
+        },
+        {
+          "title": "Aippt",
+          "description": "",
+          "url": "https://www.aippt.cn",
+          "logo": "https://www.aippt.cn/_nuxt/highlight-2.Bb1q-DtW.webp"
+        },
+        {
+          "title": "Ai照片修复",
+          "description": "Ai照片修复",
+          "url": "https://picwish.cn/photo-enhancer",
+          "logo": "https://qncdn.aoscdn.com/astro/picwish/_astro/favicon@30w.61721eae.png"
+        },
+        {
+          "title": "Bolt",
+          "description": "Ai前端生成",
+          "url": "https://bolt.new",
+          "logo": "https://bolt.new/static/favicon.svg"
+        },
+        {
+          "title": "Llamacoder",
+          "description": "Ai生成app",
+          "url": "https://llamacoder.together.ai",
+          "logo": "https://llamacoder.together.ai/favicon.ico"
+        },
+        {
+          "title": "Codia",
+          "description": "截图转设计图",
+          "url": "https://codia.ai",
+          "logo": "https://codia.ai/favicon.ico"
+        }
+      ]
+    },
+    {
+      "name": "Cloud",
+      "href": "#Cloud",
+      "icon": "mdi:cloud",
+      "type": "single",
+      "sites": [
+        {
+          "title": "阿里云",
+          "description": "阿里云官网",
+          "url": "https://www.aliyun.com",
+          "logo": "https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico"
+        },
+        {
+          "title": "腾讯云",
+          "description": "腾讯云国际版官网",
+          "url": "https://console.tencentcloud.com",
+          "logo": "https://console.tencentcloud.com/favicon.ico"
+        },
+        {
+          "title": "甲骨文云",
+          "description": "Oracle Cloud提供永久免费的4核24g云服务器",
+          "url": "https://cloud.oracle.com",
+          "logo": "https://cloud.oracle.com/favicon.ico"
+        },
+        {
+          "title": "亚马逊云",
+          "description": "Amazon AWS提供免费1年的vps",
+          "url": "https://aws.amazon.com",
+          "logo": "https://img.icons8.com/nolan/64/amazon-web-services.png"
+        },
+        {
+          "title": "DigitalOcean",
+          "description": "DigitalOcean提供免费2个月的vps",
+          "url": "https://www.digitalocean.com",
+          "logo": "https://www.digitalocean.com/_next/static/media/apple-touch-icon.d7edaa01.png"
+        },
+        {
+          "title": "Vultr",
+          "description": "Vultr提供免费1年的vps",
+          "url": "https://www.vultr.com",
+          "logo": "https://www.vultr.com/favicon.ico"
+        },
+        {
+          "title": "谷歌云",
+          "description": "Google云提供免费3个月的vps",
+          "url": "https://cloud.google.com",
+          "logo": "https://cloud.google.com/favicon.ico"
+        },
+        {
+          "title": "Azure",
+          "description": "微软提供免费1年的vps",
+          "url": "https://azure.microsoft.com/zh-cn/free/",
+          "logo": "https://azure.microsoft.com/zh-cn/free/favicon.ico"
+        },
+        {
+          "title": "Linode",
+          "description": "免费2个月(易风控)",
+          "url": "https://www.linode.com",
+          "logo": "https://www.linode.com/favicon.ico"
+        },
+        {
+          "title": "Cloudcone",
+          "description": "10$每年的廉价vps",
+          "url": "https://app.cloudcone.com",
+          "logo": "https://cloudcone.com/wp-content/uploads/2017/06/cropped-logo-2-32x32.png"
+        },
+        {
+          "title": "Dartnode",
+          "description": "开源项目可申请的永久免费vps",
+          "url": "https://dartnode.com",
+          "logo": "https://dartnode.com/assets/dash/images/brand/favicon.png"
+        },
+        {
+          "title": "DMIT",
+          "description": "优质vps线路",
+          "url": "https://www.dmit.io",
+          "logo": "https://www.dmit.io/favicon.ico"
+        },
+        {
+          "title": "Bandwagonhost",
+          "description": "CN2-GIA优质线路",
+          "url": "https://bandwagonhost.com",
+          "logo": "https://cdn.nodeimage.com/i/sOjwSRMxgDFDmei6uJxngdPXTF8aeNxP.png"
+        },
+        {
+          "title": "Racknerd",
+          "description": "10$每年的廉价vps",
+          "url": "https://my.racknerd.com",
+          "logo": "https://my.racknerd.com/templates/racknerdv851/files/favicon.png"
+        },
+        {
+          "title": "Atlantic",
+          "description": "免费1年的vps(易风控)",
+          "url": "https://cloud.atlantic.net/",
+          "logo": "https://cloud.atlantic.net/favicon.ico"
+        },
+        {
+          "title": "Lightnode",
+          "description": "冷门区域vps",
+          "url": "https://www.lightnode.com",
+          "logo": "https://www.lightnode.com/favicon.ico"
+        },
+        {
+          "title": "ishosting",
+          "description": "地区多的vps",
+          "url": "https://www.ishosting.com",
+          "logo": "https://ishosting.com/meta/landing/favicon-48x48.png"
+        },
+        {
+          "title": "Diylink",
+          "description": "套壳google和aws的vps",
+          "url": "https://console.diylink.net",
+          "logo": "https://console.diylink.net/favicon.ico"
+        },
+        {
+          "title": "IBM",
+          "description": "免费4个月vps(需住宅ip注册)",
+          "url": "https://linuxone.cloud.marist.edu",
+          "logo": "https://img.icons8.com/ios/50/FAB005/ibm.png"
+        },
+        {
+          "title": "Sharon",
+          "description": "优质3网优化线路",
+          "url": "https://whmcs.sharon.io",
+          "logo": "https://framerusercontent.com/images/lvXR2x1W2bqvDhYmE8IQ1jHFv3Q.png"
+        },
+        {
+          "title": "Alice",
+          "description": "",
+          "url": "https://alicenetworks.net/",
+          "logo": "https://img.icons8.com/cute-clipart/64/a.png"
+        },
+        {
+          "title": "Yxvm",
+          "description": "",
+          "url": "https://yxvm.com",
+          "logo": "https://cdn.nodeimage.com/i/iz5EGYyDLI5qBkNr2nTsSLxMHrqR6MSS.webp"
+        },
+        {
+          "title": "Cloudforest",
+          "description": "罗马尼亚免费1个月vps",
+          "url": "https://cloud.cloudforest.ro",
+          "logo": "https://cloudforest.ro/wp-content/uploads/2024/01/cropped-android-chrome-192x192-1-32x32.png"
+        },
+        {
+          "title": "华为云",
+          "description": "华为提供永久免费的云开发主机",
+          "url": "https://huaweicloud.com/",
+          "logo": "https://huaweicloud.com/favicon.ico"
+        }
+      ]
+    },
+    {
+      "name": "Container",
+      "href": "#Container",
+      "icon": "mdi:docker",
+      "type": "tabs",
+      "submenu": [
+        {
+          "name": "Game Server",
+          "href": "#Container-Game Server",
+          "icon": "mdi:gamepad-variant",
+          "sites": [
+            {
+              "title": "Adkynet",
+              "description": "稳定的node/java/python容器(1月1续)",
+              "url": "https://manager.adkynet.com",
+              "logo": "https://www.adkynet.com/favicon.png"
+            },
+            {
+              "title": "Daki",
+              "description": "游戏机",
+              "url": "https://dash.daki.cc/",
+              "logo": "https://dash.daki.cc/favicon.ico"
+            },
+            {
+              "title": "Crosmo",
+              "description": "游戏机",
+              "url": "https://host.crosmo.de",
+              "logo": "https://host.crosmo.de/storage/favicon.ico"
+            },
+            {
+              "title": "Flexynode",
+              "description": "64M nodejs/python玩具",
+              "url": "https://flexynode.com",
+              "logo": "https://448d564e-e592-4849-b808-2fdf2cb6c5b1.svc.edge.scw.cloud/website/img/2.webp"
+            },
+            {
+              "title": "Boxmineworld",
+              "description": "游戏机",
+              "url": "https://dash.boxmineworld.com",
+              "logo": "https://boxmineworld.com/images/favicon.png"
+            },
+            {
+              "title": "wispbyte",
+              "description": "游戏机",
+              "url": "https://wispbyte.com",
+              "logo": "https://wispbyte.com/assets/wispbyte_blue_nobg.webp"
+            },
+            {
+              "title": "Searcade",
+              "description": "每10天需登录一次",
+              "url": "https://searcade.com",
+              "logo": "https://448d564e-e592-4849-b808-2fdf2cb6c5b1.svc.edge.scw.cloud/website/img/2.webp"
+            },
+            {
+              "title": "Echohost",
+              "description": "游戏机",
+              "url": "https://client.echohost.org",
+              "logo": "https://client.echohost.org/storage/favicon.ico"
+            },
+            {
+              "title": "Embotic",
+              "description": "游戏机",
+              "url": "https://dash.embotic.xyz",
+              "logo": "https://dash.embotic.xyz/storage/icon.png"
+            },
+            {
+              "title": "Zenix",
+              "description": "",
+              "url": "https://dash.zenix.sg/dashboard",
+              "logo": "https://panel.zenix.sg/favicons/apple-touch-icon.png"
+            },
+            {
+              "title": "Waifly",
+              "description": "",
+              "url": "https://dash.waifly.com",
+              "logo": "https://waifly.com/images/favicon.png"
+            },
+            {
+              "title": "karlo",
+              "description": "",
+              "url": "https://karlo-hosting.com",
+              "logo": "https://karlo-hosting.com/favicon.ico"
+            },
+            {
+              "title": "solar",
+              "description": "",
+              "url": "https://account.solarhosting.cc",
+              "logo": "https://account.solarhosting.cc/storage/favicon.ico"
+            },
+            {
+              "title": "Berrynodes",
+              "description": "",
+              "url": "https://dash.berrynodes.com",
+              "logo": "https://dash.berrynodes.com/storage/icon.png"
+            },
+            {
+              "title": "Spaceify",
+              "description": "易风控",
+              "url": "https://client.spaceify.eu",
+              "logo": "https://client.spaceify.eu/storage/logo.png"
+            },
+            {
+              "title": "Freeserver",
+              "description": "台湾游戏机",
+              "url": "https://dash.freeserver.tw/",
+              "logo": "https://dash.freeserver.tw/assets/freeserverv3.bb434095.png"
+            },
+            {
+              "title": "Bot-hosting",
+              "description": "需要赚金币续费",
+              "url": "https://bot-hosting.net",
+              "logo": "https://bot-hosting.net/panel/assets/bothosting.91bb7fdd.png"
+            },
+            {
+              "title": "Atomic",
+              "description": "稳定多年的游戏机",
+              "url": "https://panel.atomicnetworks.co",
+              "logo": "https://cdn.wisp.gg/uploaded_assets/panel.atomicnetworks.co/c1146e9e03bfc07d80b4714ff0d3bc43a3cf071c2fdda161dd49dcd831fbecd8.png"
+            },
+            {
+              "title": "Boxmineworld",
+              "description": "稳定的美国游戏机",
+              "url": "https://dash.boxmineworld.com",
+              "logo": "https://dash.boxmineworld.com/favicon.ico"
+            },
+            {
+              "title": "Zampto",
+              "description": "意大利游戏机",
+              "url": "https://hosting.zampto.net",
+              "logo": "https://zampto.net/assets/img/logo-icon-gradient.png"
+            },
+            {
+              "title": "Altare",
+              "description": "多地区游戏机",
+              "url": "https://altare.sh/dashboard",
+              "logo": "https://i.imgur.com/EZep3AC.png"
+            },
+            {
+              "title": "Skybots",
+              "description": "法国ISPnodejs玩具",
+              "url": "https://skybots.tech/dashboard/mes-bots",
+              "logo": "https://skybots.tech/dashboard/mes-bots/favicon.ico"
+            },
+            {
+              "title": "Greathost",
+              "description": "",
+              "url": "https://greathost.es/dashboard",
+              "logo": "https://greathost.es/dashboard/favicon.ico"
+            },
+            {
+              "title": "Lunes",
+              "description": "",
+              "url": "https://betadash.lunes.host",
+              "logo": "128m多环境小游戏机"
+            }
+          ]
+        },
+        {
+          "name": "综合",
+          "href": "#Container-综合",
+          "icon": "mdi:view-grid",
+          "sites": [
+            {
+              "title": "Koyeb",
+              "description": "免费容器(注册需干净的ip，无需绑卡)",
+              "url": "https://app.koyeb.com",
+              "logo": "https://app.koyeb.com/favicon.ico"
+            },
+            {
+              "title": "Render",
+              "description": "免费容器(注册需干净的ip，无需绑卡)",
+              "url": "https://dashboard.render.com",
+              "logo": "https://dashboard.render.com/favicon-light.png"
+            },
+            {
+              "title": "Fly",
+              "description": "免费容器(注册需绑卡)",
+              "url": "https://fly.io",
+              "logo": "https://fly.io/phx/ui/images/favicon/favicon-595d1312b35dfe32838befdf8505515e.ico?vsn=d"
+            },
+            {
+              "title": "Northflank",
+              "description": "免费容器(注册需绑卡)",
+              "url": "https://app.northflank.com",
+              "logo": "https://app.northflank.com/favicon.ico"
+            },
+            {
+              "title": "Choreo",
+              "description": "免费容器(无需绑卡)",
+              "url": "https://console.choreo.dev",
+              "logo": "https://console.choreo.dev/favicon.ico"
+            },
+            {
+              "title": "Railway",
+              "description": "免费1个月容器(注册需干净的ip，无需绑卡，到期可注销后重复注册)",
+              "url": "https://railway.com",
+              "logo": "https://railway.com/favicon.ico"
+            },
+            {
+              "title": "Galaxycloud",
+              "description": "免费容器(无需绑卡)",
+              "url": "https://beta.galaxycloud.app",
+              "logo": "https://beta.galaxycloud.app/favicon.ico?v2"
+            },
+            {
+              "title": "Azure容器",
+              "description": "微软免费容器(可以创建10个，az200或edu邮箱注册)",
+              "url": "https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0144p",
+              "logo": "https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0144p/favicon.ico"
+            },
+            {
+              "title": "Codered",
+              "description": "免费Django框架容器(需isp环境注册)",
+              "url": "https://app.codered.cloud",
+              "logo": "https://app.codered.cloud/static/core/img/favicon.png"
+            },
+            {
+              "title": "Shuttle",
+              "description": "免费的rust容器",
+              "url": "https://console.shuttle.dev",
+              "logo": "https://console.shuttle.dev/favicon.ico"
+            },
+            {
+              "title": "Serv00",
+              "description": "免费的波兰容器(目前已停止注册)",
+              "url": "https://www.serv00.com",
+              "logo": "https://www.serv00.com/static/ct8/img/logo.jpg"
+            },
+            {
+              "title": "CT8",
+              "description": "Serv00同款(不定期开放注册)",
+              "url": "https://www.ct8.pl",
+              "logo": "https://www.ct8.pl/static/ct8/img/logo.jpg"
+            },
+            {
+              "title": "Claw",
+              "description": "免费容器(半年以上的github账户每月免费5$)",
+              "url": "https://console.run.claw.cloud/signin?link=FZHSTH7HEBTU",
+              "logo": "https://console.run.claw.cloud/signin?link=FZHSTH7HEBTU/favicon.ico"
+            },
+            {
+              "title": "Cloudcat",
+              "description": "Claw同款免费容器(每月免费5$)",
+              "url": "https://cloud.cloudcat.one",
+              "logo": "https://cloud.cloudcat.one/favicon.ico"
+            },
+            {
+              "title": "Huggingface",
+              "description": "开源模型社区(免费的space)",
+              "url": "https://huggingface.co",
+              "logo": "https://huggingface.co/favicon.ico"
+            },
+            {
+              "title": "Alwaysdata",
+              "description": "免费容器(干净ip注册免绑卡)",
+              "url": "https://admin.alwaysdata.com",
+              "logo": "https://static.alwaysdata.com/media/reseller/1/theme/favicon_kfxZA8s.png"
+            },
+            {
+              "title": "Vercel",
+              "description": "免费静态网页托管",
+              "url": "https://vercel.com/dashboard",
+              "logo": "https://vercel.com/dashboard/favicon.ico"
+            },
+            {
+              "title": "Netlify",
+              "description": "免费静态网页托管",
+              "url": "https://www.netlify.com",
+              "logo": "https://www.netlify.com/favicon.ico"
+            },
+            {
+              "title": "Modal",
+              "description": "每月免费5$(风控严格)",
+              "url": "https://modal.com",
+              "logo": "https://modal.com/assets/favicon.svg"
+            },
+            {
+              "title": "Scalingo",
+              "description": "法国家宽容器(风控严格)",
+              "url": "https://scalingo.com",
+              "logo": "https://scalingo.com/favicon.ico"
+            },
+            {
+              "title": "Sevalla",
+              "description": "绑卡免费10个月(风控严格)",
+              "url": "https://app.sevalla.com",
+              "logo": "https://sevalla.com/favicon.ico"
+            },
+            {
+              "title": "Phala",
+              "description": "免费400$(可用10个月)",
+              "url": "https://cloud.phala.network",
+              "logo": "https://cloud.phala.network/favicon.ico"
+            },
+            {
+              "title": "Wasmer",
+              "description": "免费静态网页托管",
+              "url": "https://wasmer.io",
+              "logo": "https://wasmer.io/icons/favicon.svg"
+            },
+            {
+              "title": "Appwrite",
+              "description": "免费多地区",
+              "url": "https://cloud.appwrite.io/console",
+              "logo": "https://appwrite.io/images/logos/logo.svg"
+            },
+            {
+              "title": "SAP企业版",
+              "description": "SAP企业版登录入口",
+              "url": "https://emea.cockpit.btp.cloud.sap/cockpit/#",
+              "logo": "https://accounts.sap.com/ui/public/cached/tenant/v/1/favicon"
+            },
+            {
+              "title": "SAP试用版",
+              "description": "SAP试用版登录入口",
+              "url": "https://account.hanatrial.ondemand.com/trial/#/home/trial",
+              "logo": "https://accounts.sap.com/ui/public/cached/tenant/v/1/favicon"
+            },
+            {
+              "title": "Leaflow",
+              "description": "docker容器平台",
+              "url": "https://www.leafaas.com/dashboard",
+              "logo": "https://www.leafaas.com/assets/logo-BZUDIjc2.svg"
+            },
+            {
+              "title": "Zeabur",
+              "description": "",
+              "url": "https://dash.zeabur.com/projects",
+              "logo": "https://dash.zeabur.com/projects/favicon.ico"
+            },
+            {
+              "title": "Databricks",
+              "description": "",
+              "url": "https://www.databricks.com",
+              "logo": "永久免费"
+            },
+            {
+              "title": "idx",
+              "description": "Google IDX",
+              "url": "https://idx.google.com",
+              "logo": "https://www.gstatic.com/monospace/250314/macos-icon-192.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Software",
+      "href": "#Software",
+      "icon": "mdi:application",
+      "type": "tabs",
+      "submenu": [
+        {
+          "name": "Proxy",
+          "href": "#Software-Proxy",
+          "icon": "mdi:shield-lock",
+          "sites": [
+            {
+              "title": "V2rayN",
+              "description": "最受欢迎的代理软件(支持多平台)",
+              "url": "https://v2rayn.2dust.link",
+              "logo": "https://images.sftcdn.net/images/t_app-icon-m/p/a2c8f10a-f0e8-460b-a03c-d17953176ab8/2246704787/v2rayn-v2rayN-icon.png"
+            },
+            {
+              "title": "Mihomo Party",
+              "description": "Mihomo内核最受欢迎的代理软件",
+              "url": "https://mihomo.party",
+              "logo": "https://mihomo.party/favicon.ico"
+            },
+            {
+              "title": "GUI.for.SingBox",
+              "description": "第三方开源sing-box代理工具",
+              "url": "https://github.com/GUI-for-Cores/GUI.for.SingBox/releases/latest",
+              "logo": "https://sing-box.sagernet.org/assets/icon.svg"
+            },
+            {
+              "title": "FlClash",
+              "description": "Clash系列人气代理软件",
+              "url": "https://github.com/chen08209/FlClash/releases/latest",
+              "logo": "data:image/png;base64,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"
+            },
+            {
+              "title": "Karing",
+              "description": "新一代全能型代理软件(适配多系统)",
+              "url": "https://karing.app/download",
+              "logo": "https://karing.app/img/favicon.ico"
+            },
+            {
+              "title": "Nekobox",
+              "description": "windows版本已停止为维护,谨慎使用",
+              "url": "https://nekobox.tools/nekoray",
+              "logo": "https://nekobox.tools/nekoray/favicon.ico"
+            },
+            {
+              "title": "FlyClash",
+              "description": "Mihomo内核新一代代理软件",
+              "url": "https://github.com/GtxFury/FlyClash/releases/latest",
+              "logo": "https://raw.githubusercontent.com/GtxFury/FlyClash/main/public/logo.png"
+            },
+            {
+              "title": "ClashBox",
+              "description": "HarmonyOS NEXT的代理软件",
+              "url": "https://github.com/xiaobaigroup/ClashBox",
+              "logo": "https://clash.top/wp-content/uploads/2024/01/Clash.png"
+            },
+            {
+              "title": "GUI.for.Clash",
+              "description": "",
+              "url": "https://github.com/GUI-for-Cores/GUI.for.Clash/releases/latest",
+              "logo": "https://github.com/GUI-for-Cores/GUI.for.Clash/releases/latest/favicon.ico"
+            }
+          ]
+        },
+        {
+          "name": "Macos",
+          "href": "#Software-Macos",
+          "icon": "mdi:apple",
+          "sites": [
+            {
+              "title": "Macwk",
+              "description": "多年mac软件老站，精品Mac软件",
+              "url": "https://www.macwk.com",
+              "logo": "https://www.macwk.com/favicon-32x32.ico"
+            },
+            {
+              "title": "Macsc",
+              "description": "精品Mac软件",
+              "url": "https://mac.macsc.com",
+              "logo": "https://cdn.mac89.com/macsc_node/static/favicon.ico"
+            }
+          ]
+        },
+        {
+          "name": "综合",
+          "href": "#Software-综合",
+          "icon": "mdi:view-grid",
+          "sites": [
+            {
+              "title": "Hellowindows",
+              "description": "windows系统及office下载",
+              "url": "https://hellowindows.cn",
+              "logo": "https://hellowindows.cn/logo-s.png"
+            },
+            {
+              "title": "奇迹秀",
+              "description": "设计师的百宝箱",
+              "url": "https://www.qijishow.com/down",
+              "logo": "https://www.qijishow.com/img/ico.ico"
+            },
+            {
+              "title": "易破解",
+              "description": "精品windows软件",
+              "url": "https://www.ypojie.com",
+              "logo": "https://www.ypojie.com/favicon.ico"
+            },
+            {
+              "title": "Cracked Software",
+              "description": "windows破解软件",
+              "url": "https://topcracked.com",
+              "logo": "https://cdn.mac89.com/win_macxf_node/static/favicon.ico"
+            },
+            {
+              "title": "zTasker",
+              "description": "定时|热键|事件|键鼠模拟|操作录制|自动化流程",
+              "url": "https://www.everauto.net",
+              "logo": "https://www.everauto.net/images/App32.png"
+            },
+            {
+              "title": "incogniton",
+              "description": "指纹浏览器(10个免费环境)",
+              "url": "https://incogniton.com/zh-hans",
+              "logo": "https://incogniton.com/zh-hans/favicon.ico"
+            },
+            {
+              "title": "云萌Win10/11激活",
+              "description": "windows系统激活工具",
+              "url": "https://cmwtat.cloudmoe.com/cn.html",
+              "logo": "https://img.icons8.com/color/96/windows-10.png"
+            },
+            {
+              "title": "Zen-browser",
+              "description": "超好用的一款浏览器",
+              "url": "https://zen-browser.app",
+              "logo": "https://zen-browser.app/favicon.ico"
+            },
+            {
+              "title": "Adspower",
+              "description": "指纹浏览器(3个免费环境)",
+              "url": "https://activity.adspower.com/ap/dist",
+              "logo": "https://activity.adspower.com/ap/dist/favicon.ico"
+            },
+            {
+              "title": "Termora",
+              "description": "简约好用的SSH软件",
+              "url": "https://www.termora.app/downloads",
+              "logo": "https://www.termora.app/downloads/favicon.ico"
+            },
+            {
+              "title": "Cherry Studio",
+              "description": "Ai对话客户端",
+              "url": "https://www.cherry-ai.com",
+              "logo": "https://www.cherry-ai.com/assets/favicon-BmbgeFTf.png"
+            },
+            {
+              "title": "MusicFree",
+              "description": "免费开源的音乐播放器",
+              "url": "https://musicfree.catcat.work",
+              "logo": "https://musicfree.catcat.work/favicon.ico"
+            },
+            {
+              "title": "LXmusic",
+              "description": "免费开源的音乐播放器",
+              "url": "https://lxmusic.toside.cn",
+              "logo": "https://lxmusic.toside.cn/img/logo.svg"
+            },
+            {
+              "title": "UU远程",
+              "description": "游戏级远控制(网易出品)",
+              "url": "https://uuyc.163.com",
+              "logo": "https://uuyc.163.com/favicon.ico"
+            },
+            {
+              "title": "QtScrcpy",
+              "description": "免费开源的安卓投屏软件",
+              "url": "https://github.com/barry-ran/QtScrcpy/releases/latest",
+              "logo": "https://img.icons8.com/color/96/android-os.png"
+            },
+            {
+              "title": "小丸工具箱",
+              "description": "非常好用的视频音频压缩软件",
+              "url": "https://maruko.appinn.me",
+              "logo": "https://maruko.appinn.me/favicon.ico"
+            },
+            {
+              "title": "Beekeeper studio",
+              "description": "免费开源的数据库管理软件",
+              "url": "https://www.beekeeperstudio.io",
+              "logo": "https://www.beekeeperstudio.io/favicon.ico"
+            },
+            {
+              "title": "Navicat Premium",
+              "description": "头部数据库管理软件(此链接为破解版)",
+              "url": "https://pan.baidu.com/s/1HjfAn71Vgp-TeoY755TZOw?pwd=mc73",
+              "logo": "https://www.navicat.com.cn/images/Navicat_16_Premium_win_256x256.ico"
+            },
+            {
+              "title": "Geek Uninstaller",
+              "description": "小巧轻便的卸载软件",
+              "url": "https://geekuninstaller.com/download",
+              "logo": "https://geekuninstaller.com/download/favicon.ico"
+            },
+            {
+              "title": "Pixpin",
+              "description": "非常不错的截图软件",
+              "url": "https://pixpin.cn",
+              "logo": "https://pixpin.cn/favicon.ico"
+            },
+            {
+              "title": "Mem Reduct",
+              "description": "内存自动清理",
+              "url": "https://github.com/henrypp/memreduct/releases/latest",
+              "logo": "https://img.icons8.com/pulsar-gradient/48/memory-slot.png"
+            },
+            {
+              "title": "phpstudy",
+              "description": "本地服务器环境管理",
+              "url": "https://www.xp.cn/phpstudy",
+              "logo": "https://www.xp.cn/favicon.ico"
+            },
+            {
+              "title": "Requestly",
+              "description": "api测试/抓包",
+              "url": "https://requestly.com",
+              "logo": "https://requestly.com/favicon.ico"
+            },
+            {
+              "title": "Raylink",
+              "description": "远程控制",
+              "url": "https://www.raylink.live",
+              "logo": "https://www.raylink.live/logo.ico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "href": "#Tools",
+      "icon": "mdi:tools",
+      "type": "tabs",
+      "submenu": [
+        {
+          "name": "Free SMS",
+          "href": "#Tools-Free SMS",
+          "icon": "mdi:message-text",
+          "sites": [
+            {
+              "title": "smser",
+              "description": "",
+              "url": "https://smser.net",
+              "logo": "https://smser.net/img/smser.net/favicon-32x32.png"
+            },
+            {
+              "title": "freereceivesms",
+              "description": "",
+              "url": "https://www.freereceivesms.com",
+              "logo": "https://www.freereceivesms.com/favicon.ico"
+            },
+            {
+              "title": "sms24",
+              "description": "",
+              "url": "https://sms24.me/en",
+              "logo": "https://sms24.me/en/favicon.ico"
+            },
+            {
+              "title": "onlinesim",
+              "description": "",
+              "url": "https://onlinesim.io/ru/free_numbers",
+              "logo": "https://onlinesim.io/ru/free_numbers/favicon.ico"
+            },
+            {
+              "title": "smsonline",
+              "description": "",
+              "url": "https://www.smsonline.cloud/zh",
+              "logo": "https://www.smsonline.cloud/zh/favicon.ico"
+            },
+            {
+              "title": "receive-sms",
+              "description": "",
+              "url": "https://wetalkapp.com/receive-sms/",
+              "logo": "https://wetalkapp.com/receive-sms/favicon.ico"
+            },
+            {
+              "title": "supercloudsms",
+              "description": "",
+              "url": "https://www.supercloudsms.com/country/usa/1.html",
+              "logo": "https://www.supercloudsms.com/static/img/favicon.ico"
+            },
+            {
+              "title": "freephonenum",
+              "description": "只有美国和加拿大号码",
+              "url": "https://freephonenum.com",
+              "logo": "https://freephonenum.com/favicon.ico"
+            },
+            {
+              "title": "lubansms",
+              "description": "",
+              "url": "https://lubansms.com/receiveSms",
+              "logo": "https://lubansms.com/img/apple-touch-icon.png"
+            },
+            {
+              "title": "7sim",
+              "description": "",
+              "url": "http://7sim.net",
+              "logo": "http://7sim.net/favicon.ico"
+            },
+            {
+              "title": "receiveasms",
+              "description": "",
+              "url": "https://www.receiveasms.com/",
+              "logo": "https://www.receiveasms.com/favicon.ico"
+            },
+            {
+              "title": "receivesmsonline",
+              "description": "",
+              "url": "https://www.receivesmsonline.net",
+              "logo": "https://www.receivesmsonline.net/favicon.ico"
+            },
+            {
+              "title": "sms-online",
+              "description": "",
+              "url": "https://sms-online.co",
+              "logo": "https://sms-online.co/favicon.ico"
+            },
+            {
+              "title": "receivefreesms",
+              "description": "",
+              "url": "https://receivefreesms.net",
+              "logo": "https://receivefreesms.net/favicon.ico"
+            },
+            {
+              "title": "receivesmsonline",
+              "description": "",
+              "url": "https://receivesmsonline.in/number",
+              "logo": "https://receivesmsonline.in/number/favicon.ico"
+            },
+            {
+              "title": "sms-receive",
+              "description": "",
+              "url": "https://sms-receive.net",
+              "logo": "https://sms-receive.net/favicon.ico"
+            },
+            {
+              "title": "jiemahao",
+              "description": "接号码",
+              "url": "https://jiemahao.com",
+              "logo": "https://jiemahao.com/favicon.ico"
+            },
+            {
+              "title": "bestsms",
+              "description": "",
+              "url": "https://bestsms.xyz",
+              "logo": "https://bestsms.xyz/static/yunji/imgs/favicon.ico"
+            },
+            {
+              "title": "zusms",
+              "description": "有云短信",
+              "url": "https://www.zusms.com",
+              "logo": "https://www.zusms.com/favicon.ico"
+            },
+            {
+              "title": "mytrashmobile",
+              "description": "",
+              "url": "https://zh.mytrashmobile.com/numbers",
+              "logo": "https://static.mytrashmobile.com/assets/images/icons/favicons/apple-icon-60x60.png"
+            },
+            {
+              "title": "sms-japan",
+              "description": "",
+              "url": "https://sms-japan.com",
+              "logo": "https://sms-japan.com/static/smsjapan/images/favicon.png"
+            },
+            {
+              "title": "online-sim",
+              "description": "",
+              "url": "https://online-sim.pro/zh",
+              "logo": "https://online-sim.pro/zh/favicon.ico"
+            },
+            {
+              "title": "temp-number",
+              "description": "",
+              "url": "https://temp-number.com",
+              "logo": "https://temp-number.com/favicon.ico"
+            },
+            {
+              "title": "tiger-sms",
+              "description": "",
+              "url": "https://tiger-sms.shop/free",
+              "logo": "https://tiger-sms.shop/free/favicon.ico"
+            },
+            {
+              "title": "clearcode",
+              "description": "中国号码",
+              "url": "https://clearcode.cn",
+              "logo": "https://clearcode.cn/static/tw/favicon.ico?v=2"
+            },
+            {
+              "title": "tempsmss",
+              "description": "",
+              "url": "https://tempsmss.com",
+              "logo": "https://tempsmss.com/favicon.ico"
+            },
+            {
+              "title": "free-numbers",
+              "description": "",
+              "url": "https://sms-verification-number.com/free-numbers-cn/#activity",
+              "logo": "https://sms-verification-number.com/frontend/assets/img/logo.svg"
+            },
+            {
+              "title": "mianfeijiema",
+              "description": "",
+              "url": "https://www.mianfeijiema.com",
+              "logo": "https://www.mianfeijiema.com/static/picture/logo.png"
+            },
+            {
+              "title": "receive-smss",
+              "description": "",
+              "url": "https://receive-smss.com",
+              "logo": "https://receive-smss.com/favicon.ico"
+            },
+            {
+              "title": "sms-man",
+              "description": "",
+              "url": "https://sms-man.com/cn/free-numbers",
+              "logo": "https://sms-man.com/cn/free-numbers/favicon.ico"
+            }
+          ]
+        },
+        {
+          "name": "Other",
+          "href": "#Tools-Other",
+          "icon": "mdi:dots-horizontal",
+          "sites": [
+            {
+              "title": "wallpaper",
+              "description": "免费壁纸",
+              "url": "https://haowallpaper.com",
+              "logo": "https://haowallpaper.com/favicon.ico"
+            },
+            {
+              "title": "theporndude",
+              "description": "老司机",
+              "url": "https://theporndude.com/zh",
+              "logo": "https://theporndude.com/zh/favicon.ico"
+            },
+            {
+              "title": "星空音乐",
+              "description": "星空音乐",
+              "url": "https://www.vh.hk",
+              "logo": "https://www.vh.hk/favicon.ico"
+            }
+          ]
+        },
+        {
+          "name": "综合",
+          "href": "#Tools-综合",
+          "icon": "mdi:view-grid",
+          "sites": [
+            {
+              "title": "Argo Tunnel json获取",
+              "description": "cloudflared argo tunnel固定隧道json获取",
+              "url": "https://json.zone.id",
+              "logo": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23ff5722; stop-opacity:1' /><stop offset='100%' style='stop-color:%23ff9800; stop-opacity:1' /></linearGradient><filter id='shadow' x='-20%' y='-20%' width='140%' height='140%'><feGaussianBlur in='SourceAlpha' stdDeviation='8' /><feOffset dx='5' dy='5' result='offsetblur' /><feFlood flood-color='rgba(0, 0, 0, 0.6)' /><feComposite in2='offsetblur' operator='in' /><feMerge><feMergeNode /><feMergeNode in='SourceGraphic' /></feMerge></filter></defs><rect width='100%' height='100%' fill='%23f5f5f5' /><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='180px' fill='url(%23grad1)' font-weight='bold' filter='url(%23shadow)'>J</text></svg>"
+            },
+            {
+              "title": "base64工具",
+              "description": "在线base64编码解码",
+              "url": "https://www.qqxiuzi.cn/bianma/base64.htm",
+              "logo": "https://cdn.base64decode.org/assets/images/b64-180.webp"
+            },
+            {
+              "title": "二维码生成",
+              "description": "二维码生成工具",
+              "url": "https://cli.im",
+              "logo": "https://img.icons8.com/fluency/96/qr-code.png"
+            },
+            {
+              "title": "JS混淆",
+              "description": "在线Javascript代码混淆",
+              "url": "https://go.sssc.nyc.mn/js-obfuscator",
+              "logo": "https://img.icons8.com/color/240/javascript--v1.png"
+            },
+            {
+              "title": "Python混淆",
+              "description": "在线python代码混淆",
+              "url": "https://obf.eooce.com",
+              "logo": "https://img.icons8.com/color/240/python--v1.png"
+            },
+            {
+              "title": "Remove.photos",
+              "description": "一键抠图",
+              "url": "https://remove.photos/zh-cn",
+              "logo": "https://img.icons8.com/doodle/192/picture.png"
+            },
+            {
+              "title": "Pagespeed",
+              "description": "",
+              "url": "https://pagespeed.web.dev",
+              "logo": "https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png"
+            },
+            {
+              "title": "自动访问",
+              "description": "自动访问保活管理系统",
+              "url": "https://matte.ct8.pl",
+              "logo": "https://img.icons8.com/dusk/100/globe.png"
+            },
+            {
+              "title": "Cron-job",
+              "description": "定时自动访问网页",
+              "url": "https://console.cron-job.org/jobs",
+              "logo": "https://console.cron-job.org/logo192.png"
+            },
+            {
+              "title": "网址缩短",
+              "description": "",
+              "url": "https://short.ssss.nyc.mn",
+              "logo": "https://short.ssss.nyc.mn/asset/img/favicon.png"
+            },
+            {
+              "title": "Linuxmirrors",
+              "description": "",
+              "url": "https://linuxmirrors.cn",
+              "logo": "https://linuxmirrors.cn/assets/images/brand/svg/logo-light.svg"
+            },
+            {
+              "title": "Vocalremover",
+              "description": "声音分离",
+              "url": "https://vocalremover.org/",
+              "logo": "https://vocalremover.org/favicon.ico"
+            },
+            {
+              "title": "JSON工具",
+              "description": "JSON格式化/校验",
+              "url": "https://www.json.cn",
+              "logo": "https://img.icons8.com/nolan/128/json.png"
+            },
+            {
+              "title": "文件格式转换",
+              "description": "超300种文件格式转换",
+              "url": "https://convertio.co/zh",
+              "logo": "https://convertio.co/zh/favicon.ico"
+            },
+            {
+              "title": "视频在线下载",
+              "description": "在线视频解析下载",
+              "url": "https://tubedown.cn/youtube",
+              "logo": "https://tubedown.cn/youtube/favicon.ico"
+            },
+            {
+              "title": "it tools",
+              "description": "集合多种小工具",
+              "url": "https://it.idev.dev",
+              "logo": "https://it.idev.dev/favicon.ico"
+            },
+            {
+              "title": "emoji大全",
+              "description": "各类目emoji",
+              "url": "https://www.iamwawa.cn/emoji.html",
+              "logo": "https://www.iamwawa.cn/emoji.html/favicon.ico"
+            },
+            {
+              "title": "信用卡生成",
+              "description": "信用卡生成器",
+              "url": "https://bincheck.io/zh/credit-card-generator",
+              "logo": "https://bincheck.io/assets/icons/apple-icon-60x60.png"
+            },
+            {
+              "title": "Squoosh",
+              "description": "图片无损压缩",
+              "url": "https://squoosh.app",
+              "logo": "https://squoosh.app/c/icon-large-maskable-c2078ced.png"
+            },
+            {
+              "title": "Tool",
+              "description": "小工具",
+              "url": "https://tool.lu/",
+              "logo": "https://tool.lu/favicon.ico"
+            },
+            {
+              "title": "D1tools",
+              "description": "",
+              "url": "https://d1tools.com",
+              "logo": "https://d1tools.com/favicon.ico"
+            },
+            {
+              "title": "Lumiproxy",
+              "description": "在线网页住宅代理",
+              "url": "https://www.lumiproxy.com/zh-hans/online-proxy/proxysite",
+              "logo": "https://www.lumiproxy.com/zh-hans/online-proxy/proxysite/favicon.ico"
+            },
+            {
+              "title": "Proxyshare",
+              "description": "在线网页住宅代理",
+              "url": "https://www.proxyshare.com/zh/proxysite",
+              "logo": "https://www.proxyshare.com/zh/proxysite/favicon.ico"
+            },
+            {
+              "title": "Dnsleaktest",
+              "description": "DNS泄露检测",
+              "url": "https://dnsleaktest.com",
+              "logo": "https://dnsleaktest.com/assets/favicon.ico"
+            },
+            {
+              "title": "Deobfuscator",
+              "description": "JS反混淆",
+              "url": "https://dev-coco.github.io/Online-Tools/JavaScript-Deobfuscator.html",
+              "logo": "https://dev-coco.github.io/Online-Tools/JavaScript-Deobfuscator.html/favicon.ico"
+            },
+            {
+              "title": "flexclip",
+              "description": "",
+              "url": "https://www.flexclip.com/cn/ai/",
+              "logo": "https://www.flexclip.com/cn/ai/favicon.ico"
+            },
+            {
+              "title": "shell混淆",
+              "description": "shell混淆",
+              "url": "https://zsh.hsk.sk",
+              "logo": "https://img.icons8.com/dusk/100/globe.png"
+            },
+            {
+              "title": "Blackace",
+              "description": "网站打包成app",
+              "url": "https://blackace.app",
+              "logo": "https://blackace.app/imgs/favicon.ico"
+            },
+            {
+              "title": "PHP混淆加密",
+              "description": "",
+              "url": "https://www.toolnb.com/tools/phpcarbylamine.html",
+              "logo": "https://www.toolnb.com/tools/phpcarbylamine.html/favicon.ico"
+            },
+            {
+              "title": "中文转码",
+              "description": "",
+              "url": "https://www.bchrt.com/tools/punycode-encoder/",
+              "logo": "https://www.bchrt.com/tools/punycode-encoder/favicon.ico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mail & Domain",
+      "href": "#Mail & Domain",
+      "icon": "mdi:email",
+      "type": "single",
+      "sites": [
+        {
+          "title": "Gmail",
+          "description": "Google邮箱",
+          "url": "https://mail.google.com",
+          "logo": "https://img.icons8.com/fluency/48/gmail-new.png"
+        },
+        {
+          "title": "Outlook",
+          "description": "微软Outlook邮箱",
+          "url": "https://outlook.live.com",
+          "logo": "https://img.icons8.com/color/256/ms-outlook.png"
+        },
+        {
+          "title": "Proton Mail",
+          "description": "安全加密邮箱",
+          "url": "https://account.proton.me",
+          "logo": "https://account.proton.me/assets/apple-touch-icon-120x120.png"
+        },
+        {
+          "title": "临时域名邮箱",
+          "description": "临时域名邮箱",
+          "url": "https://temp-mail.io/zh",
+          "logo": "https://temp-mail.io/zh/favicon.ico"
+        },
+        {
+          "title": "雅虎邮箱",
+          "description": "雅虎邮箱",
+          "url": "https://mail.yahoo.com",
+          "logo": "https://img.icons8.com/color/240/yahoo--v2.png"
+        },
+        {
+          "title": "10分钟临时邮箱",
+          "description": "10分钟临时邮箱",
+          "url": "https://linshiyouxiang.net",
+          "logo": "https://linshiyouxiang.net/static/index/zh/images/favicon.ico"
+        },
+        {
+          "title": "2925无限邮箱",
+          "description": "",
+          "url": "https://www.2925.com",
+          "logo": "https://www.2925.com/favicon.ico"
+        },
+        {
+          "title": "风车临时邮箱",
+          "description": "可长期使用的临时邮箱",
+          "url": "https://mail.xoxome.online/dashboard",
+          "logo": "https://mail.xoxome.online/logo.png"
+        },
+        {
+          "title": "88完美邮箱",
+          "description": "",
+          "url": "https://mail.88.com/mail/#/home",
+          "logo": "data:image/png;base64,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"
+        },
+        {
+          "title": "临时edu邮箱",
+          "description": "",
+          "url": "https://tempmail.edu.kg",
+          "logo": "https://tempmail.edu.kg/favicon.ico"
+        },
+        {
+          "title": "Tempmail",
+          "description": "",
+          "url": "https://tempmail.plus/zh/",
+          "logo": "https://tempmail.plus/zh/favicon.ico"
+        },
+        {
+          "title": "临时邮箱",
+          "description": "",
+          "url": "https://22.do/zh",
+          "logo": "https://22.do/assets/images/logo.png"
+        },
+        {
+          "title": "nyc.mn域名",
+          "description": "免费二级域名(已取消免费)",
+          "url": "https://dash.publiczone.org/dashboard",
+          "logo": "https://dot.nyc.mn/wp-content/uploads/2024/09/nycmnicon-150x150.png"
+        },
+        {
+          "title": "HiDNS",
+          "description": "免费二级域名",
+          "url": "https://www.hidoha.net",
+          "logo": "https://www.hidoha.net/themes/huraga/assets/favicon.ico"
+        },
+        {
+          "title": "dpdns域名",
+          "description": "免费二级域名(dpdns.org/xx.kg/us.kg)",
+          "url": "https://dash.domain.digitalplat.org",
+          "logo": "https://dash.domain.digitalplat.org/static/img/logo.jpg"
+        },
+        {
+          "title": "l53",
+          "description": "ggff.net免费二级域名",
+          "url": "https://customer.l53.net",
+          "logo": "https://customer.l53.net/favicon.ico"
+        },
+        {
+          "title": "mffac临时邮箱",
+          "description": "mffac临时邮箱",
+          "url": "https://www.mffac.com/moe",
+          "logo": "https://www.mffac.com/moe/favicon.ico"
+        },
+        {
+          "title": "zabc.net",
+          "description": "免费zabc.net二级域名(不可托管cloudflared)",
+          "url": "https://zabc.net/dashboard",
+          "logo": "https://zoneabc.net/logo.svg"
+        },
+        {
+          "title": "eu.org",
+          "description": "免费eu.org二级域名(已停止注册)",
+          "url": "https://nic.eu.org",
+          "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAbCAMAAAAqGX2oAAABHVBMVEX////+/v7y8vrJyfuysvu5ufXb2+zz8/Ph4f3V1fD29vbn5/7b2/1LS/4AAP8JCfInJ/ybm9Lj4+P9/f2dnfxVVdLGxsZERN+9vb35+flTU/4hIaJoaG2CgqgdHfeenqwhIcasrKwVFdeamprU1P1NTXe6usl3d/BWVrDb29sTE/8pKbqVlfjAwPYqKphYWKdoaJNgYHvDw9rR0dHu7u5qavc6OuGsrNdBQf6UlLRiYtArK/O6uvu1tbVYWOs0NJeUlJTo6PRDQ7UVFeOYmLBubqZ4eH2AgJFiYv6RkcNra+gTE8ZHR4pTU8OKivs6Oo9OTls1NXuFhfxHR3MwMLZJSaiJidS+vuQtLdx5ebpyco9wcPp/f961tc8vL8rqBA7bAAAB0ElEQVR4AX2R1YLbMBREpTB1lOpmXcthjkMLXmZmZv7/z6i8crneebl0RCMWiLPPFInG4okkZ6loOsOz0bRO/1DuCwTyXyUVMGFRDN9s9ed6B8VSOV+pJguo1VUMjWbmD6AF0e4kuui5IUAcQL/fx8Ae/h8YQYwntaasECAHTFvuzIw3W/BnXQNkWz8fk5nD/MJoUSzJOLA8XDHAKubXgo14Yh2A2Nic3dJJYzsA+jubSWak3N29qf26JHKXpvbXqge+DxETjCgp5WyG62RWzqqkSU0wUqlWbktxRtlsMtL6sDqSy81uZbfMHqlDAIva6shK/8iBb3VWh/Xj/rJHxuqT0zOI3Vk6hBC1wXY9cw5xMaG9WyNj9aXtOtj2qIv+1aZtyUge46bnBMAqdvZn6Rq1NXWNxr4k4tk+bjw6D4AY9It1VatrYFD376WBtvsTiELoHeZ0pYFb++Naedx5GScAIos4m4n3+zcW/QB0Urk/FwFADyvooz/enP0J8IQD1B4DgGU6T3e96aYknt571i/XUt7S8+Y6bg3A1KzrySTpRErzg7GXVyuxiAuLmBHn7A+1KnAW0ShJFqLM2/L7+92+pVgo4VraUcXCxYnIj98B87hF++6opGsAAAAASUVORK5CYII="
+        },
+        {
+          "title": "zone.id",
+          "description": "免费zone.id二级域名(不可托管cloudflared)",
+          "url": "https://my.zone.id/subdomains",
+          "logo": "https://autz.org/uploads/a8ia2qkiq.webp"
+        },
+        {
+          "title": "Spaceship",
+          "description": "实惠的域名服务商",
+          "url": "https://www.spaceship.com",
+          "logo": "https://spaceship-cdn.com/static/spaceship/favicon/spaceship-icon.svg"
+        },
+        {
+          "title": "DNSHE",
+          "description": "永久免费免费域名",
+          "url": "https://my.dnshe.com/clientarea.php",
+          "logo": "https://my.dnshe.com/clientarea.php/favicon.ico"
+        },
+        {
+          "title": "Godaddy",
+          "description": "全球最大的域名服务商(域名较贵)",
+          "url": "https://www.godaddy.com",
+          "logo": "https://img6.wsimg.com/ux-assets/favicon/favicon-32x32.png"
+        },
+        {
+          "title": "Namesilo",
+          "description": "实惠的域名",
+          "url": "https://www.namesilo.com",
+          "logo": "https://www.namesilo.com/favicon.ico"
+        },
+        {
+          "title": "netlib.re",
+          "description": "永久免费二级域名",
+          "url": "https://www.netlib.re",
+          "logo": "https://www.netlib.re/favicon.ico"
+        },
+        {
+          "title": "Namecheap",
+          "description": "头部域名服务商",
+          "url": "https://www.namecheap.com",
+          "logo": "https://www.namecheap.com/favicon.ico"
+        },
+        {
+          "title": "gv.uy",
+          "description": "永久免费二级域名",
+          "url": "https://nic.gv.uy",
+          "logo": "https://nic.gv.uy/favicon.ico"
+        },
+        {
+          "title": "NN.KG",
+          "description": "",
+          "url": "https://www.idc.lc/",
+          "logo": "https://www.idc.lc/favicon.ico"
+        },
+        {
+          "title": "VPS8",
+          "description": "提供域名托管服务，支持根域名cname",
+          "url": "https://vps8.zz.cd",
+          "logo": "https://vps8.zz.cd/favicon.ico"
+        }
+      ]
+    },
+    {
+      "name": "Dev",
+      "href": "#Dev",
+      "icon": "mdi:code-tags",
+      "type": "single",
+      "sites": [
+        {
+          "title": "igoutu",
+          "description": "免费icon图标",
+          "url": "https://igoutu.cn/icons",
+          "logo": "https://goodies.icons8.com/web/common/header/logo/logo-icons8.svg"
+        },
+        {
+          "title": "iconfont",
+          "description": "阿里矢量图标库",
+          "url": "https://www.iconfont.cn/",
+          "logo": "https://www.iconfont.cn/favicon.ico"
+        },
+        {
+          "title": "uiverse",
+          "description": "UI组件库",
+          "url": "https://uiverse.io/elements",
+          "logo": "https://uiverse.io/favicon-32x32.png"
+        },
+        {
+          "title": "vueform",
+          "description": "vue UI组件",
+          "url": "https://vueform.com",
+          "logo": "https://vueform.com/favicon.ico"
+        },
+        {
+          "title": "ghproxy",
+          "description": "github加速",
+          "url": "https://ghproxy.eooce.xx.kg",
+          "logo": "data:image/svg+xml,%0A<svg%20xmlns%3D\"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\"%20width%3D\"32\"%20height%3D\"32\"%20viewBox%3D\"0%200%2024%2024\"%20fill%3D\"none\"%20stroke%3D\"%23FBBF24\"%20stroke-width%3D\"2\"%20stroke-linecap%3D\"round\"%20stroke-linejoin%3D\"round\">%0A%20%20<path%20d%3D\"M13%202L3%2014h9l-1%208%2010-12h-9l1-8z\"><%2Fpath>%0A<%2Fsvg>"
+        },
+        {
+          "title": "vitepress",
+          "description": "Markdown生成静态文档站点",
+          "url": "https://vitejs.cn/vitepress/",
+          "logo": "https://vitejs.cn/vitepress/vitepress-logo-mini.svg"
+        },
+        {
+          "title": "icon",
+          "description": "icon图标",
+          "url": "https://icon-sets.iconify.design",
+          "logo": "https://icon-sets.iconify.design/favicon.svg"
+        },
+        {
+          "title": "美国免税州地址生成",
+          "description": "",
+          "url": "https://usaddressgen.com/tax-free-address/",
+          "logo": "https://usaddressgen.com/tax-free-address/favicon.ico"
+        },
+        {
+          "title": "美国各州区号对照表",
+          "description": "",
+          "url": "https://amon.org/usphone",
+          "logo": "https://amon.org/usphone/favicon.ico"
+        },
+        {
+          "title": "免费Socks5代理池",
+          "description": "",
+          "url": "https://proxy.scdn.io",
+          "logo": "https://proxy.scdn.io/favicon.ico"
+        }
+      ]
+    }
+  ]
+}
