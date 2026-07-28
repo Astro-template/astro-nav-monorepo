@@ -8,7 +8,13 @@
   <form hx-post="/api/admin/categories" hx-swap="none" class="flex flex-wrap gap-2 items-end">
     <div>
       <label class="text-xs">图标</label>
-      <input type="text" name="icon" class="input input-bordered input-sm w-16" placeholder="🔍"/>
+      <div class="flex items-center gap-1">
+        <button type="button" class="btn btn-sm btn-outline gap-1" onclick="iconPicker.open()">
+          <iconify-icon id="icon-preview" icon="mdi:folder" class="text-lg"></iconify-icon>
+          <span id="icon-preview-label" class="text-xs font-mono">mdi:folder</span>
+        </button>
+        <input type="hidden" name="icon" id="icon-input" value="mdi:folder"/>
+      </div>
     </div>
     <div>
       <label class="text-xs">名称 *</label>
@@ -47,7 +53,7 @@
     <tbody>
       {{#categories}}
       <tr>
-        <td class="text-lg">{{icon}}</td>
+        <td><iconify-icon icon="{{icon}}" class="text-xl"></iconify-icon> <span class="text-xs text-base-content/40 font-mono">{{icon}}</span></td>
         <td class="font-medium">{{name}}</td>
         <td class="text-xs font-mono">{{slug}}</td>
         <td class="text-xs text-base-content/60">{{description}}</td>
@@ -65,3 +71,60 @@
 {{^categories}}
 <div class="alert mt-4">暂无分类，请先添加</div>
 {{/categories}}
+
+<!-- 图标选择器弹窗 -->
+<dialog id="icon-picker-dialog" class="modal">
+  <div class="modal-box max-w-2xl">
+    <h3 class="font-bold mb-2">选择图标</h3>
+    <p class="text-xs text-base-content/60 mb-3">搜索 Material Design Icons（mdi）图标，输入英文关键词（如 cloud、chart、cart），点击选中。</p>
+    <input type="text" id="icon-search" class="input input-bordered input-sm w-full mb-3"
+      placeholder="输入英文关键词搜索图标…" oninput="iconPicker.search(this.value)"/>
+    <div id="icon-results" class="grid grid-cols-8 gap-2 min-h-40 max-h-80 overflow-y-auto"></div>
+    <div class="modal-action">
+      <form method="dialog"><button class="btn btn-sm">关闭</button></form>
+    </div>
+  </div>
+  <form method="dialog" class="modal-backdrop"><button>close</button></form>
+</dialog>
+
+<script>
+window.iconPicker = {
+  _dialog: null, _timer: null,
+  open() {
+    this._dialog = document.getElementById('icon-picker-dialog');
+    this._dialog.showModal();
+    const q = document.getElementById('icon-input').value || '';
+    document.getElementById('icon-search').value = '';
+    this.search('');
+  },
+  search(q) {
+    clearTimeout(this._timer);
+    const box = document.getElementById('icon-results');
+    if (!q || q.trim().length < 2) {
+      box.innerHTML = '<p class="col-span-8 text-xs text-base-content/50 py-4 text-center">请输入至少 2 个字符</p>';
+      return;
+    }
+    this._timer = setTimeout(async () => {
+      box.innerHTML = '<span class="col-span-8 loading loading-spinner loading-md mx-auto"></span>';
+      try {
+        const res = await fetch('https://api.iconify.design/search?query=' + encodeURIComponent(q.trim()) + '&prefixes=mdi&limit=64');
+        const data = await res.json();
+        const icons = data.icons || [];
+        if (!icons.length) { box.innerHTML = '<p class="col-span-8 text-xs text-base-content/50 py-4 text-center">没有找到图标</p>'; return; }
+        box.innerHTML = icons.map(name =>
+          '<button type="button" title="' + name + '" onclick="iconPicker.pick(\'' + name + '\')" ' +
+          'class="btn btn-ghost btn-sm p-1 h-10"><iconify-icon icon="' + name + '" class="text-2xl"></iconify-icon></button>'
+        ).join('');
+      } catch (e) {
+        box.innerHTML = '<p class="col-span-8 text-xs text-error py-4 text-center">搜索失败，请重试</p>';
+      }
+    }, 300);
+  },
+  pick(name) {
+    document.getElementById('icon-input').value = name;
+    document.getElementById('icon-preview').setAttribute('icon', name);
+    document.getElementById('icon-preview-label').textContent = name;
+    this._dialog.close();
+  }
+};
+</script>
