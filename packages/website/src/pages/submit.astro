@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
+import { getConfig } from '../utils/config';
 
 const API_BASE = import.meta.env.PUBLIC_API_URL || 'https://astro-nav-api.ouraihub.workers.dev';
+const site = getConfig().site;
 ---
 
-<Layout title="提交收录 - Affiliate导航" description="提交您的网站，加入导航收录。">
+<Layout title={`提交收录 - ${site.title}`} description="提交您的网站，加入导航收录。">
   <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <Sidebar />
   <main class="page-main">

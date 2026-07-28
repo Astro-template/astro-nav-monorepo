@@ -6,7 +6,7 @@ interface Props {
 }
 
 const { title, description, url } = Astro.props;
-const detailUrl = `/sites/${encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-'))}`;
+const detailUrl = `/sites/${encodeURIComponent(title.toLowerCase().replace(/[\s/]+/g, '-'))}`;
 
 function getFaviconUrls(url: string) {
   try {

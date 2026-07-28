@@ -2,12 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 import Sidebar from '../components/Sidebar.astro';
 import CategoryCard from '../components/CategoryCard.astro';
-import { getNavData } from '../utils/config';
+import { getNavData, getConfig } from '../utils/config';
 
 const navigationData = await getNavData();
+const site = getConfig().site;
 ---
 
-<Layout title="Affiliate导航 - 专业的Affiliate营销导航网站" description="专业的Affiliate营销导航网站">
+<Layout title={`${site.title} - ${site.description}`} description={site.description}>
   <Sidebar />
   <main class="page-main">
     <div class="top-nav">
