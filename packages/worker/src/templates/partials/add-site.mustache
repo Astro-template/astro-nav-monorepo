@@ -20,7 +20,7 @@
       <label class="fieldset-label">分类 *</label>
       <select name="category_id" required class="select select-bordered select-sm w-full">
         {{#categories}}
-        <option value="{{id}}">{{name}}</option>
+        <option value="{{id}}"{{#disabled}} disabled{{/disabled}}>{{#isChild}}&nbsp;&nbsp;└─ {{/isChild}}{{label}}{{#disabled}}（分组，请选下方子项）{{/disabled}}</option>
         {{/categories}}
       </select>
     </div>
