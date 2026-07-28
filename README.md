@@ -4,7 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
-[![Astro](https://img.shields.io/badge/Astro-5.15-orange.svg)](https://astro.build/)
+[![Astro](https://img.shields.io/badge/Astro-7-orange.svg)](https://astro.build/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8.svg)](https://tailwindcss.com/)
 
 ## ✨ Features
@@ -30,16 +30,20 @@ astro-nav-monorepo/
 │   │   │   └── validators/  # Validation logic
 │   │   └── tests/           # Unit tests
 │   │
-│   ├── website/         # 🌐 Main Astro website
+│   ├── website/         # 🌐 Main Astro website (static, reads config.json)
 │   │   ├── src/
 │   │   │   ├── components/  # Astro components
 │   │   │   ├── layouts/     # Page layouts
 │   │   │   ├── pages/       # Route pages
 │   │   │   ├── styles/      # Global styles
 │   │   │   └── utils/       # Website-specific utilities
-│   │   └── static/          # Static assets
+│   │   ├── scripts/         # sync-config: pull data from Worker at build time
+│   │   └── static/          # Static assets + generated config.json
 │   │
-│   └── admin/           # 🔧 Admin dashboard (planned)
+│   └── worker/          # ⚙️ Cloudflare Worker (D1 + KV API + admin SSR)
+│       ├── src/            # Router, handlers, repositories, services
+│       ├── migrations/     # D1 schema (tables only)
+│       └── seeds/          # Nav content datasets (aff / eooce, pick one)
 │
 ├── pnpm-workspace.yaml  # PNPM workspace configuration
 ├── turbo.json          # Turborepo build configuration
@@ -111,7 +115,7 @@ Core business logic, types, and utilities shared across all packages.
 
 ### @astro-nav/website
 
-Main Astro-based website with server-side rendering.
+Statically generated Astro site. At build time `scripts/sync-config.ts` pulls nav data from the Worker and writes `static/config.json`, which the pages render from.
 
 **Key Features:**
 - Modern, responsive UI with Tailwind CSS v4
@@ -119,7 +123,14 @@ Main Astro-based website with server-side rendering.
 - Lazy loading and code splitting
 - Dynamic navigation with hash routing
 
-Admin dashboard is served directly by the Worker (`/admin/*`, server-rendered with Mustache), not a separate package.
+### @astro-nav/worker
+
+Cloudflare Worker backing the site: D1 database, KV cache, public submit API (with Turnstile), and the admin dashboard served directly at `/admin/*` (server-rendered with Mustache — there is no separate admin package).
+
+- **`migrations/`** — D1 schema only (tables/indexes).
+- **`seeds/`** — nav content datasets (`aff-nav.sql` / `eooce-nav.sql`), applied one at a time. See [`packages/worker/seeds/README.md`](packages/worker/seeds/README.md).
+
+> Deployment and local setup: [`docs/quick-start.md`](docs/quick-start.md) · [`docs/deployment.md`](docs/deployment.md). Full doc index: [`docs/README.md`](docs/README.md).
 
 ## 🏗️ Architecture
 
@@ -134,10 +145,15 @@ This project follows a **monorepo architecture** with clear separation of concer
            ├─────────────────┬─────────────────┐
            │                 │                 │
     ┌──────▼──────┐   ┌─────▼──────┐   ┌─────▼──────┐
-    │   Shared    │   │  Website   │   │   Admin    │
-    │   Package   │◄──┤  Package   │   │  Package   │
-    └─────────────┘   └────────────┘   └────────────┘
+    │   Shared    │   │  Website   │   │   Worker   │
+    │   Package   │◄──┤  Package   │   │  (D1 + KV) │
+    └─────────────┘   └─────▲──────┘   └─────┬──────┘
+                            │  build-time     │ publish
+                            │  fetch config   ▼
+                            └───────────  KV (nav:sites.json)
 ```
+
+**数据流**：管理员在 Worker 后台（`/admin`）编辑 → 点「发布」写入 KV → website 构建时（`sync-config`）拉取 KV JSON 生成 `config.json` → Astro 静态渲染。
 
 **Benefits:**
 - 🔄 Code reusability across packages
@@ -150,9 +166,12 @@ This project follows a **monorepo architecture** with clear separation of concer
 
 | Technology | Purpose | Version |
 |------------|---------|---------|
-| [Astro](https://astro.build/) | Static Site Generator | 5.15+ |
+| [Astro](https://astro.build/) | Static Site Generator | 7+ |
 | [TypeScript](https://www.typescriptlang.org/) | Type Safety | 5.9+ |
 | [Tailwind CSS](https://tailwindcss.com/) | Styling | v4 |
+| [Cloudflare Workers](https://workers.cloudflare.com/) | API + admin SSR | v4 (wrangler) |
+| [Cloudflare D1](https://developers.cloudflare.com/d1/) | SQLite database | - |
+| [Cloudflare KV](https://developers.cloudflare.com/kv/) | Published nav data cache | - |
 | [Vitest](https://vitest.dev/) | Testing Framework | Latest |
 | [Turborepo](https://turbo.build/) | Build System | Latest |
 | [pnpm](https://pnpm.io/) | Package Manager | 8+ |

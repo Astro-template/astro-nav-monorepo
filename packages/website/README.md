@@ -33,4 +33,4 @@ pnpm type-check
 
 ## 配置
 
-配置文件在构建前会自动从 `@astro-nav/shared/config` 同步到 `static/` 目录。
+构建前 `scripts/sync-config.ts` 会从 Worker 的 `/api/nav` 拉取导航数据，生成 `static/config.json`（前端唯一数据源）。未配置 `PUBLIC_API_URL` 时沿用现有 `config.json`。
