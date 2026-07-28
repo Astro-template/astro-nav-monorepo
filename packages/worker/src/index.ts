@@ -10,6 +10,7 @@ import { createCategoriesHandler } from "./handlers/categories";
 import { createAdminHandler } from "./handlers/admin";
 import { createAdminPages } from "./handlers/pages";
 import { handleLogin, handleLogout, hasValidSession } from "./services/auth";
+import { parseFields } from "./lib/request";
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -21,8 +22,9 @@ export default {
     const path = url.pathname;
     const method = request.method;
 
+    const requestId = crypto.randomUUID();
     const logger = createLogger({
-      requestId: crypto.randomUUID(),
+      requestId,
       method,
       path,
       ip: request.headers.get("CF-Connecting-IP") || "unknown",
@@ -75,20 +77,14 @@ export default {
       router.add("DELETE", "/api/sites/:id", adminHandler.delete);
       router.add("POST", "/api/sites/publish", adminHandler.publish);
       router.add("POST", "/api/admin/settings", async (ctx) => {
-        const ct = ctx.request.headers.get("Content-Type") || "";
-        let title: string, description: string, logoText: string;
-        if (ct.includes("application/json")) {
-          const body = await ctx.request.json() as Record<string, unknown>;
-          title = (body.title as string || "").trim();
-          description = (body.description as string || "").trim();
-          logoText = (body.logoText as string || "").trim();
-        } else {
-          const form = await ctx.request.formData();
-          title = (form.get("title") as string || "").trim();
-          description = (form.get("description") as string || "").trim();
-          logoText = (form.get("logoText") as string || "").trim();
+        const f = await parseFields(ctx.request);
+        const title = f.title?.trim() || "";
+        const description = f.description?.trim() || "";
+        const logoText = f.logoText?.trim() || "";
+        if (!title) {
+          ctx.logger.warn("settings_rejected", { reason: "empty_title" });
+          return Res.error("站点名称不能为空");
         }
-        if (!title) return Res.error("站点名称不能为空");
 
         await settingsRepo.save({ title, description, logoText: logoText || title });
         ctx.logger.info("settings_saved", { title });
@@ -105,26 +101,17 @@ export default {
 
       // Admin direct add site (auto-approved)
       router.add("POST", "/api/admin/categories", async (ctx) => {
-        const ct = ctx.request.headers.get("Content-Type") || "";
-        let name: string, slug: string, icon: string, description: string, sort_order: number, parent_id: string;
-        if (ct.includes("application/json")) {
-          const body = await ctx.request.json() as Record<string, unknown>;
-          name = body.name as string || "";
-          slug = body.slug as string || "";
-          icon = body.icon as string || "";
-          description = body.description as string || "";
-          sort_order = Number(body.sort_order) || 0;
-          parent_id = body.parent_id as string || "";
-        } else {
-          const form = await ctx.request.formData();
-          name = form.get("name") as string || "";
-          slug = form.get("slug") as string || "";
-          icon = form.get("icon") as string || "";
-          description = form.get("description") as string || "";
-          sort_order = Number(form.get("sort_order")) || 0;
-          parent_id = form.get("parent_id") as string || "";
+        const f = await parseFields(ctx.request);
+        const name = f.name || "";
+        const slug = f.slug || "";
+        const icon = f.icon || "";
+        const description = f.description || "";
+        const sort_order = Number(f.sort_order) || 0;
+        const parent_id = f.parent_id || "";
+        if (!name || !slug) {
+          ctx.logger.warn("category_rejected", { reason: "missing_name_or_slug" });
+          return Res.error("name and slug are required");
         }
-        if (!name || !slug) return Res.error("name and slug are required");
 
         const id = crypto.randomUUID();
         const parentId = parent_id || null;
@@ -181,31 +168,20 @@ export default {
       });
 
       router.add("POST", "/api/admin/sites", async (ctx) => {
-        let title: string, url: string, description: string, category_id: string, logo: string, tagsRaw: string, featured: boolean;
-
-        const ct = ctx.request.headers.get("Content-Type") || "";
-        if (ct.includes("application/json")) {
-          const body = await ctx.request.json() as Record<string, unknown>;
-          title = body.title as string || "";
-          url = body.url as string || "";
-          description = body.description as string || "";
-          category_id = body.category_id as string || "";
-          logo = body.logo as string || "";
-          tagsRaw = body.tags as string || "";
-          featured = body.featured === "1" || body.featured === true;
-        } else {
-          const form = await ctx.request.formData();
-          title = form.get("title") as string || "";
-          url = form.get("url") as string || "";
-          description = form.get("description") as string || "";
-          category_id = form.get("category_id") as string || "";
-          logo = form.get("logo") as string || "";
-          tagsRaw = form.get("tags") as string || "";
-          featured = form.get("featured") === "1";
-        }
+        const f = await parseFields(ctx.request);
+        const title = f.title || "";
+        const url = f.url || "";
+        const description = f.description || "";
+        const category_id = f.category_id || "";
+        const logo = f.logo || "";
+        const tagsRaw = f.tags || "";
+        const featured = f.featured === "1" || f.featured === "true";
 
         const tags = tagsRaw ? tagsRaw.split(",").map(t => t.trim()).filter(Boolean) : [];
-        if (!title || !url || !description || !category_id) return Res.error("Missing required fields");
+        if (!title || !url || !description || !category_id) {
+          ctx.logger.warn("admin_site_rejected", { reason: "missing_required_fields" });
+          return Res.error("Missing required fields");
+        }
 
         const id = crypto.randomUUID();
         await ctx.env.DB.prepare(
@@ -222,8 +198,10 @@ export default {
       return addCorsHeaders(response || Res.notFound());
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Internal error";
-      logger.error("unhandled", { error: msg });
-      return addCorsHeaders(Res.error(msg, 500));
+      const stack = e instanceof Error ? e.stack : undefined;
+      logger.error("unhandled", { error: msg, stack });
+      // 对外只返回泛化消息 + requestId，内部细节仅进日志
+      return addCorsHeaders(Res.json({ error: "Internal server error", requestId }, 500));
     }
   },
 } satisfies ExportedHandler<Env>;

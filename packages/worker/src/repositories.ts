@@ -57,8 +57,8 @@ export class D1SiteRepository implements ISiteRepository {
   }
 
   async listApproved(opts: { category?: string; featured?: boolean; limit: number }): Promise<{ sites: SiteRow[]; total: number }> {
-    let sql = `SELECT s.* FROM sites s JOIN categories c ON s.category_id = c.id WHERE s.status = '${SITE_STATUS.APPROVED}'`;
-    const params: (string | number)[] = [];
+    let sql = "SELECT s.* FROM sites s JOIN categories c ON s.category_id = c.id WHERE s.status = ?";
+    const params: (string | number)[] = [SITE_STATUS.APPROVED];
 
     if (opts.category) { sql += " AND c.slug = ?"; params.push(opts.category); }
     if (opts.featured) { sql += " AND s.featured = 1"; }
@@ -66,13 +66,14 @@ export class D1SiteRepository implements ISiteRepository {
     params.push(opts.limit);
 
     const { results } = await this.db.prepare(sql).bind(...params).all<SiteRow>();
-    const total = await this.db.prepare(`SELECT COUNT(*) as c FROM sites WHERE status = '${SITE_STATUS.APPROVED}'`).first<{ c: number }>();
+    const total = await this.db.prepare("SELECT COUNT(*) as c FROM sites WHERE status = ?").bind(SITE_STATUS.APPROVED).first<{ c: number }>();
     return { sites: results || [], total: total?.c || 0 };
   }
 
   async listPending(): Promise<SiteRow[]> {
     const { results } = await this.db
-      .prepare(`SELECT * FROM sites WHERE status = '${SITE_STATUS.PENDING}' ORDER BY created_at DESC`)
+      .prepare("SELECT * FROM sites WHERE status = ? ORDER BY created_at DESC")
+      .bind(SITE_STATUS.PENDING)
       .all<SiteRow>();
     return results || [];
   }
@@ -111,9 +112,10 @@ export class D1CategoryRepository implements ICategoryRepository {
   async listAll(): Promise<(CategoryRow & { siteCount: number })[]> {
     const { results } = await this.db
       .prepare(
-        `SELECT c.*, (SELECT COUNT(*) FROM sites s WHERE s.category_id = c.id AND s.status = '${SITE_STATUS.APPROVED}') as siteCount
-         FROM categories c ORDER BY c.sort_order ASC`
+        "SELECT c.*, (SELECT COUNT(*) FROM sites s WHERE s.category_id = c.id AND s.status = ?) as siteCount " +
+        "FROM categories c ORDER BY c.sort_order ASC"
       )
+      .bind(SITE_STATUS.APPROVED)
       .all<CategoryRow & { siteCount: number }>();
     return results || [];
   }
@@ -156,7 +158,8 @@ export class KVPublisher implements IPublisher {
   async publish(): Promise<NavData> {
     const { results: allCategories } = await this.db.prepare("SELECT * FROM categories ORDER BY sort_order ASC").all<CategoryRow>();
     const { results: sites } = await this.db
-      .prepare(`SELECT * FROM sites WHERE status = '${SITE_STATUS.APPROVED}' ORDER BY sort_order ASC, created_at DESC`)
+      .prepare("SELECT * FROM sites WHERE status = ? ORDER BY sort_order ASC, created_at DESC")
+      .bind(SITE_STATUS.APPROVED)
       .all<SiteRow>();
     const site = await this.settings.get();
 
