@@ -28,3 +28,6 @@ Thumbs.db
 
 # Turbo
 .turbo/
+
+# Wrangler local state
+.wrangler/

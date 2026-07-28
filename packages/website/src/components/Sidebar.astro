@@ -1,8 +1,9 @@
 ---
 import type { Category } from '@astro-nav/shared';
-import { getNavData } from '../utils/config';
+import { getNavData, getConfig } from '../utils/config';
 
 const navigationData = await getNavData();
+const site = getConfig().site;
 
 function getItemCount(category: Category): number {
   if (category.items) return category.items.length;
@@ -17,10 +18,10 @@ function getItemCount(category: Category): number {
   <div class="sidebar-content">
     <div class="logo-container">
       <div class="logo">
-        <span class="logo-icon">A</span>
+        <span class="logo-icon">{site.logo.text.charAt(0)}</span>
       </div>
-      <h1 class="logo-text">Affiliate导航</h1>
-      <p class="logo-subtitle">专业的Affiliate营销导航</p>
+      <h1 class="logo-text">{site.logo.text}</h1>
+      <p class="logo-subtitle">{site.description}</p>
     </div>
     <div class="category-list">
       {navigationData.map((category, index) => (

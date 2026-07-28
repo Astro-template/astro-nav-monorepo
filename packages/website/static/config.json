@@ -8,2707 +8,1747 @@
     }
   },
   "categoryMap": {
-    "追踪系统": "追踪系统",
-    "SPY服务": "spy服务",
-    "流量平台": "流量平台",
-    "综合性联盟": "综合性联盟",
-    "CPA联盟": "cpa联盟",
-    "广告论坛": "广告论坛",
-    "SEO工具": "seo工具",
-    "邮件营销": "邮件营销",
-    "电商平台": "电商平台",
-    "联盟后台": "联盟后台",
-    "域名注册": "域名注册",
-    "云服务器(主流)": "云服务器(主流)",
-    "独立服务器": "独立服务器",
-    "支付服务": "支付服务",
-    "VPS代理": "vps代理",
-    "落地页工具": "落地页工具"
+    "Home": "Home",
+    "Ai-stuff": "Ai-stuff",
+    "Cloud": "Cloud",
+    "Container": "Container",
+    "Software": "Software",
+    "Tools": "Tools",
+    "Mail & Domain": "Mail & Domain",
+    "Dev": "Dev"
   },
   "menuItems": [
     {
-      "name": "追踪系统",
-      "href": "#追踪系统",
-      "icon": "mdi:chart-line",
+      "name": "Home",
+      "href": "#Home",
+      "icon": "mdi:home",
       "type": "single",
       "sites": [
         {
-          "title": "Binom",
-          "description": "老毛子写的高性能tracker",
-          "url": "https://binom.org",
-          "advantages": [
-            "跳转速度快",
-            "价格是基于服务器的，而不是像其他的服务商那样基于点击数量",
-            "生成报表的速度快",
-            "无限域名(additional domains)",
-            "多用户管理系统",
-            "提供API",
-            "售后支持相应速度快"
-          ],
-          "details": {
-            "intro": "Binom一款由俄罗斯开发团队开发的高性能追系统。它的主要特点是采用服务器授权模式，用户只需支付服务器费用，无需按点击量付费。系统采用PHP7 + Nginx架构，确保了极快的响应速度。",
-            "pricing": "价格根据服务器配置而定，基础版本起价约$100/月。不同于其他tracker按点击收费，Binom采用服务器授权模式，这意味着只要服务器能承受，您可以处理无限的点击量。",
-            "pros": [
-              "性价比极高，尤其是对于大流量用户",
-              "响应速度快，平均redirect时间<1ms",
-              "安装简单，一键部署",
-              "支持多用户管理",
-              "报表生成速度快",
-              "支持无限域名",
-              "API支持完善"
-            ],
-            "cons": [
-              "需要自己管理服务器",
-              "界面相对简单，不够美观",
-              "学习曲线相对陡峭"
-            ],
-            "tips": [
-              "建议选择SSD服务器以获得更好性能",
-              "新手可以先使用他们提供的共享服务器方案",
-              "重视服务器的地理位置，建议选择离目标流量来源较近的机房",
-              "定期备份数据库很重要",
-              "建议配置CDN以提升球访问速度"
-            ]
-          }
+          "title": "Notification",
+          "description": "通知管理系统",
+          "url": "https://notification.eooce.xx.kg",
+          "logo": "https://img.icons8.com/ios-filled/150/228BE6/reminders.png"
         },
         {
-          "title": "Voluum",
-          "description": "业界成名较早的tracker之一",
-          "url": "https://voluum.com",
-          "advantages": [
-            "云端部署，无需自己维护服务器",
-            "完善的报表系统",
-            "支持多种追踪模式",
-            "内置防作弊系统",
-            "支持团队协作"
-          ],
-          "details": {
-            "intro": "Voluum是业内最知名的追踪系统之一，提供云端部署解决方案，无需自己维护服务器。系统功能完善，适合团队使用。",
-            "pricing": "按点击计费，起价$69/月，包含100万点击，超出部分额外收费。提供多个套餐可选择。",
-            "pros": [
-              "部署简单，无需技术背景",
-              "界面美观，操作直观",
-              "客服支持及时",
-              "报表系统强大",
-              "定期推出新功能"
-            ],
-            "cons": [
-              "价格较贵，尤其是大流量时",
-              "部分高级功能需要更高套餐",
-              "服务器位置有限，某些地区延迟较高"
-            ],
-            "tips": [
-              "建议先使用试用版本测试",
-              "根据流量预估选择合适套餐",
-              "善用他们的API功能",
-              "注意设置据备份",
-              "多利用他们的教程资源"
-            ]
-          }
+          "title": "Youtube",
+          "description": "全球最大的视频社区",
+          "url": "https://www.youtube.com",
+          "logo": "https://img.icons8.com/ios-filled/100/ff1d06/youtube-play.png"
         },
         {
-          "title": "FunnelFlux",
-          "description": "价格昂贵但是功能强大, 支持安装在自己的服务器上",
-          "url": "https://funnelflux.com",
-          "advantages": [
-            "自托管选项",
-            "强大的漏斗分析",
-            "详细的访客画像",
-            "高级报表功能",
-            "多服务器集群支持"
-          ],
-          "details": {
-            "intro": "FunnelFlux是一款功能强大的追踪系统，特别适合需要深入分析用户行为和漏斗转化的营销人员。支持自托管部署，让用户完全控制数据和基础设施。",
-            "pricing": "自托管版本起价$299/月，云托管版本价格更高。价格虽高但功能齐全。",
-            "pros": [
-              "数据掌控度高",
-              "漏斗分析功能强大",
-              "支持复杂的分流规则",
-              "报表系统专业",
-              "安全性好"
-            ],
-            "cons": [
-              "价格昂贵",
-              "部署复杂",
-              "学习曲线陡峭"
-            ],
-            "tips": [
-              "建先评估ROI再决定是否使用",
-              "准备好专业的技术支持",
-              "重视服务器配置",
-              "做好完整的部署计划",
-              "定期检查系统性能"
-            ]
-          }
+          "title": "Gmail",
+          "description": "",
+          "url": "https://mail.google.com",
+          "logo": "https://img.icons8.com/fluency/48/gmail-new.png"
         },
         {
-          "title": "Adsbridge",
-          "description": "简单易用, 功能强大, 自带smartlink",
-          "url": "https://adsbridge.com",
-          "advantages": [
-            "内置Smartlink系统",
-            "云端部署",
-            "界面简洁易用",
-            "多重防作弊机制",
-            "支持多用户管理"
-          ],
-          "details": {
-            "intro": "Adsbridge是一款云端追踪系统，以其简单易用和功能完整而闻名。特别适合新手入门，同时也能满足专业用户的需求。内置的Smartlink功能是其一大特色。",
-            "pricing": "基础版起价$79/月，包含100万点击，提供多个套餐选择。",
-            "pros": [
-              "部署简单，即开即用",
-              "内置Smartlink功能",
-              "界面直观友好",
-              "学习曲线平缓",
-              "支持多种追踪模式"
-            ],
-            "cons": [
-              "高级功能需要更高套餐",
-              "大流量时成本较高",
-              "部分地区响应较慢"
-            ],
-            "tips": [
-              "可以先用基础版本测试",
-              "善用内置的Smartlink功能",
-              "注意设置防作弊规则",
-              "定期导出重要数据",
-              "关注官方更新通知"
-            ]
-          }
+          "title": "GitHub",
+          "description": "全球最大的代码托管平台",
+          "url": "https://github.com",
+          "logo": "https://img.icons8.com/ios-filled/50/github.png"
         },
         {
-          "title": "ThriveTracker",
-          "description": "中规中距的一个tracker",
-          "url": "#",
-          "advantages": [
-            "自托管选项",
-            "完整的追踪功能",
-            "支持多用户",
-            "实时统计",
-            "自定义报表"
-          ],
-          "details": {
-            "intro": "ThriveTracker是一款功能完整的追踪系统，提供自托管选项，适合需要完全控制数据的用户。系统稳定，功能齐全。",
-            "pricing": "自托管版本起价$199/月，支持无限点击量。",
-            "pros": [
-              "功能齐全",
-              "数据掌控度高",
-              "系统稳定性好",
-              "报表功能强大",
-              "支持自定义功能"
-            ],
-            "cons": [
-              "价格较高",
-              "部署较复杂",
-              "更新频率一般"
-            ],
-            "tips": [
-              "建议先评估服务器配置",
-              "做好完整的部署计划",
-              "重视数据备份",
-              "关注性能优化",
-              "善用自定义功能"
-            ]
-          }
+          "title": "ip.sb",
+          "description": "ip地址查询",
+          "url": "https://ip.ssss.nyc.mn",
+          "logo": "https://ip.sb/favicon-32x32.png"
         },
         {
-          "title": "Bemob",
-          "description": "捷克出品的优质Tracker",
-          "url": "https://bemob.com",
-          "advantages": [
-            "性价比高",
-            "界面简洁直观",
-            "支持多种追踪模式",
-            "防作弊功能",
-            "API支持"
-          ],
-          "details": {
-            "intro": "Bemob是一款来自捷克追踪器，以其高性价比稳定性在市场上赢得了良好口碑。系统设计简洁，易于使用，同时又不失专业性。",
-            "pricing": "基础版起价$99/月，包含100万点击，价格较为实惠。",
-            "pros": [
-              "性价比高",
-              "界面简洁易用",
-              "服务稳定",
-              "更新频繁",
-              "支持功能丰富"
-            ],
-            "cons": [
-              "部分高级功能不如顶级tracker",
-              "文档相对简单",
-              "社区相对较小"
-            ],
-            "tips": [
-              "新手入门的好选择",
-              "注意研究他们的文档",
-              "善用客服支持",
-              "期备份数据",
-              "关注他们的更新通知"
-            ]
-          }
+          "title": "Cloudflare",
+          "description": "全球最大的cdn服务商",
+          "url": "https://dash.cloudflare.com",
+          "logo": "https://img.icons8.com/external-tal-revivo-color-tal-revivo/50/external-cloudflare-provides-content-delivery-network-services-ddos-mitigation-logo-color-tal-revivo.png"
         },
         {
-          "title": "Keitaro",
-          "description": "据说很厉害的tracker, 无缘一试",
-          "url": "#",
-          "advantages": [
-            "高性能架构",
-            "强大的规则系统",
-            "详细的数据分析",
-            "多服务器集群",
-            "完善的API"
-          ],
-          "details": {
-            "intro": "Keitaro是一款高端追踪系统，以其强大的性能和灵活的规则系统著称。特别适合大型团队和需要处理大量数据的用户。",
-            "pricing": "授权费用约$399/月，需要自己部署服务器。",
-            "pros": [
-              "性能极其强大",
-              "规则系统灵活",
-              "数据分析详细",
-              "支持集群部署",
-              "API功能完善"
-            ],
-            "cons": [
-              "价格昂贵",
-              "配置复杂",
-              "需要专业技术支持"
-            ],
-            "tips": [
-              "需要专业的技术团队",
-              "做好充足的预算",
-              "重视服务器配置",
-              "注意规则优化",
-              "定期检查性能"
-            ]
-          }
+          "title": "自动访问系统",
+          "description": "自动访问系统",
+          "url": "https://matte.ct8.pl",
+          "logo": "https://matte.ct8.pl/favicon.ico"
         },
         {
-          "title": "RedTrack",
-          "description": "功能强大，需要一定的学习曲线",
-          "url": "#",
-          "advantages": [
-            "云端部署",
-            "AI优化功能",
-            "多维度分析",
-            "自动规则系统",
-            "团队协作功能"
-          ],
-          "details": {
-            "intro": "RedTrack是新一代的追踪系统，集成了AI优化和自动化功能，适合需要深度数据分析和自动化的用户。",
-            "pricing": "基础版$99/月起，根据点击量阶梯收费。",
-            "pros": [
-              "AI辅助优化",
-              "自动化程度高",
-              "分析功能强大",
-              "团队协作好",
-              "更新频繁"
-            ],
-            "cons": [
-              "学习曲线较陡",
-              "高级功能费用高",
-              "部分功能复杂"
-            ],
-            "tips": [
-              "循序渐进学习功能",
-              "充分利用AI功能",
-              "注意成本控制",
-              "重视团队培训",
-              "关注新功能更新"
-            ]
-          }
+          "title": "Huggingface",
+          "description": "全球最大的开源模型托管平台",
+          "url": "https://huggingface.co",
+          "logo": "https://img.icons8.com/fluency/48/hugging-face_app.png"
         },
         {
-          "title": "PeerClick",
-          "description": "号称跳转(redirect)最快的tracker",
-          "url": "#"
+          "title": "ITDOG - 在线ping",
+          "description": "在线tcping",
+          "url": "https://www.itdog.cn/tcping",
+          "logo": "https://www.itdog.cn/favicon.ico"
         },
         {
-          "title": "CPVLAB Pro",
-          "description": "CPVLab分家后的作品",
-          "url": "#"
+          "title": "Ping0",
+          "description": "ip地址查询",
+          "url": "https://ping0.cc",
+          "logo": "https://ping0.cc/favico.ico"
         },
         {
-          "title": "iMobitrax",
-          "description": "Mobile流行时的首选tracker",
-          "url": "#"
+          "title": "浏览器指纹",
+          "description": "浏览器指纹查询",
+          "url": "https://www.browserscan.net/zh",
+          "logo": "https://www.browserscan.net/favicon-32x32.png"
         },
         {
-          "title": "Prosper202",
-          "description": "只当留个回忆",
-          "url": "#"
+          "title": "nezha面板",
+          "description": "nezha面板",
+          "url": "https://ssss.nyc.mn",
+          "logo": "https://nezha.wiki/logo.png"
+        },
+        {
+          "title": "Api测试",
+          "description": "在线api测试工具",
+          "url": "https://hoppscotch.io",
+          "logo": "https://hoppscotch.io/favicon.ico"
+        },
+        {
+          "title": "域名检查",
+          "description": "域名可用性查询",
+          "url": "https://who.cx",
+          "logo": "https://who.cx/favicon.ico"
+        },
+        {
+          "title": "域名比价",
+          "description": "域名价格比较",
+          "url": "https://www.nazhumi.com",
+          "logo": "https://www.nazhumi.com/favicon.ico"
+        },
+        {
+          "title": "NodeSeek",
+          "description": "主机论坛",
+          "url": "https://www.nodeseek.com",
+          "logo": "https://www.nodeseek.com/static/image/favicon/favicon-32x32.png"
+        },
+        {
+          "title": "Linux do",
+          "description": "新的理想型社区",
+          "url": "https://linux.do",
+          "logo": "https://linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png"
+        },
+        {
+          "title": "在线音乐",
+          "description": "在线音乐",
+          "url": "https://music.eooce.com",
+          "logo": "https://p3.music.126.net/tBTNafgjNnTL1KlZMt7lVA==/18885211718935735.jpg"
+        },
+        {
+          "title": "Nodeloc",
+          "description": "Nodeloc论坛",
+          "url": "https://www.nodeloc.com",
+          "logo": "https://www.nodeloc.com/uploads/default/original/3X/d/2/d2dbcb2628506da9299792c1d422c58c0f185528.svg"
+        },
+        {
+          "title": "Moontv",
+          "description": "Moontv",
+          "url": "https://moontv.cfapps.jp10.hana.ondemand.com",
+          "logo": "https://moontv.cfapps.jp10.hana.ondemand.com/favicon.ico"
+        },
+        {
+          "title": "订阅转换",
+          "description": "最好用的订阅转换工具",
+          "url": "https://sublink.eooce.com",
+          "logo": "https://img.icons8.com/color/96/link--v1.png"
+        },
+        {
+          "title": "webssh",
+          "description": "最好用的webssh终端管理工具",
+          "url": "https://ssh.eooce.com",
+          "logo": "https://img.icons8.com/fluency/240/ssh.png"
+        },
+        {
+          "title": "文件快递柜",
+          "description": "文件输出分享",
+          "url": "https://filebox.nnuu.nyc.mn",
+          "logo": "https://img.icons8.com/nolan/256/document.png"
+        },
+        {
+          "title": "真实地址生成",
+          "description": "基于当前ip生成真实的地址",
+          "url": "https://address.nnuu.nyc.mn",
+          "logo": "https://static11.meiguodizhi.com/favicon.ico"
         }
       ]
     },
     {
-      "name": "SPY服务",
-      "href": "#spy服务",
-      "icon": "mdi:magnify",
+      "name": "Ai-stuff",
+      "href": "#Ai-stuff",
+      "icon": "mdi:robot",
       "type": "single",
       "sites": [
         {
-          "title": "Adplexity",
-          "description": "创立最早也是最优秀的spy工具",
-          "url": "https://adplexity.com",
-          "advantages": [
-            "支持多种广告形式监控",
-            "历史数据丰富",
-            "覆盖全球主要市场",
-            "数据更新及时",
-            "界面操作友好"
-          ],
-          "details": {
-            "intro": "Adplexity是市面上最早也是最专业的广告监控工具之一，支持Native、Mobile、Desktop、Push、Carrier等多种广告形式的监控。它的数据库覆盖全球主要市场，能让用户及时了解竞争对手的投放策略",
-            "pricing": "不同产品线价格不同，基础版本约$199/月起，可选择单个产品或者打包购买。",
-            "pros": [
-              "数据库最全面",
-              "更新频率快",
-              "支持多种广告形式",
-              "界面直观易用",
-              "客服响应快"
-            ],
-            "cons": [
-              "价格较贵",
-              "部分小语种市场覆盖不足",
-              "某些高级功能需要更高套餐"
-            ],
-            "tips": [
-              "建议先选择单个产品线试用",
-              "重点关注同行最新投放动向",
-              "善用过滤器功能",
-              "定期导出重要数据",
-              "关注他们的更新通知"
-            ]
-          }
+          "title": "ChatGPT",
+          "description": "OpenAI官方AI对话",
+          "url": "https://chat.openai.com",
+          "logo": "https://img.icons8.com/ios/100/FFFFFF/chatgpt.png"
         },
         {
-          "title": "Anstrex",
-          "description": "专注于Push和Native广告的SPY",
-          "url": "https://anstrex.com",
-          "advantages": [
-            "专注Push和Native广告",
-            "价格相对实惠",
-            "数据更新快",
-            "支持Landing Page下载",
-            "提供详细的投放数据"
-          ],
-          "details": {
-            "intro": "Anstrex是一款专注于Push和Native广告的监控工具，以其优秀的性价比和完善的功能在市场上占有重要地位。特别适合做Push和Native广告的广告主。",
-            "pricing": "基础版约$99/月起，提供Push或Native单个产品线的访问权限。",
-            "pros": [
-              "性价比高",
-              "Push广数据全面",
-              "支持自动下载落地页",
-              "数据更新及时",
-              "操作界面友好"
-            ],
-            "cons": [
-              "仅支持Push和Native",
-              "某些小众市场数据不足",
-              "高级功能需要升级套餐"
-            ],
-            "tips": [
-              "可以先用基础版本测试",
-              "重点关注长期投放的广告",
-              "善用标签管理功能",
-              "定期检查热门offer",
-              "注意保存重要素材"
-            ]
-          }
+          "title": "Claude",
+          "description": "Anthropic Claude AI",
+          "url": "https://claude.ai",
+          "logo": "https://img.icons8.com/fluency/240/claude-ai.png"
         },
         {
-          "title": "AdVault",
-          "description": "最好的原生广告SPY服务商之一",
-          "url": "#",
-          "advantages": [
-            "专注原生广告监控",
-            "支持多个广告网络",
-            "提供详细的投放数据",
-            "支持素材下载",
-            "数据分析功能强大"
-          ],
-          "details": {
-            "intro": "AdVault是专注于原生广告监控的工具，支持主流原生广告网络的数据监控，为广告主提供竞品分析和市场洞察。",
-            "pricing": "月费制，基础版约$149/月起。",
-            "pros": [
-              "原生广告数据全面",
-              "覆盖主流广告网络",
-              "分析功能强大",
-              "界面设计专业",
-              "支持批量导出"
-            ],
-            "cons": [
-              "价格偏高",
-              "仅限原生广告",
-              "部分地区数据有限"
-            ],
-            "tips": [
-              "重点关注热门垂直领域",
-              "多利用数据分析功能",
-              "保存优质创意素材",
-              "跟踪长期投放的广告主",
-              "注意竞品投放策略变化"
-            ]
-          }
+          "title": "Deepseek",
+          "description": "Deepseek AI搜索",
+          "url": "https://www.deepseek.com",
+          "logo": "https://cdn.deepseek.com/chat/icon.png"
         },
         {
-          "title": "SpyOver",
-          "description": "原生广告(Native Ads)监控和分析服务商",
-          "url": "#",
-          "advantages": [
-            "专注原生广告监控",
-            "实时数据更新",
-            "竞品分析功能",
-            "广告创意库",
-            "流量来源分析"
-          ],
-          "details": {
-            "intro": "SpyOver是专业的原生广告监控平台，提供实时的广告数据和竞品分析功能。",
-            "pricing": "基础版约$199/月起",
-            "pros": [
-              "原生广告数据全面",
-              "更新及时",
-              "分析工具专业",
-              "操作界面友好",
-              "报表功能强大"
-            ],
-            "cons": [
-              "价格较高",
-              "仅限原生广告",
-              "部分区数据有限"
-            ],
-            "tips": [
-              "关注长期投放广告",
-              "分析竞品策略",
-              "保存优质创意",
-              "定期导出数据",
-              "跟踪热门offer"
-            ]
-          }
+          "title": "Google Gemini",
+          "description": "Google Gemini大模型",
+          "url": "https://gemini.google.com",
+          "logo": "https://www.gstatic.com/lamda/images/gemini_sparkle_aurora_33f86dc0c0257da337c63.svg"
         },
         {
-          "title": "AdSpy",
-          "description": "世界上最大的facebook ads 和 instagram ads SPY服务商",
-          "url": "#",
-          "advantages": [
-            "Facebook广告数据库",
-            "Instagram广告监控",
-            "社交媒体分析",
-            "创意素材下载",
-            "受众分析"
-          ]
+          "title": "阿里千问",
+          "description": "阿里云千问大模型",
+          "url": "https://chat.qwenlm.ai",
+          "logo": "https://g.alicdn.com/qwenweb/qwen-ai-fe/0.0.11/favicon.ico"
         },
         {
-          "title": "FindNiche",
-          "description": "BigSpy马甲之一，侧重于Aliexpress 和Shopify",
-          "url": "#"
+          "title": "Kimi",
+          "description": "月之暗面Moonshot AI",
+          "url": "https://www.kimi.com",
+          "logo": "https://www.kimi.com/favicon.ico"
         },
         {
-          "title": "MixRank",
-          "description": "曾经的明星站点, 现在流量下滑的厉害",
-          "url": "#"
+          "title": "问小白",
+          "description": "Deepseek三方平台",
+          "url": "https://www.wenxiaobai.com/chat",
+          "logo": "https://wy-static.wenxiaobai.com/wenxiaobai-web/production/3.12.14/_next/static/media/new_favicon.6d31cfe4.png"
         },
         {
-          "title": "WhatRunsWhere",
-          "description": "曾经的霸主之一",
-          "url": "#"
+          "title": "Genspark",
+          "description": "",
+          "url": "https://www.genspark.ai/agents?type=moa_chat",
+          "logo": "https://www.genspark.ai/agents?type=moa_chat/favicon.ico"
         },
         {
-          "title": "SocialAdScout",
-          "description": "社交广告SPY",
-          "url": "#"
+          "title": "AkashChat",
+          "description": "",
+          "url": "https://chat.akash.network",
+          "logo": "https://chat.akash.network/favicon.ico"
         },
         {
-          "title": "PowerAdSpy",
-          "description": "Facebook Ads SPY专家",
-          "url": "#"
+          "title": "V0",
+          "description": "Vercel旗下前端Ai编程工具",
+          "url": "https://v0.dev/chat",
+          "logo": "https://v0.dev/assets/icon-light-32x32.png"
         },
         {
-          "title": "Adspyhub",
-          "description": "BigSpy马甲",
-          "url": "#"
+          "title": "Same",
+          "description": "Ai快速仿站",
+          "url": "https://same.new",
+          "logo": "https://same.new/favicon.ico"
         },
         {
-          "title": "Idvert",
-          "description": "号称对标adplexity的国内服务商",
-          "url": "#"
+          "title": "响指HaiSnap",
+          "description": "人人都能创造的AI零代码应用平台",
+          "url": "https://www.haisnap.com",
+          "logo": "https://www.haisnap.com/favicon.ico"
         },
         {
-          "title": "BigSpy",
-          "description": "国产优质SPY服务商，推荐",
-          "url": "#"
+          "title": "Readdy",
+          "description": "",
+          "url": "https://readdy.ai",
+          "logo": "https://static.readdy.ai/web/favicon-180.png"
         },
         {
-          "title": "SpyPush",
-          "description": "专注于Push广告",
-          "url": "#"
+          "title": "Openrouter",
+          "description": "开放api平台",
+          "url": "https://openrouter.ai",
+          "logo": "https://openrouter.ai/favicon.ico"
         },
         {
-          "title": "AdplexityAdult",
-          "description": "Adplexity的成人版",
-          "url": "#"
+          "title": "Manus",
+          "description": "全场景Ai Agent",
+          "url": "https://manus.im",
+          "logo": "https://manus.im/icon.png"
+        },
+        {
+          "title": "Perplexity",
+          "description": "",
+          "url": "https://www.perplexity.ai",
+          "logo": "https://www.perplexity.ai/favicon.ico"
+        },
+        {
+          "title": "Grok",
+          "description": "马斯克出品的Ai",
+          "url": "https://grok.com",
+          "logo": "https://img.icons8.com/ios-filled/50/grok.png"
+        },
+        {
+          "title": "Copilot",
+          "description": "微软旗下Ai",
+          "url": "https://copilot.microsoft.com",
+          "logo": "https://copilot.microsoft.com/favicon.ico"
+        },
+        {
+          "title": "豆包",
+          "description": "字节旗下ai智能助手",
+          "url": "https://www.doubao.com/chat/",
+          "logo": "https://lf-flow-web-cdn.doubao.com/obj/flow-doubao/doubao/web/logo-icon.png"
+        },
+        {
+          "title": "文心一言",
+          "description": "百度旗下ai聊天助手",
+          "url": "https://yiyan.baidu.com",
+          "logo": "https://eb-static.cdn.bcebos.com/logo/favicon.ico"
+        },
+        {
+          "title": "Jules",
+          "description": "Google旗下ai管理github项目",
+          "url": "https://jules.google.com",
+          "logo": "https://www.gstatic.com/labs-code/code-app/favicon-48x48.png"
+        },
+        {
+          "title": "硅基流动",
+          "description": "免费的大模型api平台",
+          "url": "https://cloud.siliconflow.cn",
+          "logo": "https://cloud.siliconflow.cn/favicon.ico"
+        },
+        {
+          "title": "Kilo Code",
+          "description": "亚马逊旗下ai编程工具",
+          "url": "https://www.kilocode.ai",
+          "logo": "https://www.kilocode.ai/favicon.ico"
+        },
+        {
+          "title": "Cursor",
+          "description": "目前很受欢迎的ai编程工具",
+          "url": "https://cursor.com",
+          "logo": "https://cursor.com/favicon.ico"
+        },
+        {
+          "title": "Ai一键换脸",
+          "description": "",
+          "url": "https://imgai.ai/zh",
+          "logo": "https://imgai.ai/zh/favicon.ico"
+        },
+        {
+          "title": "Aippt",
+          "description": "",
+          "url": "https://www.aippt.cn",
+          "logo": "https://www.aippt.cn/_nuxt/highlight-2.Bb1q-DtW.webp"
+        },
+        {
+          "title": "Ai照片修复",
+          "description": "Ai照片修复",
+          "url": "https://picwish.cn/photo-enhancer",
+          "logo": "https://qncdn.aoscdn.com/astro/picwish/_astro/favicon@30w.61721eae.png"
+        },
+        {
+          "title": "Bolt",
+          "description": "Ai前端生成",
+          "url": "https://bolt.new",
+          "logo": "https://bolt.new/static/favicon.svg"
+        },
+        {
+          "title": "Llamacoder",
+          "description": "Ai生成app",
+          "url": "https://llamacoder.together.ai",
+          "logo": "https://llamacoder.together.ai/favicon.ico"
+        },
+        {
+          "title": "Codia",
+          "description": "截图转设计图",
+          "url": "https://codia.ai",
+          "logo": "https://codia.ai/favicon.ico"
         }
       ]
     },
     {
-      "name": "流量平台",
-      "href": "#流量平台",
-      "icon": "mdi:traffic-light",
+      "name": "Cloud",
+      "href": "#Cloud",
+      "icon": "mdi:cloud",
+      "type": "single",
+      "sites": [
+        {
+          "title": "阿里云",
+          "description": "阿里云官网",
+          "url": "https://www.aliyun.com",
+          "logo": "https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico"
+        },
+        {
+          "title": "腾讯云",
+          "description": "腾讯云国际版官网",
+          "url": "https://console.tencentcloud.com",
+          "logo": "https://console.tencentcloud.com/favicon.ico"
+        },
+        {
+          "title": "甲骨文云",
+          "description": "Oracle Cloud提供永久免费的4核24g云服务器",
+          "url": "https://cloud.oracle.com",
+          "logo": "https://cloud.oracle.com/favicon.ico"
+        },
+        {
+          "title": "亚马逊云",
+          "description": "Amazon AWS提供免费1年的vps",
+          "url": "https://aws.amazon.com",
+          "logo": "https://img.icons8.com/nolan/64/amazon-web-services.png"
+        },
+        {
+          "title": "DigitalOcean",
+          "description": "DigitalOcean提供免费2个月的vps",
+          "url": "https://www.digitalocean.com",
+          "logo": "https://www.digitalocean.com/_next/static/media/apple-touch-icon.d7edaa01.png"
+        },
+        {
+          "title": "Vultr",
+          "description": "Vultr提供免费1年的vps",
+          "url": "https://www.vultr.com",
+          "logo": "https://www.vultr.com/favicon.ico"
+        },
+        {
+          "title": "谷歌云",
+          "description": "Google云提供免费3个月的vps",
+          "url": "https://cloud.google.com",
+          "logo": "https://cloud.google.com/favicon.ico"
+        },
+        {
+          "title": "Azure",
+          "description": "微软提供免费1年的vps",
+          "url": "https://azure.microsoft.com/zh-cn/free/",
+          "logo": "https://azure.microsoft.com/zh-cn/free/favicon.ico"
+        },
+        {
+          "title": "Linode",
+          "description": "免费2个月(易风控)",
+          "url": "https://www.linode.com",
+          "logo": "https://www.linode.com/favicon.ico"
+        },
+        {
+          "title": "Cloudcone",
+          "description": "10$每年的廉价vps",
+          "url": "https://app.cloudcone.com",
+          "logo": "https://cloudcone.com/wp-content/uploads/2017/06/cropped-logo-2-32x32.png"
+        },
+        {
+          "title": "Dartnode",
+          "description": "开源项目可申请的永久免费vps",
+          "url": "https://dartnode.com",
+          "logo": "https://dartnode.com/assets/dash/images/brand/favicon.png"
+        },
+        {
+          "title": "DMIT",
+          "description": "优质vps线路",
+          "url": "https://www.dmit.io",
+          "logo": "https://www.dmit.io/favicon.ico"
+        },
+        {
+          "title": "Bandwagonhost",
+          "description": "CN2-GIA优质线路",
+          "url": "https://bandwagonhost.com",
+          "logo": "https://cdn.nodeimage.com/i/sOjwSRMxgDFDmei6uJxngdPXTF8aeNxP.png"
+        },
+        {
+          "title": "Racknerd",
+          "description": "10$每年的廉价vps",
+          "url": "https://my.racknerd.com",
+          "logo": "https://my.racknerd.com/templates/racknerdv851/files/favicon.png"
+        },
+        {
+          "title": "Atlantic",
+          "description": "免费1年的vps(易风控)",
+          "url": "https://cloud.atlantic.net/",
+          "logo": "https://cloud.atlantic.net/favicon.ico"
+        },
+        {
+          "title": "Lightnode",
+          "description": "冷门区域vps",
+          "url": "https://www.lightnode.com",
+          "logo": "https://www.lightnode.com/favicon.ico"
+        },
+        {
+          "title": "ishosting",
+          "description": "地区多的vps",
+          "url": "https://www.ishosting.com",
+          "logo": "https://ishosting.com/meta/landing/favicon-48x48.png"
+        },
+        {
+          "title": "Diylink",
+          "description": "套壳google和aws的vps",
+          "url": "https://console.diylink.net",
+          "logo": "https://console.diylink.net/favicon.ico"
+        },
+        {
+          "title": "IBM",
+          "description": "免费4个月vps(需住宅ip注册)",
+          "url": "https://linuxone.cloud.marist.edu",
+          "logo": "https://img.icons8.com/ios/50/FAB005/ibm.png"
+        },
+        {
+          "title": "Sharon",
+          "description": "优质3网优化线路",
+          "url": "https://whmcs.sharon.io",
+          "logo": "https://framerusercontent.com/images/lvXR2x1W2bqvDhYmE8IQ1jHFv3Q.png"
+        },
+        {
+          "title": "Alice",
+          "description": "",
+          "url": "https://alicenetworks.net/",
+          "logo": "https://img.icons8.com/cute-clipart/64/a.png"
+        },
+        {
+          "title": "Yxvm",
+          "description": "",
+          "url": "https://yxvm.com",
+          "logo": "https://cdn.nodeimage.com/i/iz5EGYyDLI5qBkNr2nTsSLxMHrqR6MSS.webp"
+        },
+        {
+          "title": "Cloudforest",
+          "description": "罗马尼亚免费1个月vps",
+          "url": "https://cloud.cloudforest.ro",
+          "logo": "https://cloudforest.ro/wp-content/uploads/2024/01/cropped-android-chrome-192x192-1-32x32.png"
+        },
+        {
+          "title": "华为云",
+          "description": "华为提供永久免费的云开发主机",
+          "url": "https://huaweicloud.com/",
+          "logo": "https://huaweicloud.com/favicon.ico"
+        }
+      ]
+    },
+    {
+      "name": "Container",
+      "href": "#Container",
+      "icon": "mdi:docker",
       "type": "tabs",
       "submenu": [
         {
-          "name": "PoP流量",
-          "href": "#流量平台-pop流量",
-          "icon": "mdi:traffic-light",
+          "name": "Game Server",
+          "href": "#Container-Game Server",
+          "icon": "mdi:gamepad-variant",
           "sites": [
             {
-              "title": "PropellerAds",
-              "description": "很多人都在用的平台",
-              "url": "https://propellerads.com",
-              "advantages": [
-                "全球性的流量覆盖",
-                "支持多种广告形式",
-                "实时报表系统",
-                "智能出价系统",
-                "反作弊系统"
-              ],
-              "details": {
-                "intro": "PropellerAds是全球领先的Pop和Push广告网络，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Popunder、Push通知、In-Page Push等。",
-                "pricing": "最低充值$100，CPM/CPC竞价模式，支持多种支付方式。",
-                "pros": [
-                  "流量质量稳定",
-                  "覆盖地区广",
-                  "支持多种广告形式",
-                  "实时优化工具",
-                  "客服响应快"
-                ],
-                "cons": [
-                  "部分地区竞争激烈",
-                  "优质流量成本较高",
-                  "需要一定预算测试"
-                ],
-                "tips": [
-                  "建议从小预算开始测试",
-                  "注意使用黑名单过滤",
-                  "多关注ROI报表",
-                  "善用自动优化功能",
-                  "重视转化追踪设置"
-                ]
-              }
+              "title": "Adkynet",
+              "description": "稳定的node/java/python容器(1月1续)",
+              "url": "https://manager.adkynet.com",
+              "logo": "https://www.adkynet.com/favicon.png"
             },
             {
-              "title": "Zeropark",
-              "description": "老牌流量平台，Pop和Domain流量质量好",
-              "url": "https://zeropark.com",
-              "advantages": [
-                "高质量的Pop流量",
-                "强大的定向功能",
-                "详细的数据分析",
-                "Domain流量资源",
-                "RON/ROC投放选项"
-              ],
-              "details": {
-                "intro": "Zeropark是业内知名的流量平台，以其高质量的Pop和Domain流量而闻名。平台提供详细的数据分析和优化工具，适合经验丰富的广告主。",
-                "pricing": "最低充值$200，支持CPV/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "流量质量高",
-                  "定向选项丰富",
-                  "报表系统专业",
-                  "支持API对接",
-                  "优化工具完善"
-                ],
-                "cons": [
-                  "入门门槛较高",
-                  "需要较大测试预算",
-                  "部分流量竞争激烈"
-                ],
-                "tips": [
-                  "建议准备充足测试预算",
-                  "重视前期数据收集",
-                  "善用分时段投放",
-                  "注意流量源筛选",
-                  "合理使用竞价策略"
-                ]
-              }
+              "title": "Daki",
+              "description": "游戏机",
+              "url": "https://dash.daki.cc/",
+              "logo": "https://dash.daki.cc/favicon.ico"
             },
             {
-              "title": "Popads",
-              "description": "老牌Pop联盟之一",
-              "url": "https://popads.net",
-              "advantages": [
-                "专注Pop流量",
-                "全球流量覆盖",
-                "实时竞价系统",
-                "地理定向选项",
-                "设备定向功能"
-              ],
-              "details": {
-                "intro": "Popads是最早专注于Pop流量的广告网络之一，拥有稳定的流量来源和完善的放系统。平以其透明的竞价系统和实时报表而受到广告主欢迎。",
-                "pricing": "最低充值$50，CPM竞价模式，支持多种支付方式。",
-                "pros": [
-                  "起投金额低",
-                  "操作界面简单",
-                  "竞价系统透明",
-                  "流量来源稳定",
-                  "支持多种定向"
-                ],
-                "cons": [
-                  "部分流量量不稳定",
-                  "优化工具较少",
-                  "报表功能简单"
-                ],
-                "tips": [
-                  "建议从小流量源开始测试",
-                  "注意设频次控制",
-                  "关注竞价变化",
-                  "做好预算控制",
-                  "重视转化追踪"
-                ]
-              }
+              "title": "Crosmo",
+              "description": "游戏机",
+              "url": "https://host.crosmo.de",
+              "logo": "https://host.crosmo.de/storage/favicon.ico"
             },
             {
-              "title": "Popcash",
-              "description": "历史悠久的pop联盟，popads的竞争对手",
-              "url": "https://popcash.net",
-              "advantages": [
-                "专注于pop流量",
-                "全球流量覆盖",
-                "实时竞价系统",
-                "地理定向选项",
-                "设备定向功能"
-              ],
-              "details": {
-                "intro": "Popcash是专注于pop流量的广告网络，以其高质量的流量和稳定的投放选项而闻名。平台支持多种支付方式，适合不同预算的广告主。",
-                "pricing": "最低充值$50，CPM竞价模式，支持多种支付方式。",
-                "pros": [
-                  "流量质量稳定",
-                  "覆盖地区广",
-                  "支持多种支付",
-                  "实时优化工具",
-                  "客服响应快"
-                ],
-                "cons": [
-                  "部分地区竞争激烈",
-                  "优质流量成本较高",
-                  "需要持续优化"
-                ],
-                "tips": [
-                  "建议从小预算开始测试",
-                  "注意受众定向设置",
-                  "关注转化数据",
-                  "优化创意文案",
-                  "合理控制频次"
-                ]
-              }
+              "title": "Flexynode",
+              "description": "64M nodejs/python玩具",
+              "url": "https://flexynode.com",
+              "logo": "https://448d564e-e592-4849-b808-2fdf2cb6c5b1.svc.edge.scw.cloud/website/img/2.webp"
             },
             {
-              "title": "SelfAdvertiser",
-              "description": "Intango旗下产品, 全部按照CPA效果给钱",
-              "url": "https://selfadvertiser.com",
-              "advantages": [
-                "专注于CPA效果",
-                "全球流量覆盖",
-                "实时数据统计",
-                "智能优化功能",
-                "多种广告形式"
-              ],
-              "details": {
-                "intro": "SelfAdvertiser是专注于CPA效果的广告网络，提供多种广告形式和实时数据统计。平台支持多种支付方式，适合不同类型的推广需求。",
-                "pricing": "按效果付费，无需预付费用",
-                "pros": [
-                  "offer质量高",
-                  "支付准时",
-                  "优化工具强大",
-                  "数据透明",
-                  "支持多种广告形式"
-                ],
-                "cons": [
-                  "部分地区竞争激烈",
-                  "流量规模较小",
-                  "需要持续优化"
-                ],
-                "tips": [
-                  "建议从小预算开始测试",
-                  "注意创意规范",
-                  "关注转化数据",
-                  "合理设置预算",
-                  "持续优化定向"
-                ]
-              }
+              "title": "Boxmineworld",
+              "description": "游戏机",
+              "url": "https://dash.boxmineworld.com",
+              "logo": "https://boxmineworld.com/images/favicon.png"
             },
             {
-              "title": "Adsterra",
-              "description": "提供主流和大人弹窗流量",
-              "url": "https://adsterra.com",
-              "advantages": [
-                "多样化广告形式",
-                "全球流量覆盖",
-                "反作弊系统",
-                "时报表",
-                "智能优化工具"
-              ],
-              "details": {
-                "intro": "Adsterra是综合性广告平台，提供Push、Pop、Banner等多种广告形式。平台支持多种支付方式，适合不同预算的广告主。",
-                "pricing": "最低充值$100，支持CPM/CPC/CPA等多种计费模式。",
-                "pros": [
-                  "广告形式多样",
-                  "流量来源稳定",
-                  "支持多种支付",
-                  "报表系统完善",
-                  "客服支持好"
-                ],
-                "cons": [
-                  "部分流量质量不稳定",
-                  "竞争较大",
-                  "需要较多测试"
-                ],
-                "tips": [
-                  "多测试不同广告形式",
-                  "注意流量质量",
-                  "关注ROI指标",
-                  "优化投放时间",
-                  "合理分配预算"
-                ]
-              }
+              "title": "wispbyte",
+              "description": "游戏机",
+              "url": "https://wispbyte.com",
+              "logo": "https://wispbyte.com/assets/wispbyte_blue_nobg.webp"
             },
             {
-              "title": "Ad-maven",
-              "description": "Push为主兼顾Pop",
-              "url": "https://ad-maven.com",
-              "advantages": [
-                "Push和Pop流量",
-                "全球流量覆盖",
-                "实时统计系统",
-                "多重定向选项",
-                "自动优化功能"
-              ],
-              "details": {
-                "intro": "Ad-maven是专业的Push和Pop广告平台，提供全球范围的流量覆盖。平台支持多种广告形式，适合不同类型的推广需求。",
-                "pricing": "最低充值$50，支持CPM/CPC计费模式。",
-                "pros": [
-                  "起投金额低",
-                  "流量类型多样",
-                  "操作界面友好",
-                  "支持多种定向",
-                  "优化工具实用"
-                ],
-                "cons": [
-                  "部分地区流量不稳定",
-                  "报表功能简单",
-                  "优化选项有限"
-                ],
-                "tips": [
-                  "先测试小预算",
-                  "关注质量指标",
-                  "持续监测数据",
-                  "优化投放策略",
-                  "注意成本控制"
-                ]
-              }
+              "title": "Searcade",
+              "description": "每10天需登录一次",
+              "url": "https://searcade.com",
+              "logo": "https://448d564e-e592-4849-b808-2fdf2cb6c5b1.svc.edge.scw.cloud/website/img/2.webp"
             },
             {
-              "title": "Adcash",
-              "description": "大佬们都在用的流量源之一",
-              "url": "https://adcash.com",
-              "advantages": [
-                "高质量流量",
-                "多种广告形式",
-                "精准定向选项",
-                "实时报表系统",
-                "防作弊机制"
-              ],
-              "details": {
-                "intro": "Adcash是专注于广告流量和定向选项的平台，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低充值$100，支持CPM/CPC模式。",
-                "pros": [
-                  "流量质量高",
-                  "转化率高",
-                  "定向精准",
-                  "报表系统完善",
-                  "支持API"
-                ],
-                "cons": [
-                  "部分地区竞争激烈",
-                  "优质流量成本高",
-                  "需要持续优化"
-                ],
-                "tips": [
-                  "注意选择合适位置",
-                  "测试不同创意",
-                  "关注ROI指标",
-                  "合理控制频次",
-                  "持续优化定向"
-                ]
-              }
+              "title": "Echohost",
+              "description": "游戏机",
+              "url": "https://client.echohost.org",
+              "logo": "https://client.echohost.org/storage/favicon.ico"
             },
             {
-              "title": "Hilltopads",
-              "description": "老牌流量平台，支持多种广告形式",
-              "url": "https://hilltopads.com",
-              "advantages": [
-                "多种广告形式",
-                "全球流量覆盖",
-                "实时竞价系统",
-                "地理定向选项",
-                "设备定向功能"
-              ],
-              "details": {
-                "intro": "Hilltopads是老牌流量平台，以其丰富的广告形式和稳定的流量来源而闻名。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低充值$100，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "流量质量高",
-                  "定向选项丰富",
-                  "报表系统专业",
-                  "支持API对接",
-                  "优化工具完善"
-                ],
-                "cons": [
-                  "入门门槛较高",
-                  "需要较大测试预算",
-                  "部分流量竞争激烈"
-                ],
-                "tips": [
-                  "建议准备充足测试预算",
-                  "重视前期数据收集",
-                  "善用分时段投放",
-                  "注意流量源筛选",
-                  "合理使用竞价策略"
-                ]
-              }
+              "title": "Embotic",
+              "description": "游戏机",
+              "url": "https://dash.embotic.xyz",
+              "logo": "https://dash.embotic.xyz/storage/icon.png"
             },
             {
-              "title": "Clickadu",
-              "description": "专注于Pop和视频广告",
-              "url": "https://clickadu.com",
-              "advantages": [
-                "专注于Pop和视频广告",
-                "全球流量覆盖",
-                "智能优化系统",
-                "详细的定向选项",
-                "实时竞价系统"
-              ],
-              "details": {
-                "intro": "Clickadu是专注于Pop和视频广告的平台，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低预算$500起，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖地区广",
-                  "优化工具强大",
-                  "支持多种创意格式",
-                  "报表系统完善"
-                ],
-                "cons": [
-                  "起投金额较高",
-                  "审核较严格",
-                  "部分地区竞争激烈"
-                ],
-                "tips": [
-                  "建议从小预算测试开始",
-                  "注意创意规范",
-                  "重视素材测试",
-                  "关注ROI指标",
-                  "善用自动优化功能"
-                ]
-              }
+              "title": "Zenix",
+              "description": "",
+              "url": "https://dash.zenix.sg/dashboard",
+              "logo": "https://panel.zenix.sg/favicons/apple-touch-icon.png"
+            },
+            {
+              "title": "Waifly",
+              "description": "",
+              "url": "https://dash.waifly.com",
+              "logo": "https://waifly.com/images/favicon.png"
+            },
+            {
+              "title": "karlo",
+              "description": "",
+              "url": "https://karlo-hosting.com",
+              "logo": "https://karlo-hosting.com/favicon.ico"
+            },
+            {
+              "title": "solar",
+              "description": "",
+              "url": "https://account.solarhosting.cc",
+              "logo": "https://account.solarhosting.cc/storage/favicon.ico"
+            },
+            {
+              "title": "Berrynodes",
+              "description": "",
+              "url": "https://dash.berrynodes.com",
+              "logo": "https://dash.berrynodes.com/storage/icon.png"
+            },
+            {
+              "title": "Spaceify",
+              "description": "易风控",
+              "url": "https://client.spaceify.eu",
+              "logo": "https://client.spaceify.eu/storage/logo.png"
+            },
+            {
+              "title": "Freeserver",
+              "description": "台湾游戏机",
+              "url": "https://dash.freeserver.tw/",
+              "logo": "https://dash.freeserver.tw/assets/freeserverv3.bb434095.png"
+            },
+            {
+              "title": "Bot-hosting",
+              "description": "需要赚金币续费",
+              "url": "https://bot-hosting.net",
+              "logo": "https://bot-hosting.net/panel/assets/bothosting.91bb7fdd.png"
+            },
+            {
+              "title": "Atomic",
+              "description": "稳定多年的游戏机",
+              "url": "https://panel.atomicnetworks.co",
+              "logo": "https://cdn.wisp.gg/uploaded_assets/panel.atomicnetworks.co/c1146e9e03bfc07d80b4714ff0d3bc43a3cf071c2fdda161dd49dcd831fbecd8.png"
+            },
+            {
+              "title": "Boxmineworld",
+              "description": "稳定的美国游戏机",
+              "url": "https://dash.boxmineworld.com",
+              "logo": "https://dash.boxmineworld.com/favicon.ico"
+            },
+            {
+              "title": "Zampto",
+              "description": "意大利游戏机",
+              "url": "https://hosting.zampto.net",
+              "logo": "https://zampto.net/assets/img/logo-icon-gradient.png"
+            },
+            {
+              "title": "Altare",
+              "description": "多地区游戏机",
+              "url": "https://altare.sh/dashboard",
+              "logo": "https://i.imgur.com/EZep3AC.png"
+            },
+            {
+              "title": "Skybots",
+              "description": "法国ISPnodejs玩具",
+              "url": "https://skybots.tech/dashboard/mes-bots",
+              "logo": "https://skybots.tech/dashboard/mes-bots/favicon.ico"
+            },
+            {
+              "title": "Greathost",
+              "description": "",
+              "url": "https://greathost.es/dashboard",
+              "logo": "https://greathost.es/dashboard/favicon.ico"
+            },
+            {
+              "title": "Lunes",
+              "description": "",
+              "url": "https://betadash.lunes.host",
+              "logo": "128m多环境小游戏机"
             }
           ]
         },
         {
-          "name": "原生广告流量",
-          "href": "#流量平台-原生广告流量",
-          "icon": "mdi:traffic-light",
+          "name": "综合",
+          "href": "#Container-综合",
+          "icon": "mdi:view-grid",
           "sites": [
             {
-              "title": "MGID",
-              "description": "全球最大的原生广告网络之一",
-              "url": "https://mgid.com"
+              "title": "Koyeb",
+              "description": "免费容器(注册需干净的ip，无需绑卡)",
+              "url": "https://app.koyeb.com",
+              "logo": "https://app.koyeb.com/favicon.ico"
             },
             {
-              "title": "Taboola",
-              "description": "高质量原生广告网络",
-              "url": "https://taboola.com"
+              "title": "Render",
+              "description": "免费容器(注册需干净的ip，无需绑卡)",
+              "url": "https://dashboard.render.com",
+              "logo": "https://dashboard.render.com/favicon-light.png"
             },
             {
-              "title": "Outbrain",
-              "description": "优质原生广告平台",
-              "url": "https://outbrain.com"
+              "title": "Fly",
+              "description": "免费容器(注册需绑卡)",
+              "url": "https://fly.io",
+              "logo": "https://fly.io/phx/ui/images/favicon/favicon-595d1312b35dfe32838befdf8505515e.ico?vsn=d"
             },
             {
-              "title": "Revcontent",
-              "description": "内容推荐广告平台",
-              "url": "https://revcontent.com"
+              "title": "Northflank",
+              "description": "免费容器(注册需绑卡)",
+              "url": "https://app.northflank.com",
+              "logo": "https://app.northflank.com/favicon.ico"
             },
             {
-              "title": "Content.ad",
-              "description": "专注于内容营销的广告平台",
-              "url": "https://content.ad"
+              "title": "Choreo",
+              "description": "免费容器(无需绑卡)",
+              "url": "https://console.choreo.dev",
+              "logo": "https://console.choreo.dev/favicon.ico"
             },
             {
-              "title": "Yahoo Gemini",
-              "description": "雅虎的原生广告平台",
-              "url": "https://gemini.yahoo.com"
+              "title": "Railway",
+              "description": "免费1个月容器(注册需干净的ip，无需绑卡，到期可注销后重复注册)",
+              "url": "https://railway.com",
+              "logo": "https://railway.com/favicon.ico"
             },
             {
-              "title": "Nativo",
-              "description": "高端原生广告平台",
-              "url": "https://nativo.com"
-            }
-          ]
-        },
-        {
-          "name": "社交流量",
-          "href": "#流量平台-社交流量",
-          "icon": "mdi:traffic-light",
-          "sites": [
-            {
-              "title": "Facebook Ads",
-              "description": "最大的社交广告平台",
-              "url": "https://facebook.com/advertising",
-              "advantages": [
-                "精准的用户定向",
-                "多样的广告形式",
-                "强大的优化算法",
-                "详细的数据分析",
-                "广泛的受众覆盖"
-              ],
-              "details": {
-                "intro": "Facebook Ads是全球最大的社交媒体广平台，拥有数十亿活跃用户，提供精准的用户定向和多样的广告形式。",
-                "pricing": "最低日预算$1起，支持多种计费方式，包括CPM、CPC等。",
-                "pros": [
-                  "用户基数大",
-                  "定向精准",
-                  "数据分析详细",
-                  "创意形式丰富",
-                  "优化工具强大"
-                ],
-                "cons": [
-                  "获取账户难度大",
-                  "政策限制多",
-                  "竞争激烈"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "遵守广告政策",
-                  "重视素材质量",
-                  "做好预算规划",
-                  "持续测试优化"
-                ]
-              }
+              "title": "Galaxycloud",
+              "description": "免费容器(无需绑卡)",
+              "url": "https://beta.galaxycloud.app",
+              "logo": "https://beta.galaxycloud.app/favicon.ico?v2"
             },
             {
-              "title": "TikTok Ads",
-              "description": "短视频广告平台",
-              "url": "https://ads.tiktok.com",
-              "advantages": [
-                "年轻用户群体",
-                "视频广告为主",
-                "创意展现丰富",
-                "全球化布局",
-                "智能投放系统"
-              ],
-              "details": {
-                "intro": "TikTok Ads是快速增长的短视频广告平台，主要面向年轻用户群体，支持多种创意广告形式。",
-                "pricing": "最低预算因地区而异，通常$50起，支持多种计费方式。",
-                "pros": [
-                  "用户增长快",
-                  "互动率高",
-                  "创意空间大",
-                  "覆盖广",
-                  "效果好"
-                ],
-                "cons": [
-                  "制作成本较高",
-                  "创意要求高",
-                  "部分地区受限"
-                ],
-                "tips": [
-                  "注重视频质量",
-                  "把握用户兴趣",
-                  "测试不同创意",
-                  "关注热点趋势",
-                  "优化投放时间"
-                ]
-              }
+              "title": "Azure容器",
+              "description": "微软免费容器(可以创建10个，az200或edu邮箱注册)",
+              "url": "https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0144p",
+              "logo": "https://azure.microsoft.com/en-us/pricing/offers/ms-azr-0144p/favicon.ico"
             },
             {
-              "title": "Twitter Ads",
-              "description": "推特广告平台",
-              "url": "https://ads.twitter.com",
-              "advantages": [
-                "精准的广告定向",
-                "多种广告形式",
-                "强大的数据分析",
-                "实时竞价系统",
-                "广告创意库"
-              ],
-              "details": {
-                "intro": "Twitter Ads是领先的广告平台之一，提供精准的广告定向和多种广告形式。平台支持实时竞价系统，让广告主能够根据数据分析调整投放策略。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$1起。",
-                "pros": [
-                  "广告定向精准",
-                  "广告形式多样",
-                  "数据分析详细",
-                  "实时竞价系统",
-                  "广告创意库丰富"
-                ],
-                "cons": [
-                  "获取账户难度大",
-                  "政策限制多",
-                  "竞争激烈"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "遵守广告政策",
-                  "重视数据分析",
-                  "保持活跃度",
-                  "关注行业动态"
-                ]
-              }
+              "title": "Codered",
+              "description": "免费Django框架容器(需isp环境注册)",
+              "url": "https://app.codered.cloud",
+              "logo": "https://app.codered.cloud/static/core/img/favicon.png"
             },
             {
-              "title": "LinkedIn Ads",
-              "description": "领英广告平台",
-              "url": "https://business.linkedin.com/marketing-solutions",
-              "advantages": [
-                "精准的广告定向",
-                "多种广告形式",
-                "强大的数据分析",
-                "实时竞价系统",
-                "广告创意库"
-              ],
-              "details": {
-                "intro": "LinkedIn Ads是领先的广告平台之一，提供精准的广告定向和多种广告形式。平台支持实时竞价系统，让广告主能够根据数据分析调整投放策略。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$1起。",
-                "pros": [
-                  "广告定向精准",
-                  "广告形式多样",
-                  "数据分析详细",
-                  "实时竞价系统",
-                  "广告创意库丰富"
-                ],
-                "cons": [
-                  "获取账户难度大",
-                  "政策限制多",
-                  "竞争激烈"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "遵守广告政策",
-                  "重视数据分析",
-                  "保持活跃度",
-                  "关注行业动态"
-                ]
-              }
+              "title": "Shuttle",
+              "description": "免费的rust容器",
+              "url": "https://console.shuttle.dev",
+              "logo": "https://console.shuttle.dev/favicon.ico"
             },
             {
-              "title": "Snapchat Ads",
-              "description": "Snapchat广告平台",
-              "url": "https://ads.snapchat.com",
-              "advantages": [
-                "精准的广告定向",
-                "多种广告形式",
-                "强大的数据分析",
-                "实时竞价系统",
-                "广告创意库"
-              ],
-              "details": {
-                "intro": "Snapchat Ads是领先的广告平台之一，提供精准的广告定向和多种广告形式。平台支持实时竞价系统，让广告主能够根据数据分析调整投放策略。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$1起。",
-                "pros": [
-                  "广告定向精准",
-                  "广告形式多样",
-                  "数据分析详细",
-                  "实时竞价系统",
-                  "广告创意库丰富"
-                ],
-                "cons": [
-                  "获取账户难度大",
-                  "政策限制多",
-                  "竞争激烈"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "遵守广告政策",
-                  "重视数据分析",
-                  "保持活跃度",
-                  "关注行业动态"
-                ]
-              }
+              "title": "Serv00",
+              "description": "免费的波兰容器(目前已停止注册)",
+              "url": "https://www.serv00.com",
+              "logo": "https://www.serv00.com/static/ct8/img/logo.jpg"
             },
             {
-              "title": "Pinterest Ads",
-              "description": "Pinterest广告平台",
-              "url": "https://ads.pinterest.com",
-              "advantages": [
-                "精准的广告定向",
-                "多种广告形式",
-                "强大的数据分析",
-                "实时竞价系统",
-                "广告创意库"
-              ],
-              "details": {
-                "intro": "Pinterest Ads是领先的广告平台之一，提供精准的广告定向和多种广告形式。平台支持实时竞价系统，让广告主能够根据数据分析调整投放策略。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$1起。",
-                "pros": [
-                  "广告定向精准",
-                  "广告形式多样",
-                  "数据分析详细",
-                  "实时竞价系统",
-                  "广告创意库丰富"
-                ],
-                "cons": [
-                  "获取账户难度大",
-                  "政策限制多",
-                  "竞争激烈"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "遵守广告政策",
-                  "重视数据分析",
-                  "保持活跃度",
-                  "关注行业动态"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "搜索流量",
-          "href": "#流量平台-搜索流量",
-          "icon": "mdi:traffic-light",
-          "sites": [
-            {
-              "title": "Google Ads",
-              "description": "最大的搜索广告平台",
-              "url": "https://ads.google.com",
-              "advantages": [
-                "精准的关键词定向",
-                "全球最大搜索流量",
-                "完善的优化工具",
-                "多样的广告形式",
-                "智能竞价系统"
-              ],
-              "details": {
-                "intro": "Google Ads是全球最大的搜索广告平台，提供精准的关键词定向和丰富的流量资源。平台能完善，适合各类产品推广。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$10起。",
-                "pros": [
-                  "流量质量高",
-                  "转化率好",
-                  "定向精准",
-                  "数据透明",
-                  "工具完善"
-                ],
-                "cons": [
-                  "获取账户难",
-                  "竞争激烈",
-                  "成本较高",
-                  "政策严格"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "关注质量得分",
-                  "优化着陆页",
-                  "合理设置预算",
-                  "持续优化关键词"
-                ]
-              }
+              "title": "CT8",
+              "description": "Serv00同款(不定期开放注册)",
+              "url": "https://www.ct8.pl",
+              "logo": "https://www.ct8.pl/static/ct8/img/logo.jpg"
             },
             {
-              "title": "Bing Ads",
-              "description": "微软的搜索广告平台",
-              "url": "https://ads.microsoft.com",
-              "advantages": [
-                "成本相对较低",
-                "竞争压力小",
-                "导入Google Ads campaigns",
-                "精准定向选项",
-                "LinkedIn受众整合"
-              ],
-              "details": {
-                "intro": "Bing Ads是微软的搜索广告平台，虽然流量规模不及Google，但具有成本较低、竞争较小的优势。特别适合预算有限的广告主。",
-                "pricing": "CPC计费，最低日预算$5起，具体价格因市场而异。",
-                "pros": [
-                  "获取账户容易",
-                  "竞争较小",
-                  "CPC较低",
-                  "政策相对宽松",
-                  "可导入Google campaigns"
-                ],
-                "cons": [
-                  "流量规模小",
-                  "部分地区覆盖有限",
-                  "工具不如Google完善"
-                ],
-                "tips": [
-                  "可以从Google导入广告",
-                  "关注独特受众群体",
-                  "善用LinkedIn定向",
-                  "注意移动端优化",
-                  "测试不同出价策略"
-                ]
-              }
+              "title": "Claw",
+              "description": "免费容器(半年以上的github账户每月免费5$)",
+              "url": "https://console.run.claw.cloud/signin?link=FZHSTH7HEBTU",
+              "logo": "https://console.run.claw.cloud/signin?link=FZHSTH7HEBTU/favicon.ico"
             },
             {
-              "title": "Yandex.Direct",
-              "description": "俄罗斯最大的搜索广告平台",
-              "url": "https://direct.yandex.com",
-              "advantages": [
-                "精准的关键词定向",
-                "俄罗斯最大���索流量",
-                "完善的优化工具",
-                "多样���广告形式",
-                "智能竞价系统"
-              ],
-              "details": {
-                "intro": "Yandex.Direct是俄罗斯最大的搜索广告平台，提供精准的关键词定向和丰富的流量资源。平台功能完善，适合各类产品推广。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$10起。",
-                "pros": [
-                  "流量质量高",
-                  "转化率好",
-                  "定向精准",
-                  "数据透明",
-                  "工具完善"
-                ],
-                "cons": [
-                  "获取账户难",
-                  "竞争激烈",
-                  "成本较高",
-                  "政策严格"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "关注质量得分",
-                  "优化着陆页",
-                  "合理设置预算",
-                  "持续优化关键词"
-                ]
-              }
+              "title": "Cloudcat",
+              "description": "Claw同款免费容器(每月免费5$)",
+              "url": "https://cloud.cloudcat.one",
+              "logo": "https://cloud.cloudcat.one/favicon.ico"
             },
             {
-              "title": "Baidu Ads",
-              "description": "百度广告平台",
-              "url": "https://e.baidu.com",
-              "advantages": [
-                "精准的关键词定向",
-                "中国最大搜索流量",
-                "完善的优化工具",
-                "多样的广告形式",
-                "智能竞价系统"
-              ],
-              "details": {
-                "intro": "Baidu Ads是中国最大的搜索广告平台，提供精准的关键词定向和丰富的流量资源。平台功能完善，适合各类产品推广。",
-                "pricing": "按点击付费(CPC)，最低预算因地区而异，通常每日$10起。",
-                "pros": [
-                  "流量质量高",
-                  "转化率好",
-                  "定向精准",
-                  "数据透明",
-                  "工具完善"
-                ],
-                "cons": [
-                  "获取账户难",
-                  "竞争激烈",
-                  "成本较高",
-                  "政策严格"
-                ],
-                "tips": [
-                  "注意账户安全",
-                  "关注质量得分",
-                  "优化着陆页",
-                  "合理设置预算",
-                  "持续优化关键词"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Adult流量",
-          "href": "#流量平台-adult流量",
-          "icon": "mdi:traffic-light",
-          "sites": [
-            {
-              "title": "TrafficFactory",
-              "description": "成人广告网络，Banner和Pop流量质量不错",
-              "url": "https://trafficfactory.com",
-              "advantages": [
-                "高质量成人流量",
-                "多种广告形式",
-                "精准定向选项",
-                "实时报表系统",
-                "防作弊机制"
-              ],
-              "details": {
-                "intro": "TrafficFactory是专业的成人广告网络，提供高质量的Banner和Pop流量。平台支持多种定向选项，适合成人产品推广。",
-                "pricing": "最低充值$100，支持CPM/CPC模式。",
-                "pros": [
-                  "流量质量好",
-                  "转化率高",
-                  "定向选项多",
-                  "报表详细",
-                  "支持API"
-                ],
-                "cons": [
-                  "部分地区限制",
-                  "竞争较大",
-                  "优质流量成本高"
-                ],
-                "tips": [
-                  "注意选择合适位置",
-                  "测试不同创意",
-                  "关注ROI指标",
-                  "合理控制频次",
-                  "持续优化定向"
-                ]
-              }
+              "title": "Huggingface",
+              "description": "开源模型社区(免费的space)",
+              "url": "https://huggingface.co",
+              "logo": "https://huggingface.co/favicon.ico"
             },
             {
-              "title": "Exoclick",
-              "description": "老牌综合广告网络，支持多种广告形式",
-              "url": "https://exoclick.com",
-              "advantages": [
-                "多样化广告形式",
-                "全球流量覆盖",
-                "智能优化系统",
-                "详细的定向选项",
-                "反作弊系统"
-              ],
-              "details": {
-                "intro": "Exoclick是成熟的成人广告网络，提供多种广告形式和丰富的定向选项。平台技术成熟，适合各类推广需求。",
-                "pricing": "最低充值$200，支持多种计费模式。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖面广",
-                  "系统稳定",
-                  "优化工具强大",
-                  "支持自动化"
-                ],
-                "cons": [
-                  "部分流量质量不稳定",
-                  "高级功能门槛高",
-                  "客服响应慢"
-                ],
-                "tips": [
-                  "多测试不同广告形式",
-                  "注意流量质量筛选",
-                  "合理设置定向",
-                  "关注数据分析",
-                  "适时调整策略"
-                ]
-              }
+              "title": "Alwaysdata",
+              "description": "免费容器(干净ip注册免绑卡)",
+              "url": "https://admin.alwaysdata.com",
+              "logo": "https://static.alwaysdata.com/media/reseller/1/theme/favicon_kfxZA8s.png"
             },
             {
-              "title": "JuicyAds",
-              "description": "专注成人广告的网络",
-              "url": "https://juicyads.com",
-              "advantages": [
-                "专注于成人广告",
-                "全球流量覆盖",
-                "智能优化系统",
-                "详细的定向选项",
-                "实时竞价系统"
-              ],
-              "details": {
-                "intro": "JuicyAds是专注于成人广告的广告网络，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低预算$500起，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖地区广",
-                  "优化工具强大",
-                  "支持多种创意格式",
-                  "报表系统完善"
-                ],
-                "cons": [
-                  "起投金额较高",
-                  "审核较严格",
-                  "部分地区竞争激烈"
-                ],
-                "tips": [
-                  "建议从小预算测试开始",
-                  "注意创意规范",
-                  "重视素材测试",
-                  "关注ROI指标",
-                  "善用自动优化功能"
-                ]
-              }
+              "title": "Vercel",
+              "description": "免费静态网页托管",
+              "url": "https://vercel.com/dashboard",
+              "logo": "https://vercel.com/dashboard/favicon.ico"
             },
             {
-              "title": "PlugRush",
-              "description": "成人广告网络",
-              "url": "https://plugrush.com",
-              "advantages": [
-                "专注于成人广告",
-                "全球流量覆盖",
-                "智能优化系统",
-                "详细的定向选项",
-                "实时竞价系统"
-              ],
-              "details": {
-                "intro": "PlugRush是专注于成人广告的广告网络，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低预算$500起，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖地区广",
-                  "优化工具强大",
-                  "支持多种创意格式",
-                  "报表系统完善"
-                ],
-                "cons": [
-                  "起投金额较高",
-                  "审核较严格",
-                  "部分地区竞争激烈"
-                ],
-                "tips": [
-                  "建议从小预算测试开始",
-                  "注意创意规范",
-                  "重视素材测试",
-                  "关注ROI指标",
-                  "善用自动优化功能"
-                ]
-              }
+              "title": "Netlify",
+              "description": "免费静态网页托管",
+              "url": "https://www.netlify.com",
+              "logo": "https://www.netlify.com/favicon.ico"
             },
             {
-              "title": "TrafficJunky",
-              "description": "PornHub背后的广告网络",
-              "url": "https://trafficjunky.com",
-              "advantages": [
-                "专注于成人广告",
-                "全球流量覆盖",
-                "智能优化系统",
-                "详细的定向选项",
-                "实时竞价系统"
-              ],
-              "details": {
-                "intro": "TrafficJunky是专注于成人广告的广告网络，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低预算$500起，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖地区广",
-                  "优化工具强大",
-                  "支持多种创意格式",
-                  "报表系统完善"
-                ],
-                "cons": [
-                  "起投金额较高",
-                  "审核较严格",
-                  "部分地区竞争激烈"
-                ],
-                "tips": [
-                  "建议从小预算测试开始",
-                  "注意创意规范",
-                  "重视素材测试",
-                  "关注ROI指标",
-                  "善用自动优化功能"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "Push流量",
-          "href": "#流量平台-push流量",
-          "icon": "mdi:traffic-light",
-          "sites": [
-            {
-              "title": "PropellerAds",
-              "description": "全球领先的Push广告网络",
-              "url": "https://propellerads.com",
-              "advantages": [
-                "全球性Push流量覆盖",
-                "智能出价系统",
-                "多重定向选项",
-                "实时数据统计",
-                "自动优化功能"
-              ],
-              "details": {
-                "intro": "PropellerAds是全球领先的Push广告网络之一，提供高质量的Push通知广告服务。平台支持多种定向选项和智能优化功能。",
-                "pricing": "最低充值$100，支持CPM/CPC模式。",
-                "pros": [
-                  "流量质量稳定",
-                  "覆盖地区广",
-                  "优化工具完善",
-                  "支持自动竞价",
-                  "客服响应快"
-                ],
-                "cons": [
-                  "部分地区竞争激烈",
-                  "优质流量成本高",
-                  "需要持续优化"
-                ],
-                "tips": [
-                  "建议小预算测试开始",
-                  "注意受众定向设置",
-                  "关注转化数据",
-                  "优化创意文案",
-                  "合理控制频次"
-                ]
-              }
+              "title": "Modal",
+              "description": "每月免费5$(风控严格)",
+              "url": "https://modal.com",
+              "logo": "https://modal.com/assets/favicon.svg"
             },
             {
-              "title": "RichAds",
-              "description": "专注于Push流量，质量较好",
-              "url": "https://richads.com",
-              "advantages": [
-                "高质量Push流量",
-                "智能竞价系统",
-                "反作弊机制",
-                "详细的数据分析",
-                "多样化定向选项"
-              ],
-              "details": {
-                "intro": "RichAds是专业的Push广告平台，以其高质量的流量和完善的优化工具而闻名。平台特别注重流量质量和反作弊。",
-                "pricing": "最低充值$100，支持CPC/CPM计费模式。",
-                "pros": [
-                  "流量质量高",
-                  "转化率好",
-                  "定向精准",
-                  "报表系统完善",
-                  "优化工具强大"
-                ],
-                "cons": [
-                  "价格相对较高",
-                  "部分地区流量有限",
-                  "审核较严格"
-                ],
-                "tips": [
-                  "重视创意质量",
-                  "细分受众群体",
-                  "持续监测数据",
-                  "测试不同出价",
-                  "关注竞争对手"
-                ]
-              }
+              "title": "Scalingo",
+              "description": "法国家宽容器(风控严格)",
+              "url": "https://scalingo.com",
+              "logo": "https://scalingo.com/favicon.ico"
             },
             {
-              "title": "Megapu.sh",
-              "description": "专业的Push通知平台",
-              "url": "https://megapu.sh",
-              "advantages": [
-                "专注Push通知",
-                "实时竞价系统",
-                "地理定向功能",
-                "设备定向选项",
-                "自动优化工具"
-              ],
-              "details": {
-                "intro": "Megapu.sh是专注于Push通知广告的平台，提供稳定的流量和灵活的投放选项。平台操作简单，适合各类广告主。",
-                "pricing": "最低充值$50，主要采用CPC计费模式。",
-                "pros": [
-                  "入门门槛低",
-                  "操作简单直观",
-                  "定向选项丰富",
-                  "支持自动优化",
-                  "数据透明"
-                ],
-                "cons": [
-                  "流量规模较小",
-                  "部分地区覆盖有限",
-                  "高级功能较少"
-                ],
-                "tips": [
-                  "从小流量开始测试",
-                  "注意创意规范",
-                  "关注转化数据",
-                  "合理设置预算",
-                  "持续优化定向"
-                ]
-              }
+              "title": "Sevalla",
+              "description": "绑卡免费10个月(风控严格)",
+              "url": "https://app.sevalla.com",
+              "logo": "https://sevalla.com/favicon.ico"
             },
             {
-              "title": "Adsterra",
-              "description": "提供主流和大人弹窗流量",
-              "url": "https://adsterra.com",
-              "advantages": [
-                "多样化广告形式",
-                "全球流量覆盖",
-                "反作弊系统",
-                "时报表",
-                "智能优化工具"
-              ],
-              "details": {
-                "intro": "Adsterra是综合性广告平台，提供Push、Pop、Banner等多种广告形式。平台支持多种支付方式，适合不同预算的广告主。",
-                "pricing": "最低充值$100，支持CPM/CPC/CPA等多种计费模式。",
-                "pros": [
-                  "广告形式多样",
-                  "流量来源稳定",
-                  "支持多种支付",
-                  "报表系统完善",
-                  "客服支持好"
-                ],
-                "cons": [
-                  "部分流量质量不稳定",
-                  "竞争较大",
-                  "需要较多测试"
-                ],
-                "tips": [
-                  "多测试不同广告形式",
-                  "注意流量质量",
-                  "关注ROI指标",
-                  "优化投放时间",
-                  "合理分配预算"
-                ]
-              }
+              "title": "Phala",
+              "description": "免费400$(可用10个月)",
+              "url": "https://cloud.phala.network",
+              "logo": "https://cloud.phala.network/favicon.ico"
             },
             {
-              "title": "Ad-maven",
-              "description": "Push为主兼顾Pop",
-              "url": "https://ad-maven.com",
-              "advantages": [
-                "Push和Pop流量",
-                "全球流量覆盖",
-                "实时统计系统",
-                "多重定向选项",
-                "自动优化功能"
-              ],
-              "details": {
-                "intro": "Ad-maven是专业的Push和Pop广告平台，提供全球范围的流量覆盖。平台支持多种广告形式，适合不同类型的推广需求。",
-                "pricing": "最低充值$50，支持CPM/CPC计费模式。",
-                "pros": [
-                  "起投金额低",
-                  "流量类型多样",
-                  "操作界面友好",
-                  "支持多重定向",
-                  "优化工具实用"
-                ],
-                "cons": [
-                  "部分地区流量不稳定",
-                  "报表功能简单",
-                  "优化选项有限"
-                ],
-                "tips": [
-                  "先测试小预算",
-                  "关注质量指标",
-                  "持续监测数据",
-                  "优化投放策略",
-                  "注意成本控制"
-                ]
-              }
+              "title": "Wasmer",
+              "description": "免费静态网页托管",
+              "url": "https://wasmer.io",
+              "logo": "https://wasmer.io/icons/favicon.svg"
             },
             {
-              "title": "DatsPush",
-              "description": "专注Push通知广告",
-              "url": "https://datspush.com",
-              "advantages": [
-                "专注于Push通知广告",
-                "全球流量覆盖",
-                "实时数据统计",
-                "智能优化功能",
-                "多种广告形式"
-              ],
-              "details": {
-                "intro": "DatsPush是专注于Push通知广告的广告网络，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低预算$500起，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖地区广",
-                  "优化工具强大",
-                  "支持多种创意格式",
-                  "报表系统完善"
-                ],
-                "cons": [
-                  "起投金额较高",
-                  "审核较严格",
-                  "部分地区竞争激烈"
-                ],
-                "tips": [
-                  "建议从小预算测试开始",
-                  "注意创意规范",
-                  "重视素材测试",
-                  "关注ROI指标",
-                  "善用自动优化功能"
-                ]
-              }
+              "title": "Appwrite",
+              "description": "免费多地区",
+              "url": "https://cloud.appwrite.io/console",
+              "logo": "https://appwrite.io/images/logos/logo.svg"
             },
             {
-              "title": "PushGround",
-              "description": "新兴的Push广告平台",
-              "url": "https://pushground.com",
-              "advantages": [
-                "专注于Push广告",
-                "全球流量覆盖",
-                "实时数据统计",
-                "智能优化功能",
-                "多种广告形式"
-              ],
-              "details": {
-                "intro": "PushGround是新兴的广告网络，提供高质量的流量和先进的定向选项。平台支持多种广告形式，包括Banner、Popunder、In-Page等。",
-                "pricing": "最低充值$500起，支持CPM/CPC模式，需要通过账户审核。",
-                "pros": [
-                  "广告形式多样",
-                  "覆盖地区广",
-                  "优化工具强大",
-                  "支持多种创意格式",
-                  "报表系统完善"
-                ],
-                "cons": [
-                  "起投金额较高",
-                  "审核较严格",
-                  "部分地区竞争激烈"
-                ],
-                "tips": [
-                  "建议从小预算测试开始",
-                  "注意创意规范",
-                  "重视素材测试",
-                  "关注ROI指标",
-                  "善用自动优化功能"
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "name": "其他流量",
-          "href": "#流量平台-其他流量",
-          "icon": "mdi:traffic-light",
-          "sites": [
-            {
-              "title": "Outbrain",
-              "description": "优质原生广告平台",
-              "url": "https://outbrain.com"
+              "title": "SAP企业版",
+              "description": "SAP企业版登录入口",
+              "url": "https://emea.cockpit.btp.cloud.sap/cockpit/#",
+              "logo": "https://accounts.sap.com/ui/public/cached/tenant/v/1/favicon"
             },
             {
-              "title": "Revcontent",
-              "description": "内容推荐广告平台",
-              "url": "https://revcontent.com"
+              "title": "SAP试用版",
+              "description": "SAP试用版登录入口",
+              "url": "https://account.hanatrial.ondemand.com/trial/#/home/trial",
+              "logo": "https://accounts.sap.com/ui/public/cached/tenant/v/1/favicon"
             },
             {
-              "title": "AdRoll",
-              "description": "重定向广告平台",
-              "url": "https://adroll.com"
+              "title": "Leaflow",
+              "description": "docker容器平台",
+              "url": "https://www.leafaas.com/dashboard",
+              "logo": "https://www.leafaas.com/assets/logo-BZUDIjc2.svg"
             },
             {
-              "title": "Perfect Audience",
-              "description": "重定向广告专家",
-              "url": "https://perfectaudience.com"
+              "title": "Zeabur",
+              "description": "",
+              "url": "https://dash.zeabur.com/projects",
+              "logo": "https://dash.zeabur.com/projects/favicon.ico"
             },
             {
-              "title": "Criteo",
-              "description": "重定向广告巨头",
-              "url": "https://criteo.com"
+              "title": "Databricks",
+              "description": "",
+              "url": "https://www.databricks.com",
+              "logo": "永久免费"
+            },
+            {
+              "title": "idx",
+              "description": "Google IDX",
+              "url": "https://idx.google.com",
+              "logo": "https://www.gstatic.com/monospace/250314/macos-icon-192.png"
             }
           ]
         }
       ]
     },
     {
-      "name": "综合性联盟",
-      "href": "#综合性联盟",
-      "icon": "mdi:handshake",
-      "type": "single",
-      "sites": [
+      "name": "Software",
+      "href": "#Software",
+      "icon": "mdi:application",
+      "type": "tabs",
+      "submenu": [
         {
-          "title": "Rakuten Advertising",
-          "description": "各种牛逼广告主聚集的地方",
-          "url": "https://rakutenadvertising.com",
-          "advantages": [
-            "全球知名品牌广告主",
-            "多样化的佣金模式",
-            "深度链接工具",
-            "报表系统完善",
-            "支持多语言"
-          ],
-          "details": {
-            "intro": "Rakuten Advertising是全球领先的联盟营销平台，汇集了众多知名品牌广告主，提供多样化的推广机会。",
-            "pricing": "免费加入，按效果付费",
-            "pros": [
-              "品牌广告主多",
-              "佣金比例高",
-              "支付准时",
-              "工具完善",
-              "客服专业"
-            ],
-            "cons": [
-              "审核较严格",
-              "部分项目门槛高",
-              "竞争激烈"
-            ],
-            "tips": [
-              "注重内容质量",
-              "选择适合的项目",
-              "保持长期合作",
-              "善用他们的工具",
-              "重视数据分析"
-            ]
-          }
-        },
-        {
-          "title": "CJ Affiliate",
-          "description": "大名鼎鼎的CJ, 世界最大的营销联盟",
-          "url": "https://cj.com",
-          "advantages": [
-            "全球最大联盟平台",
-            "高质量广告主",
-            "完善的追踪系统",
-            "多样化支付方式",
-            "强大的API支持"
-          ],
-          "details": {
-            "intro": "CJ Affiliate(原Commission Junction)是全球最大的联盟营销平台，拥有最完善的系统和最多的优质广告主。",
-            "pricing": "免费注册，收入分成制",
-            "pros": [
-              "平台最权威",
-              "广告主质量高",
-              "系统稳定性好",
-              "数据分析详细",
-              "支付方式多样"
-            ],
-            "cons": [
-              "审核时间长",
-              "要求较高",
-              "新手不友好"
-            ],
-            "tips": [
-              "准备专业的网站",
-              "耐心等待审核",
-              "选择合适项目",
-              "重视合规性",
-              "保持活跃度"
-            ]
-          }
-        },
-        {
-          "title": "Shareasale",
-          "description": "美国小型广告主聚集的公司，值得加入",
-          "url": "https://shareasale.com",
-          "advantages": [
-            "门槛较低",
-            "小型广告主多",
-            "操作界面简单",
-            "佣金结算及时",
-            "支持多种推广"
-          ],
-          "details": {
-            "intro": "Shareasale是一个面向中小型广告主的联盟平台，以其低门槛和友好的政策而闻名。平台汇集了大量优质的中小型商家，特别适合新手入门。",
-            "pricing": "免费注册，按销售分成",
-            "pros": [
-              "注册门槛低",
-              "审核速度快",
-              "支付准时",
-              "商家资源丰富",
-              "操作简单直观"
-            ],
-            "cons": [
-              "部分商家佣金较低",
-              "界面略显陈旧",
-              "部分功能不够完善"
-            ],
-            "tips": [
-              "选择知名度高的商家",
-              "关注高佣金项目",
-              "保持账户活跃",
-              "多尝试不同垂直领域",
-              "重视数据分析"
-            ]
-          }
-        },
-        {
-          "title": "ClickBank",
-          "description": "主营业务: 各种电子书",
-          "url": "#",
-          "advantages": [
-            "数字产品为主",
-            "即时审核系统",
-            "高额佣金比例",
-            "全球化支付",
-            "营销工具丰富"
-          ],
-          "details": {
-            "intro": "ClickBank是全球最大的数字产品联盟平台之一，主要销售电子书、软件、在线课程等数字产品。平台以其高佣金率和即时审核系统而闻名。",
-            "pricing": "免费注册，$49.95激活费（首次销售时收取）",
-            "pros": [
-              "佣金比例高（最高75%）",
-              "支付准时可靠",
-              "产品种类丰富",
-              "全球化覆盖",
-              "营销材料完善"
-            ],
-            "cons": [
-              "产品质量参差不齐",
-              "竞争激烈",
-              "退款率较高"
-            ],
-            "tips": [
-              "仔细���选产品质量",
-              "关注退款率数据",
-              "利用其营销工具",
-              "测试不同垂直领域",
-              "建立邮件列表"
-            ]
-          }
-        },
-        {
-          "title": "Impact",
-          "description": "发展极快, 广告主质量高",
-          "url": "#",
-          "advantages": [
-            "技术领先",
-            "合作伙伴优质",
-            "自动化程度高",
-            "报表系统强大",
-            "API功能完善"
+          "name": "Proxy",
+          "href": "#Software-Proxy",
+          "icon": "mdi:shield-lock",
+          "sites": [
+            {
+              "title": "V2rayN",
+              "description": "最受欢迎的代理软件(支持多平台)",
+              "url": "https://v2rayn.2dust.link",
+              "logo": "https://images.sftcdn.net/images/t_app-icon-m/p/a2c8f10a-f0e8-460b-a03c-d17953176ab8/2246704787/v2rayn-v2rayN-icon.png"
+            },
+            {
+              "title": "Mihomo Party",
+              "description": "Mihomo内核最受欢迎的代理软件",
+              "url": "https://mihomo.party",
+              "logo": "https://mihomo.party/favicon.ico"
+            },
+            {
+              "title": "GUI.for.SingBox",
+              "description": "第三方开源sing-box代理工具",
+              "url": "https://github.com/GUI-for-Cores/GUI.for.SingBox/releases/latest",
+              "logo": "https://sing-box.sagernet.org/assets/icon.svg"
+            },
+            {
+              "title": "FlClash",
+              "description": "Clash系列人气代理软件",
+              "url": "https://github.com/chen08209/FlClash/releases/latest",
+              "logo": "data:image/png;base64,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"
+            },
+            {
+              "title": "Karing",
+              "description": "新一代全能型代理软件(适配多系统)",
+              "url": "https://karing.app/download",
+              "logo": "https://karing.app/img/favicon.ico"
+            },
+            {
+              "title": "Nekobox",
+              "description": "windows版本已停止为维护,谨慎使用",
+              "url": "https://nekobox.tools/nekoray",
+              "logo": "https://nekobox.tools/nekoray/favicon.ico"
+            },
+            {
+              "title": "FlyClash",
+              "description": "Mihomo内核新一代代理软件",
+              "url": "https://github.com/GtxFury/FlyClash/releases/latest",
+              "logo": "https://raw.githubusercontent.com/GtxFury/FlyClash/main/public/logo.png"
+            },
+            {
+              "title": "ClashBox",
+              "description": "HarmonyOS NEXT的代理软件",
+              "url": "https://github.com/xiaobaigroup/ClashBox",
+              "logo": "https://clash.top/wp-content/uploads/2024/01/Clash.png"
+            },
+            {
+              "title": "GUI.for.Clash",
+              "description": "",
+              "url": "https://github.com/GUI-for-Cores/GUI.for.Clash/releases/latest",
+              "logo": "https://github.com/GUI-for-Cores/GUI.for.Clash/releases/latest/favicon.ico"
+            }
           ]
         },
         {
-          "title": "FlexOffers",
-          "description": "12,000+广告主",
-          "url": "#",
-          "advantages": [
-            "广告主数量多",
-            "审核速度快",
-            "佣金比例好",
-            "支付准时",
-            "产品类型丰富"
+          "name": "Macos",
+          "href": "#Software-Macos",
+          "icon": "mdi:apple",
+          "sites": [
+            {
+              "title": "Macwk",
+              "description": "多年mac软件老站，精品Mac软件",
+              "url": "https://www.macwk.com",
+              "logo": "https://www.macwk.com/favicon-32x32.ico"
+            },
+            {
+              "title": "Macsc",
+              "description": "精品Mac软件",
+              "url": "https://mac.macsc.com",
+              "logo": "https://cdn.mac89.com/macsc_node/static/favicon.ico"
+            }
           ]
         },
         {
-          "title": "Avangate",
-          "description": "专注于软件和电子产品的营销联盟",
-          "url": "#",
-          "advantages": [
-            "软件产品为主",
-            "全球化支付",
-            "转化率高",
-            "佣金比例好",
-            "结算周期短"
+          "name": "综合",
+          "href": "#Software-综合",
+          "icon": "mdi:view-grid",
+          "sites": [
+            {
+              "title": "Hellowindows",
+              "description": "windows系统及office下载",
+              "url": "https://hellowindows.cn",
+              "logo": "https://hellowindows.cn/logo-s.png"
+            },
+            {
+              "title": "奇迹秀",
+              "description": "设计师的百宝箱",
+              "url": "https://www.qijishow.com/down",
+              "logo": "https://www.qijishow.com/img/ico.ico"
+            },
+            {
+              "title": "易破解",
+              "description": "精品windows软件",
+              "url": "https://www.ypojie.com",
+              "logo": "https://www.ypojie.com/favicon.ico"
+            },
+            {
+              "title": "Cracked Software",
+              "description": "windows破解软件",
+              "url": "https://topcracked.com",
+              "logo": "https://cdn.mac89.com/win_macxf_node/static/favicon.ico"
+            },
+            {
+              "title": "zTasker",
+              "description": "定时|热键|事件|键鼠模拟|操作录制|自动化流程",
+              "url": "https://www.everauto.net",
+              "logo": "https://www.everauto.net/images/App32.png"
+            },
+            {
+              "title": "incogniton",
+              "description": "指纹浏览器(10个免费环境)",
+              "url": "https://incogniton.com/zh-hans",
+              "logo": "https://incogniton.com/zh-hans/favicon.ico"
+            },
+            {
+              "title": "云萌Win10/11激活",
+              "description": "windows系统激活工具",
+              "url": "https://cmwtat.cloudmoe.com/cn.html",
+              "logo": "https://img.icons8.com/color/96/windows-10.png"
+            },
+            {
+              "title": "Zen-browser",
+              "description": "超好用的一款浏览器",
+              "url": "https://zen-browser.app",
+              "logo": "https://zen-browser.app/favicon.ico"
+            },
+            {
+              "title": "Adspower",
+              "description": "指纹浏览器(3个免费环境)",
+              "url": "https://activity.adspower.com/ap/dist",
+              "logo": "https://activity.adspower.com/ap/dist/favicon.ico"
+            },
+            {
+              "title": "Termora",
+              "description": "简约好用的SSH软件",
+              "url": "https://www.termora.app/downloads",
+              "logo": "https://www.termora.app/downloads/favicon.ico"
+            },
+            {
+              "title": "Cherry Studio",
+              "description": "Ai对话客户端",
+              "url": "https://www.cherry-ai.com",
+              "logo": "https://www.cherry-ai.com/assets/favicon-BmbgeFTf.png"
+            },
+            {
+              "title": "MusicFree",
+              "description": "免费开源的音乐播放器",
+              "url": "https://musicfree.catcat.work",
+              "logo": "https://musicfree.catcat.work/favicon.ico"
+            },
+            {
+              "title": "LXmusic",
+              "description": "免费开源的音乐播放器",
+              "url": "https://lxmusic.toside.cn",
+              "logo": "https://lxmusic.toside.cn/img/logo.svg"
+            },
+            {
+              "title": "UU远程",
+              "description": "游戏级远控制(网易出品)",
+              "url": "https://uuyc.163.com",
+              "logo": "https://uuyc.163.com/favicon.ico"
+            },
+            {
+              "title": "QtScrcpy",
+              "description": "免费开源的安卓投屏软件",
+              "url": "https://github.com/barry-ran/QtScrcpy/releases/latest",
+              "logo": "https://img.icons8.com/color/96/android-os.png"
+            },
+            {
+              "title": "小丸工具箱",
+              "description": "非常好用的视频音频压缩软件",
+              "url": "https://maruko.appinn.me",
+              "logo": "https://maruko.appinn.me/favicon.ico"
+            },
+            {
+              "title": "Beekeeper studio",
+              "description": "免费开源的数据库管理软件",
+              "url": "https://www.beekeeperstudio.io",
+              "logo": "https://www.beekeeperstudio.io/favicon.ico"
+            },
+            {
+              "title": "Navicat Premium",
+              "description": "头部数据库管理软件(此链接为破解版)",
+              "url": "https://pan.baidu.com/s/1HjfAn71Vgp-TeoY755TZOw?pwd=mc73",
+              "logo": "https://www.navicat.com.cn/images/Navicat_16_Premium_win_256x256.ico"
+            },
+            {
+              "title": "Geek Uninstaller",
+              "description": "小巧轻便的卸载软件",
+              "url": "https://geekuninstaller.com/download",
+              "logo": "https://geekuninstaller.com/download/favicon.ico"
+            },
+            {
+              "title": "Pixpin",
+              "description": "非常不错的截图软件",
+              "url": "https://pixpin.cn",
+              "logo": "https://pixpin.cn/favicon.ico"
+            },
+            {
+              "title": "Mem Reduct",
+              "description": "内存自动清理",
+              "url": "https://github.com/henrypp/memreduct/releases/latest",
+              "logo": "https://img.icons8.com/pulsar-gradient/48/memory-slot.png"
+            },
+            {
+              "title": "phpstudy",
+              "description": "本地服务器环境管理",
+              "url": "https://www.xp.cn/phpstudy",
+              "logo": "https://www.xp.cn/favicon.ico"
+            },
+            {
+              "title": "Requestly",
+              "description": "api测试/抓包",
+              "url": "https://requestly.com",
+              "logo": "https://requestly.com/favicon.ico"
+            },
+            {
+              "title": "Raylink",
+              "description": "远程控制",
+              "url": "https://www.raylink.live",
+              "logo": "https://www.raylink.live/logo.ico"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tools",
+      "href": "#Tools",
+      "icon": "mdi:tools",
+      "type": "tabs",
+      "submenu": [
+        {
+          "name": "Free SMS",
+          "href": "#Tools-Free SMS",
+          "icon": "mdi:message-text",
+          "sites": [
+            {
+              "title": "smser",
+              "description": "",
+              "url": "https://smser.net",
+              "logo": "https://smser.net/img/smser.net/favicon-32x32.png"
+            },
+            {
+              "title": "freereceivesms",
+              "description": "",
+              "url": "https://www.freereceivesms.com",
+              "logo": "https://www.freereceivesms.com/favicon.ico"
+            },
+            {
+              "title": "sms24",
+              "description": "",
+              "url": "https://sms24.me/en",
+              "logo": "https://sms24.me/en/favicon.ico"
+            },
+            {
+              "title": "onlinesim",
+              "description": "",
+              "url": "https://onlinesim.io/ru/free_numbers",
+              "logo": "https://onlinesim.io/ru/free_numbers/favicon.ico"
+            },
+            {
+              "title": "smsonline",
+              "description": "",
+              "url": "https://www.smsonline.cloud/zh",
+              "logo": "https://www.smsonline.cloud/zh/favicon.ico"
+            },
+            {
+              "title": "receive-sms",
+              "description": "",
+              "url": "https://wetalkapp.com/receive-sms/",
+              "logo": "https://wetalkapp.com/receive-sms/favicon.ico"
+            },
+            {
+              "title": "supercloudsms",
+              "description": "",
+              "url": "https://www.supercloudsms.com/country/usa/1.html",
+              "logo": "https://www.supercloudsms.com/static/img/favicon.ico"
+            },
+            {
+              "title": "freephonenum",
+              "description": "只有美国和加拿大号码",
+              "url": "https://freephonenum.com",
+              "logo": "https://freephonenum.com/favicon.ico"
+            },
+            {
+              "title": "lubansms",
+              "description": "",
+              "url": "https://lubansms.com/receiveSms",
+              "logo": "https://lubansms.com/img/apple-touch-icon.png"
+            },
+            {
+              "title": "7sim",
+              "description": "",
+              "url": "http://7sim.net",
+              "logo": "http://7sim.net/favicon.ico"
+            },
+            {
+              "title": "receiveasms",
+              "description": "",
+              "url": "https://www.receiveasms.com/",
+              "logo": "https://www.receiveasms.com/favicon.ico"
+            },
+            {
+              "title": "receivesmsonline",
+              "description": "",
+              "url": "https://www.receivesmsonline.net",
+              "logo": "https://www.receivesmsonline.net/favicon.ico"
+            },
+            {
+              "title": "sms-online",
+              "description": "",
+              "url": "https://sms-online.co",
+              "logo": "https://sms-online.co/favicon.ico"
+            },
+            {
+              "title": "receivefreesms",
+              "description": "",
+              "url": "https://receivefreesms.net",
+              "logo": "https://receivefreesms.net/favicon.ico"
+            },
+            {
+              "title": "receivesmsonline",
+              "description": "",
+              "url": "https://receivesmsonline.in/number",
+              "logo": "https://receivesmsonline.in/number/favicon.ico"
+            },
+            {
+              "title": "sms-receive",
+              "description": "",
+              "url": "https://sms-receive.net",
+              "logo": "https://sms-receive.net/favicon.ico"
+            },
+            {
+              "title": "jiemahao",
+              "description": "接号码",
+              "url": "https://jiemahao.com",
+              "logo": "https://jiemahao.com/favicon.ico"
+            },
+            {
+              "title": "bestsms",
+              "description": "",
+              "url": "https://bestsms.xyz",
+              "logo": "https://bestsms.xyz/static/yunji/imgs/favicon.ico"
+            },
+            {
+              "title": "zusms",
+              "description": "有云短信",
+              "url": "https://www.zusms.com",
+              "logo": "https://www.zusms.com/favicon.ico"
+            },
+            {
+              "title": "mytrashmobile",
+              "description": "",
+              "url": "https://zh.mytrashmobile.com/numbers",
+              "logo": "https://static.mytrashmobile.com/assets/images/icons/favicons/apple-icon-60x60.png"
+            },
+            {
+              "title": "sms-japan",
+              "description": "",
+              "url": "https://sms-japan.com",
+              "logo": "https://sms-japan.com/static/smsjapan/images/favicon.png"
+            },
+            {
+              "title": "online-sim",
+              "description": "",
+              "url": "https://online-sim.pro/zh",
+              "logo": "https://online-sim.pro/zh/favicon.ico"
+            },
+            {
+              "title": "temp-number",
+              "description": "",
+              "url": "https://temp-number.com",
+              "logo": "https://temp-number.com/favicon.ico"
+            },
+            {
+              "title": "tiger-sms",
+              "description": "",
+              "url": "https://tiger-sms.shop/free",
+              "logo": "https://tiger-sms.shop/free/favicon.ico"
+            },
+            {
+              "title": "clearcode",
+              "description": "中国号码",
+              "url": "https://clearcode.cn",
+              "logo": "https://clearcode.cn/static/tw/favicon.ico?v=2"
+            },
+            {
+              "title": "tempsmss",
+              "description": "",
+              "url": "https://tempsmss.com",
+              "logo": "https://tempsmss.com/favicon.ico"
+            },
+            {
+              "title": "free-numbers",
+              "description": "",
+              "url": "https://sms-verification-number.com/free-numbers-cn/#activity",
+              "logo": "https://sms-verification-number.com/frontend/assets/img/logo.svg"
+            },
+            {
+              "title": "mianfeijiema",
+              "description": "",
+              "url": "https://www.mianfeijiema.com",
+              "logo": "https://www.mianfeijiema.com/static/picture/logo.png"
+            },
+            {
+              "title": "receive-smss",
+              "description": "",
+              "url": "https://receive-smss.com",
+              "logo": "https://receive-smss.com/favicon.ico"
+            },
+            {
+              "title": "sms-man",
+              "description": "",
+              "url": "https://sms-man.com/cn/free-numbers",
+              "logo": "https://sms-man.com/cn/free-numbers/favicon.ico"
+            }
           ]
         },
         {
-          "title": "Pepperjam",
-          "description": "小型广告主的最爱之一",
-          "url": "#"
+          "name": "Other",
+          "href": "#Tools-Other",
+          "icon": "mdi:dots-horizontal",
+          "sites": [
+            {
+              "title": "wallpaper",
+              "description": "免费壁纸",
+              "url": "https://haowallpaper.com",
+              "logo": "https://haowallpaper.com/favicon.ico"
+            },
+            {
+              "title": "theporndude",
+              "description": "老司机",
+              "url": "https://theporndude.com/zh",
+              "logo": "https://theporndude.com/zh/favicon.ico"
+            },
+            {
+              "title": "星空音乐",
+              "description": "星空音乐",
+              "url": "https://www.vh.hk",
+              "logo": "https://www.vh.hk/favicon.ico"
+            }
+          ]
         },
         {
-          "title": "TradeDoubler",
-          "description": "一句话: 欧洲巨头",
-          "url": "#"
-        },
-        {
-          "title": "Webgains",
-          "description": "老牌UK联盟之一",
-          "url": "#"
-        },
-        {
-          "title": "Avantlink",
-          "description": "聚集了大量的中小广告主",
-          "url": "#"
-        },
-        {
-          "title": "LinkConnector",
-          "description": "老牌联盟之一, 广告主质量不均",
-          "url": "#"
-        },
-        {
-          "title": "eBay Partner Network",
-          "description": "eBay也有自己的销售联盟噢",
-          "url": "#"
-        },
-        {
-          "title": "TradeTracker",
-          "description": "另外一家欧洲巨人",
-          "url": "#"
-        },
-        {
-          "title": "RevenueWire",
-          "description": "少见的加拿大联盟，侧重于电子商务",
-          "url": "#"
-        },
-        {
-          "title": "AdmitAd",
-          "description": "发展迅速的欧洲联盟",
-          "url": "#"
+          "name": "综合",
+          "href": "#Tools-综合",
+          "icon": "mdi:view-grid",
+          "sites": [
+            {
+              "title": "Argo Tunnel json获取",
+              "description": "cloudflared argo tunnel固定隧道json获取",
+              "url": "https://json.zone.id",
+              "logo": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><defs><linearGradient id='grad1' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%23ff5722; stop-opacity:1' /><stop offset='100%' style='stop-color:%23ff9800; stop-opacity:1' /></linearGradient><filter id='shadow' x='-20%' y='-20%' width='140%' height='140%'><feGaussianBlur in='SourceAlpha' stdDeviation='8' /><feOffset dx='5' dy='5' result='offsetblur' /><feFlood flood-color='rgba(0, 0, 0, 0.6)' /><feComposite in2='offsetblur' operator='in' /><feMerge><feMergeNode /><feMergeNode in='SourceGraphic' /></feMerge></filter></defs><rect width='100%' height='100%' fill='%23f5f5f5' /><text x='50%' y='50%' text-anchor='middle' dominant-baseline='middle' font-family='Arial, sans-serif' font-size='180px' fill='url(%23grad1)' font-weight='bold' filter='url(%23shadow)'>J</text></svg>"
+            },
+            {
+              "title": "base64工具",
+              "description": "在线base64编码解码",
+              "url": "https://www.qqxiuzi.cn/bianma/base64.htm",
+              "logo": "https://cdn.base64decode.org/assets/images/b64-180.webp"
+            },
+            {
+              "title": "二维码生成",
+              "description": "二维码生成工具",
+              "url": "https://cli.im",
+              "logo": "https://img.icons8.com/fluency/96/qr-code.png"
+            },
+            {
+              "title": "JS混淆",
+              "description": "在线Javascript代码混淆",
+              "url": "https://go.sssc.nyc.mn/js-obfuscator",
+              "logo": "https://img.icons8.com/color/240/javascript--v1.png"
+            },
+            {
+              "title": "Python混淆",
+              "description": "在线python代码混淆",
+              "url": "https://obf.eooce.com",
+              "logo": "https://img.icons8.com/color/240/python--v1.png"
+            },
+            {
+              "title": "Remove.photos",
+              "description": "一键抠图",
+              "url": "https://remove.photos/zh-cn",
+              "logo": "https://img.icons8.com/doodle/192/picture.png"
+            },
+            {
+              "title": "Pagespeed",
+              "description": "",
+              "url": "https://pagespeed.web.dev",
+              "logo": "https://www.gstatic.com/pagespeed/insights/ui/logo/favicon_48.png"
+            },
+            {
+              "title": "自动访问",
+              "description": "自动访问保活管理系统",
+              "url": "https://matte.ct8.pl",
+              "logo": "https://img.icons8.com/dusk/100/globe.png"
+            },
+            {
+              "title": "Cron-job",
+              "description": "定时自动访问网页",
+              "url": "https://console.cron-job.org/jobs",
+              "logo": "https://console.cron-job.org/logo192.png"
+            },
+            {
+              "title": "网址缩短",
+              "description": "",
+              "url": "https://short.ssss.nyc.mn",
+              "logo": "https://short.ssss.nyc.mn/asset/img/favicon.png"
+            },
+            {
+              "title": "Linuxmirrors",
+              "description": "",
+              "url": "https://linuxmirrors.cn",
+              "logo": "https://linuxmirrors.cn/assets/images/brand/svg/logo-light.svg"
+            },
+            {
+              "title": "Vocalremover",
+              "description": "声音分离",
+              "url": "https://vocalremover.org/",
+              "logo": "https://vocalremover.org/favicon.ico"
+            },
+            {
+              "title": "JSON工具",
+              "description": "JSON格式化/校验",
+              "url": "https://www.json.cn",
+              "logo": "https://img.icons8.com/nolan/128/json.png"
+            },
+            {
+              "title": "文件格式转换",
+              "description": "超300种文件格式转换",
+              "url": "https://convertio.co/zh",
+              "logo": "https://convertio.co/zh/favicon.ico"
+            },
+            {
+              "title": "视频在线下载",
+              "description": "在线视频解析下载",
+              "url": "https://tubedown.cn/youtube",
+              "logo": "https://tubedown.cn/youtube/favicon.ico"
+            },
+            {
+              "title": "it tools",
+              "description": "集合多种小工具",
+              "url": "https://it.idev.dev",
+              "logo": "https://it.idev.dev/favicon.ico"
+            },
+            {
+              "title": "emoji大全",
+              "description": "各类目emoji",
+              "url": "https://www.iamwawa.cn/emoji.html",
+              "logo": "https://www.iamwawa.cn/emoji.html/favicon.ico"
+            },
+            {
+              "title": "信用卡生成",
+              "description": "信用卡生成器",
+              "url": "https://bincheck.io/zh/credit-card-generator",
+              "logo": "https://bincheck.io/assets/icons/apple-icon-60x60.png"
+            },
+            {
+              "title": "Squoosh",
+              "description": "图片无损压缩",
+              "url": "https://squoosh.app",
+              "logo": "https://squoosh.app/c/icon-large-maskable-c2078ced.png"
+            },
+            {
+              "title": "Tool",
+              "description": "小工具",
+              "url": "https://tool.lu/",
+              "logo": "https://tool.lu/favicon.ico"
+            },
+            {
+              "title": "D1tools",
+              "description": "",
+              "url": "https://d1tools.com",
+              "logo": "https://d1tools.com/favicon.ico"
+            },
+            {
+              "title": "Lumiproxy",
+              "description": "在线网页住宅代理",
+              "url": "https://www.lumiproxy.com/zh-hans/online-proxy/proxysite",
+              "logo": "https://www.lumiproxy.com/zh-hans/online-proxy/proxysite/favicon.ico"
+            },
+            {
+              "title": "Proxyshare",
+              "description": "在线网页住宅代理",
+              "url": "https://www.proxyshare.com/zh/proxysite",
+              "logo": "https://www.proxyshare.com/zh/proxysite/favicon.ico"
+            },
+            {
+              "title": "Dnsleaktest",
+              "description": "DNS泄露检测",
+              "url": "https://dnsleaktest.com",
+              "logo": "https://dnsleaktest.com/assets/favicon.ico"
+            },
+            {
+              "title": "Deobfuscator",
+              "description": "JS反混淆",
+              "url": "https://dev-coco.github.io/Online-Tools/JavaScript-Deobfuscator.html",
+              "logo": "https://dev-coco.github.io/Online-Tools/JavaScript-Deobfuscator.html/favicon.ico"
+            },
+            {
+              "title": "flexclip",
+              "description": "",
+              "url": "https://www.flexclip.com/cn/ai/",
+              "logo": "https://www.flexclip.com/cn/ai/favicon.ico"
+            },
+            {
+              "title": "shell混淆",
+              "description": "shell混淆",
+              "url": "https://zsh.hsk.sk",
+              "logo": "https://img.icons8.com/dusk/100/globe.png"
+            },
+            {
+              "title": "Blackace",
+              "description": "网站打包成app",
+              "url": "https://blackace.app",
+              "logo": "https://blackace.app/imgs/favicon.ico"
+            },
+            {
+              "title": "PHP混淆加密",
+              "description": "",
+              "url": "https://www.toolnb.com/tools/phpcarbylamine.html",
+              "logo": "https://www.toolnb.com/tools/phpcarbylamine.html/favicon.ico"
+            },
+            {
+              "title": "中文转码",
+              "description": "",
+              "url": "https://www.bchrt.com/tools/punycode-encoder/",
+              "logo": "https://www.bchrt.com/tools/punycode-encoder/favicon.ico"
+            }
+          ]
         }
       ]
     },
     {
-      "name": "CPA联盟",
-      "href": "#cpa联盟",
-      "icon": "mdi:handshake-outline",
-      "type": "single",
-      "sites": [
-        {
-          "title": "PerformCB",
-          "description": "曾经的Clickbooth",
-          "url": "#"
-        },
-        {
-          "title": "Maxbounty",
-          "description": "硕果仅存的老牌加拿大联盟",
-          "url": "#"
-        },
-        {
-          "title": "DMS Performance Ad Market",
-          "description": "老牌美国联盟，前身W4，再前身HydroAds",
-          "url": "#"
-        },
-        {
-          "title": "ClickDealer",
-          "description": "异军突起的老毛子联盟的代表",
-          "url": "#"
-        },
-        {
-          "title": "A4D",
-          "description": "一度没落的老牌联盟再次起飞",
-          "url": "#"
-        },
-        {
-          "title": "GlobalWideMedia",
-          "description": "曾经大名鼎鼎的NeverBlue",
-          "url": "#"
-        },
-        {
-          "title": "Adcombo",
-          "description": "近来发展迅速的老毛子联盟",
-          "url": "#"
-        },
-        {
-          "title": "Mobidea",
-          "description": "侧重于移动流量的欧洲联盟",
-          "url": "#"
-        },
-        {
-          "title": "Convert2media",
-          "description": "各种Trial Offer",
-          "url": "#"
-        },
-        {
-          "title": "RevenueAds",
-          "description": "美国中部小城的公司，信誉不错",
-          "url": "#"
-        },
-        {
-          "title": "AdworkMedia",
-          "description": "Content Locking 联盟",
-          "url": "#"
-        },
-        {
-          "title": "TopOffers",
-          "description": "Dating 联盟",
-          "url": "#"
-        },
-        {
-          "title": "CrakRevenue",
-          "description": "Adult Offer联盟",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "广告论坛",
-      "href": "#广告论坛",
-      "icon": "mdi:forum",
-      "type": "single",
-      "sites": [
-        {
-          "title": "Warriorforum",
-          "description": "勇士论坛",
-          "url": "https://warriorforum.com"
-        },
-        {
-          "title": "STM Forum",
-          "description": "号称高端网络营销论坛, 需要付费",
-          "url": "https://stmforum.com"
-        },
-        {
-          "title": "BlackHatWorld",
-          "description": "全球黑帽第一论坛",
-          "url": "https://blackhatworld.com"
-        },
-        {
-          "title": "AffiliateFix",
-          "description": "适合新手的论坛",
-          "url": "#"
-        },
-        {
-          "title": "广告中国",
-          "description": "最有全球影响力的中文数字营销论坛",
-          "url": "#"
-        },
-        {
-          "title": "Wickedfire",
-          "description": "老外最为专业的Marketing论坛",
-          "url": "#"
-        },
-        {
-          "title": "AffLift",
-          "description": "最近崛起的Affiliate Marketing论坛",
-          "url": "#"
-        },
-        {
-          "title": "DigitalPoint",
-          "description": "DP论坛",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "SEO工具",
-      "href": "#seo工具",
-      "icon": "mdi:magnify-scan",
-      "type": "single",
-      "sites": [
-        {
-          "title": "SEMRush",
-          "description": "搜索引擎优化，关键字研究工具",
-          "url": "https://semrush.com",
-          "advantages": [
-            "全面的关键词分析",
-            "竞争对手研究",
-            "网站审计功能",
-            "内容营销工具",
-            "排名跟踪系统"
-          ],
-          "details": {
-            "intro": "SEMRush是全球领先的SEO工具之一，提供全面的数字营销解决方案，包括关键词研究、竞争对手分析、网站审计等功能。",
-            "pricing": "基础版$119.95/月起，提供多个套餐选择",
-            "pros": [
-              "数据库庞大",
-              "功能全面",
-              "界面友好",
-              "更新及时",
-              "报告专业"
-            ],
-            "cons": [
-              "价格较高",
-              "部分数据不准确",
-              "学习曲线陡峭"
-            ],
-            "tips": [
-              "善用免费试用期",
-              "按需选择套餐",
-              "定期导出报告",
-              "关注竞争对手动态",
-              "充分利用培训资源"
-            ]
-          }
-        },
-        {
-          "title": "Ahrefs",
-          "description": "竞争对手关键字研究",
-          "url": "https://ahrefs.com",
-          "advantages": [
-            "强大的反向链接分析",
-            "关键词研究工具",
-            "内容分析功能",
-            "网站健康检查",
-            "竞争对手分析"
-          ],
-          "details": {
-            "intro": "Ahrefs是SEO专业人士首选的工具之一，以其强大的反向链接数据库和全面的SEO功能而闻名。",
-            "pricing": "基础版$99/月起，高级功能需要更高级别套餐",
-            "pros": [
-              "数据更新快",
-              "反向链接数据全面",
-              "工具稳定可靠",
-              "界面直观",
-              "客服支持好"
-            ],
-            "cons": [
-              "价格昂贵",
-              "免费版功能有限",
-              "需要专业知识"
-            ],
-            "tips": [
-              "充分利用免费课程",
-              "合理规划预算",
-              "重视数据分析",
-              "定期检查网站健康",
-              "跟踪竞争对手变化"
-            ]
-          }
-        },
-        {
-          "title": "Moz",
-          "description": "著名的关键字研究工具",
-          "url": "https://moz.com",
-          "advantages": [
-            "网站排名跟踪",
-            "页面优化建议",
-            "关��词研究",
-            "本地SEO工具",
-            "链接分析"
-          ],
-          "details": {
-            "intro": "Moz是最早的SEO工具之一，提供全面的搜索引擎优化解决方案，特别适合初学者和中小企业。",
-            "pricing": "标准版$99/月起，企业版需要联系销售",
-            "pros": [
-              "界面友好",
-              "适合新手",
-              "教育资源丰富",
-              "工具稳定",
-              "社区活跃"
-            ],
-            "cons": [
-              "数据库相对较小",
-              "更新频率较慢",
-              "高级功能较少"
-            ],
-            "tips": [
-              "利用免费学习资源",
-              "参与社区讨论",
-              "关注行业动态",
-              "合理使用配额",
-              "注重基础数据分析"
-            ]
-          }
-        },
-        {
-          "title": "Neil Patel",
-          "description": "著名的免费关键字研究工具",
-          "url": "https://neilpatel.com",
-          "advantages": [
-            "免费SEO分析",
-            "流量估算工具",
-            "关键词建议",
-            "竞争对手分析",
-            "内容优化建议"
-          ],
-          "details": {
-            "intro": "Neil Patel提供的免费SEO工具集合，适合预算有限的用户和初学者使用。工具简单直观，提供基础但实用的SEO分析功能。",
-            "pricing": "基础功能免费，高级功能需付费",
-            "pros": [
-              "免费使用",
-              "操作简单",
-              "适合入门",
-              "更新及时",
-              "集成多个工具"
-            ],
-            "cons": [
-              "数据深度有限",
-              "高级功能收费",
-              "分析不够深入"
-            ],
-            "tips": [
-              "充分利用免费功能",
-              "结合其他工具使用",
-              "关注博客更新",
-              "参考使用教程",
-              "注��数据验证"
-            ]
-          }
-        },
-        {
-          "title": "Majestic",
-          "description": "最大的反向链接数据库",
-          "url": "https://majestic.com",
-          "advantages": [
-            "大规模链接数据",
-            "历史数据分析",
-            "网站信任度评估",
-            "竞争对手比较",
-            "链接质量评分"
-          ],
-          "details": {
-            "intro": "Majestic拥有全球最大的反向链接数据库之一，专注于提供深入的链接分析和网站信任度评估。",
-            "pricing": "基础版约$49.99/月起",
-            "pros": [
-              "数据库庞大",
-              "历史数据完整",
-              "分析工具专业",
-              "API支持完善",
-              "更新频繁"
-            ],
-            "cons": [
-              "界面较复杂",
-              "学习成本高",
-              "价格不菲"
-            ],
-            "tips": [
-              "重视历史数据分析",
-              "关注链接质量",
-              "定期导出报告",
-              "善用比较功能",
-              "注意趋势变化"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "name": "邮件营销",
-      "href": "#邮件营销",
+      "name": "Mail & Domain",
+      "href": "#Mail & Domain",
       "icon": "mdi:email",
       "type": "single",
       "sites": [
         {
-          "title": "Mailgun",
-          "description": "SMTP服务商，transaction email 首选",
-          "url": "https://mailgun.com",
-          "advantages": [
-            "可靠的邮件发送服务",
-            "详细的数据分析",
-            "API支持",
-            "邮件验证功能",
-            "自动化工具"
-          ]
+          "title": "Gmail",
+          "description": "Google邮箱",
+          "url": "https://mail.google.com",
+          "logo": "https://img.icons8.com/fluency/48/gmail-new.png"
         },
         {
-          "title": "Sendgrid",
-          "description": "纯SMTP服务商，价格实惠",
-          "url": "https://sendgrid.com",
-          "advantages": [
-            "高度可扩展",
-            "强大的API",
-            "详细的分析报告",
-            "模板系统",
-            "自动化营销"
-          ]
+          "title": "Outlook",
+          "description": "微软Outlook邮箱",
+          "url": "https://outlook.live.com",
+          "logo": "https://img.icons8.com/color/256/ms-outlook.png"
         },
         {
-          "title": "iContact",
-          "description": "价格实惠的邮件营销平台",
-          "url": "https://icontact.com",
-          "advantages": [
-            "易用的界面",
-            "自动化功能",
-            "A/B测试",
-            "分段营销",
-            "响应式模板"
-          ]
+          "title": "Proton Mail",
+          "description": "安全加密邮箱",
+          "url": "https://account.proton.me",
+          "logo": "https://account.proton.me/assets/apple-touch-icon-120x120.png"
         },
         {
-          "title": "GetResponse",
-          "description": "对affiliate友好的邮件营销平台",
-          "url": "https://getresponse.com",
-          "advantages": [
-            "自动回复系统",
-            "落地页创建",
-            "网络研讨会功能",
-            "CRM集成",
-            "高级自动化"
-          ]
+          "title": "临时域名邮箱",
+          "description": "临时域名邮箱",
+          "url": "https://temp-mail.io/zh",
+          "logo": "https://temp-mail.io/zh/favicon.ico"
         },
         {
-          "title": "Aweber",
-          "description": "老外都喜欢用的邮件营销平台，很严格!",
-          "url": "https://aweber.com",
-          "advantages": [
-            "自动回复系统",
-            "邮件模板",
-            "列表管理",
-            "分析报告",
-            "API集成"
-          ]
+          "title": "雅虎邮箱",
+          "description": "雅虎邮箱",
+          "url": "https://mail.yahoo.com",
+          "logo": "https://img.icons8.com/color/240/yahoo--v2.png"
         },
         {
-          "title": "Mailchimp",
-          "description": "全平台的邮件营销平台",
-          "url": "https://mailchimp.com",
-          "advantages": [
-            "全面的营销工具",
-            "智能分析",
-            "自动化工作流",
-            "受众细分",
-            "A/B测试"
-          ]
+          "title": "10分钟临时邮箱",
+          "description": "10分钟临时邮箱",
+          "url": "https://linshiyouxiang.net",
+          "logo": "https://linshiyouxiang.net/static/index/zh/images/favicon.ico"
         },
         {
-          "title": "Constant Contact",
-          "description": "适合小型企业的邮件营销平台",
-          "url": "https://constantcontact.com",
-          "advantages": [
-            "易用的界面",
-            "丰富的模板",
-            "活动管理",
-            "社交媒体整合",
-            "实时报告"
-          ]
-        }
-      ]
-    },
-    {
-      "name": "电商平台",
-      "href": "#电商平台",
-      "icon": "mdi:shopping",
-      "type": "single",
-      "sites": [
-        {
-          "title": "亚马逊",
-          "description": "电商出海的第一站",
-          "url": "https://amazon.com"
+          "title": "2925无限邮箱",
+          "description": "",
+          "url": "https://www.2925.com",
+          "logo": "https://www.2925.com/favicon.ico"
         },
         {
-          "title": "eBay",
-          "description": "电商鼻祖",
-          "url": "https://ebay.com"
+          "title": "风车临时邮箱",
+          "description": "可长期使用的临时邮箱",
+          "url": "https://mail.xoxome.online/dashboard",
+          "logo": "https://mail.xoxome.online/logo.png"
         },
         {
-          "title": "速卖通",
-          "description": "阿里巴巴速卖通，中小卖家的福音",
-          "url": "https://aliexpress.com"
+          "title": "88完美邮箱",
+          "description": "",
+          "url": "https://mail.88.com/mail/#/home",
+          "logo": "data:image/png;base64,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"
         },
         {
-          "title": "Shopify",
-          "description": "各种大牛的聚集地",
-          "url": "https://shopify.com"
-        }
-      ]
-    },
-    {
-      "name": "联盟后台",
-      "href": "#联盟后台",
-      "icon": "mdi:view-dashboard",
-      "type": "single",
-      "sites": [
-        {
-          "title": "GetCake",
-          "description": "目前追踪最准价格最贵的平台",
-          "url": "#"
+          "title": "临时edu邮箱",
+          "description": "",
+          "url": "https://tempmail.edu.kg",
+          "logo": "https://tempmail.edu.kg/favicon.ico"
         },
         {
-          "title": "Tune(原hasoffers)",
-          "description": "用户使用最多的平台之一",
-          "url": "#"
+          "title": "Tempmail",
+          "description": "",
+          "url": "https://tempmail.plus/zh/",
+          "logo": "https://tempmail.plus/zh/favicon.ico"
         },
         {
-          "title": "Hitpath",
-          "description": "曾经是美国大型联盟的最爱",
-          "url": "#"
+          "title": "临时邮箱",
+          "description": "",
+          "url": "https://22.do/zh",
+          "logo": "https://22.do/assets/images/logo.png"
         },
         {
-          "title": "Linktrust",
-          "description": "号称追踪最准确，可惜自己作死",
-          "url": "#"
+          "title": "nyc.mn域名",
+          "description": "免费二级域名(已取消免费)",
+          "url": "https://dash.publiczone.org/dashboard",
+          "logo": "https://dot.nyc.mn/wp-content/uploads/2024/09/nycmnicon-150x150.png"
         },
         {
-          "title": "Affise",
-          "description": "新晋崛起的Performance Marketing Platform服务商",
-          "url": "#"
+          "title": "HiDNS",
+          "description": "免费二级域名",
+          "url": "https://www.hidoha.net",
+          "logo": "https://www.hidoha.net/themes/huraga/assets/favicon.ico"
         },
         {
-          "title": "Offerslook",
-          "description": "亚洲客户比较多",
-          "url": "#"
+          "title": "dpdns域名",
+          "description": "免费二级域名(dpdns.org/xx.kg/us.kg)",
+          "url": "https://dash.domain.digitalplat.org",
+          "logo": "https://dash.domain.digitalplat.org/static/img/logo.jpg"
         },
         {
-          "title": "Offer18",
-          "description": "入门级，价格比较便宜",
-          "url": "#"
+          "title": "l53",
+          "description": "ggff.net免费二级域名",
+          "url": "https://customer.l53.net",
+          "logo": "https://customer.l53.net/favicon.ico"
         },
         {
-          "title": "Fuseclick",
-          "description": "国产服务商",
-          "url": "#"
+          "title": "mffac临时邮箱",
+          "description": "mffac临时邮箱",
+          "url": "https://www.mffac.com/moe",
+          "logo": "https://www.mffac.com/moe/favicon.ico"
         },
         {
-          "title": "PostAffiliatePro",
-          "description": "小型广告主最喜欢的联盟程序之一",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "域名注册",
-      "href": "#域名注册",
-      "icon": "mdi:web",
-      "type": "single",
-      "sites": [
-        {
-          "title": "Dynadot",
-          "description": "对国人友好，支持支付宝，价格一般",
-          "url": "#"
+          "title": "zabc.net",
+          "description": "免费zabc.net二级域名(不可托管cloudflared)",
+          "url": "https://zabc.net/dashboard",
+          "logo": "https://zoneabc.net/logo.svg"
         },
         {
-          "title": "Namecheap",
-          "description": "域名注册并不便宜，网站UI反应很慢，直接���问速度更慢",
-          "url": "https://namecheap.com"
+          "title": "eu.org",
+          "description": "免费eu.org二级域名(已停止注册)",
+          "url": "https://nic.eu.org",
+          "logo": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAbCAMAAAAqGX2oAAABHVBMVEX////+/v7y8vrJyfuysvu5ufXb2+zz8/Ph4f3V1fD29vbn5/7b2/1LS/4AAP8JCfInJ/ybm9Lj4+P9/f2dnfxVVdLGxsZERN+9vb35+flTU/4hIaJoaG2CgqgdHfeenqwhIcasrKwVFdeamprU1P1NTXe6usl3d/BWVrDb29sTE/8pKbqVlfjAwPYqKphYWKdoaJNgYHvDw9rR0dHu7u5qavc6OuGsrNdBQf6UlLRiYtArK/O6uvu1tbVYWOs0NJeUlJTo6PRDQ7UVFeOYmLBubqZ4eH2AgJFiYv6RkcNra+gTE8ZHR4pTU8OKivs6Oo9OTls1NXuFhfxHR3MwMLZJSaiJidS+vuQtLdx5ebpyco9wcPp/f961tc8vL8rqBA7bAAAB0ElEQVR4AX2R1YLbMBREpTB1lOpmXcthjkMLXmZmZv7/z6i8crneebl0RCMWiLPPFInG4okkZ6loOsOz0bRO/1DuCwTyXyUVMGFRDN9s9ed6B8VSOV+pJguo1VUMjWbmD6AF0e4kuui5IUAcQL/fx8Ae/h8YQYwntaasECAHTFvuzIw3W/BnXQNkWz8fk5nD/MJoUSzJOLA8XDHAKubXgo14Yh2A2Nic3dJJYzsA+jubSWak3N29qf26JHKXpvbXqge+DxETjCgp5WyG62RWzqqkSU0wUqlWbktxRtlsMtL6sDqSy81uZbfMHqlDAIva6shK/8iBb3VWh/Xj/rJHxuqT0zOI3Vk6hBC1wXY9cw5xMaG9WyNj9aXtOtj2qIv+1aZtyUge46bnBMAqdvZn6Rq1NXWNxr4k4tk+bjw6D4AY9It1VatrYFD376WBtvsTiELoHeZ0pYFb++Naedx5GScAIos4m4n3+zcW/QB0Urk/FwFADyvooz/enP0J8IQD1B4DgGU6T3e96aYknt571i/XUt7S8+Y6bg3A1KzrySTpRErzg7GXVyuxiAuLmBHn7A+1KnAW0ShJFqLM2/L7+92+pVgo4VraUcXCxYnIj98B87hF++6opGsAAAAASUVORK5CYII="
         },
         {
-          "title": "Name.com",
-          "description": "历史悠久的域名注册商，界面清爽",
-          "url": "#"
+          "title": "zone.id",
+          "description": "免费zone.id二级域名(不可托管cloudflared)",
+          "url": "https://my.zone.id/subdomains",
+          "logo": "https://autz.org/uploads/a8ia2qkiq.webp"
+        },
+        {
+          "title": "Spaceship",
+          "description": "实惠的域名服务商",
+          "url": "https://www.spaceship.com",
+          "logo": "https://spaceship-cdn.com/static/spaceship/favicon/spaceship-icon.svg"
+        },
+        {
+          "title": "DNSHE",
+          "description": "永久免费免费域名",
+          "url": "https://my.dnshe.com/clientarea.php",
+          "logo": "https://my.dnshe.com/clientarea.php/favicon.ico"
         },
         {
           "title": "Godaddy",
-          "description": "戏称'狗爹', 全球排名第一的域名注册商",
-          "url": "https://godaddy.com"
+          "description": "全球最大的域名服务商(域名较贵)",
+          "url": "https://www.godaddy.com",
+          "logo": "https://img6.wsimg.com/ux-assets/favicon/favicon-32x32.png"
+        },
+        {
+          "title": "Namesilo",
+          "description": "实惠的域名",
+          "url": "https://www.namesilo.com",
+          "logo": "https://www.namesilo.com/favicon.ico"
+        },
+        {
+          "title": "netlib.re",
+          "description": "永久免费二级域名",
+          "url": "https://www.netlib.re",
+          "logo": "https://www.netlib.re/favicon.ico"
+        },
+        {
+          "title": "Namecheap",
+          "description": "头部域名服务商",
+          "url": "https://www.namecheap.com",
+          "logo": "https://www.namecheap.com/favicon.ico"
+        },
+        {
+          "title": "gv.uy",
+          "description": "永久免费二级域名",
+          "url": "https://nic.gv.uy",
+          "logo": "https://nic.gv.uy/favicon.ico"
+        },
+        {
+          "title": "NN.KG",
+          "description": "",
+          "url": "https://www.idc.lc/",
+          "logo": "https://www.idc.lc/favicon.ico"
+        },
+        {
+          "title": "VPS8",
+          "description": "提供域名托管服务，支持根域名cname",
+          "url": "https://vps8.zz.cd",
+          "logo": "https://vps8.zz.cd/favicon.ico"
         }
       ]
     },
     {
-      "name": "云服务器(主流)",
-      "href": "#云服务器(主流)",
-      "icon": "mdi:server",
+      "name": "Dev",
+      "href": "#Dev",
+      "icon": "mdi:code-tags",
       "type": "single",
       "sites": [
         {
-          "title": "NetActuate",
-          "description": "前HostVirtual, 前前vr.org, 全球网络服务商",
-          "url": "#"
+          "title": "igoutu",
+          "description": "免费icon图标",
+          "url": "https://igoutu.cn/icons",
+          "logo": "https://goodies.icons8.com/web/common/header/logo/logo-icons8.svg"
         },
         {
-          "title": "Bandwagonhost",
-          "description": "优质CN2GIA服务商，信誉良好，富强的最爱",
-          "url": "#"
+          "title": "iconfont",
+          "description": "阿里矢量图标库",
+          "url": "https://www.iconfont.cn/",
+          "logo": "https://www.iconfont.cn/favicon.ico"
         },
         {
-          "title": "Vultr",
-          "description": "Choopa旗下品牌，价格厚道",
-          "url": "https://vultr.com"
+          "title": "uiverse",
+          "description": "UI组件库",
+          "url": "https://uiverse.io/elements",
+          "logo": "https://uiverse.io/favicon-32x32.png"
         },
         {
-          "title": "DigitalOcean",
-          "description": "低价优质的策略，成为AWS的有利竞争者",
-          "url": "https://digitalocean.com"
+          "title": "vueform",
+          "description": "vue UI组件",
+          "url": "https://vueform.com",
+          "logo": "https://vueform.com/favicon.ico"
         },
         {
-          "title": "Linode",
-          "description": "网络好, 服务稳定，affiliate的最爱之一",
-          "url": "https://linode.com"
+          "title": "ghproxy",
+          "description": "github加速",
+          "url": "https://ghproxy.eooce.xx.kg",
+          "logo": "data:image/svg+xml,%0A<svg%20xmlns%3D\"http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\"%20width%3D\"32\"%20height%3D\"32\"%20viewBox%3D\"0%200%2024%2024\"%20fill%3D\"none\"%20stroke%3D\"%23FBBF24\"%20stroke-width%3D\"2\"%20stroke-linecap%3D\"round\"%20stroke-linejoin%3D\"round\">%0A%20%20<path%20d%3D\"M13%202L3%2014h9l-1%208%2010-12h-9l1-8z\"><%2Fpath>%0A<%2Fsvg>"
         },
         {
-          "title": "腾讯云",
-          "description": "腾讯的云服务",
-          "url": "#"
+          "title": "vitepress",
+          "description": "Markdown生成静态文档站点",
+          "url": "https://vitejs.cn/vitepress/",
+          "logo": "https://vitejs.cn/vitepress/vitepress-logo-mini.svg"
         },
         {
-          "title": "阿里云",
-          "description": "阿里巴巴旗下品牌，有国内版和国际版，国际版厚道",
-          "url": "#"
+          "title": "icon",
+          "description": "icon图标",
+          "url": "https://icon-sets.iconify.design",
+          "logo": "https://icon-sets.iconify.design/favicon.svg"
         },
         {
-          "title": "谷歌云(GCP)",
-          "description": "谷歌的云服务, 厚道, 大量白女票用户",
-          "url": "#"
+          "title": "美国免税州地址生成",
+          "description": "",
+          "url": "https://usaddressgen.com/tax-free-address/",
+          "logo": "https://usaddressgen.com/tax-free-address/favicon.ico"
         },
         {
-          "title": "Azure",
-          "description": "微软的云服务，大企业的最爱，价格昂贵",
-          "url": "#"
+          "title": "美国各州区号对照表",
+          "description": "",
+          "url": "https://amon.org/usphone",
+          "logo": "https://amon.org/usphone/favicon.ico"
         },
         {
-          "title": "AWS",
-          "description": "大名鼎鼎的AWS",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "独立服务器",
-      "href": "#独立服务器",
-      "icon": "mdi:server-network",
-      "type": "single",
-      "sites": [
-        {
-          "title": "CeraNetworks",
-          "description": "防DDos服务商，Hostloc服务器所在机房",
-          "url": "#"
-        },
-        {
-          "title": "PhoenixNAP",
-          "description": "凤凰城优质机房",
-          "url": "#"
-        },
-        {
-          "title": "Hivelocity",
-          "description": "立足于Florida, 多个机房面向全美服务",
-          "url": "#"
-        },
-        {
-          "title": "Krypt",
-          "description": "优质的CN2GIA服务商之一，贵族机房",
-          "url": "#"
-        },
-        {
-          "title": "Psychz",
-          "description": "业界俗称'饭桶', 鸡迷路, 神一样的路由",
-          "url": "#"
-        },
-        {
-          "title": "QuadraNet",
-          "description": "洛杉矶机房的优质服务商，推荐",
-          "url": "#"
-        },
-        {
-          "title": "Leaseweb",
-          "description": "荷兰巨头，全球服务",
-          "url": "#"
-        },
-        {
-          "title": "Rackspace",
-          "description": "提供managed服务，价格昂贵，大型企业的最爱",
-          "url": "#"
-        },
-        {
-          "title": "Softlayer",
-          "description": "现在变身IBM Cloud, 价格昂贵，拥有最好的network 和 服务",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "支付服务",
-      "href": "#支付服务",
-      "icon": "mdi:credit-card",
-      "type": "single",
-      "sites": [
-        {
-          "title": "Paxum",
-          "description": "Affiliate最常用的支付工具之一",
-          "url": "https://paxum.com"
-        },
-        {
-          "title": "Payoneer",
-          "description": "以色列支付工具，对中国友好",
-          "url": "https://payoneer.com"
-        },
-        {
-          "title": "WebMoney",
-          "description": "俄罗斯支付工具，很多老毛子联盟都用",
-          "url": "#"
-        },
-        {
-          "title": "Capitalist",
-          "description": "新兴的支付工具，很多老毛子联盟都在用",
-          "url": "#"
-        },
-        {
-          "title": "Wise",
-          "description": "原TransferWise，跨境支付利器",
-          "url": "https://wise.com"
-        }
-      ]
-    },
-    {
-      "name": "VPS代理",
-      "href": "#vps代理",
-      "icon": "mdi:server-network",
-      "type": "single",
-      "sites": [
-        {
-          "title": "911",
-          "description": "老牌代理服务商",
-          "url": "#"
-        },
-        {
-          "title": "芝麻代理",
-          "description": "国内代理服务商",
-          "url": "#"
-        },
-        {
-          "title": "阿伟云",
-          "description": "性价比不错的代理",
-          "url": "#"
-        }
-      ]
-    },
-    {
-      "name": "落地页工具",
-      "href": "#落地页工具",
-      "icon": "mdi:web-box",
-      "type": "single",
-      "sites": [
-        {
-          "title": "Instapage",
-          "description": "制作落地页的利器",
-          "url": "https://instapage.com"
-        },
-        {
-          "title": "Unbounce",
-          "description": "专业的落地页制作工具",
-          "url": "https://unbounce.com"
-        },
-        {
-          "title": "Leadpages",
-          "description": "简单易用的落地页工具",
-          "url": "https://leadpages.com"
+          "title": "免费Socks5代理池",
+          "description": "",
+          "url": "https://proxy.scdn.io",
+          "logo": "https://proxy.scdn.io/favicon.ico"
         }
       ]
     }
