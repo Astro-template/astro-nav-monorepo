@@ -86,15 +86,22 @@ npx wrangler pages deploy dist --project-name=astro-nav --commit-dirty=true
 |------|---|------|
 | ADMIN_USER | kiro | 后台用户名 |
 
-**密钥不入库**，用 secret 注入（本地开发写 `.dev.vars`，见 `.dev.vars.example`）：
+**密钥不入库**：
 
 | 变量 | 说明 |
 |------|------|
 | ADMIN_TOKEN | 后台密码 / API Bearer token |
 | TURNSTILE_SECRET | Turnstile 服务端密钥 |
 
+来源按环境区分，不要混用：**本地 `wrangler dev` 读 `.dev.vars`，云端读 secret**。
+
 ```bash
 cd packages/worker
+
+# 本地开发（不需要 wrangler login，也不需要 secret put）
+cp .dev.vars.example .dev.vars    # 然后改掉 ADMIN_TOKEN，它就是本地后台登录密码
+
+# 部署到云端时才需要，且 .dev.vars 无法代替（本地文件，不会上传）
 npx wrangler secret put ADMIN_TOKEN
 npx wrangler secret put TURNSTILE_SECRET
 ```

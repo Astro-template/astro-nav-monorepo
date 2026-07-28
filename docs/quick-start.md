@@ -43,9 +43,28 @@
 ```bash
 # 安装依赖（在仓库根目录）
 pnpm install
+```
 
-# 登录 Cloudflare
+### 只在本地跑？不用登录 Cloudflare，也不用 wrangler secret
+
+密钥有两个来源，**用哪个取决于你在哪跑**，别混：
+
+| 场景 | 密钥放哪 | 要不要 `wrangler secret put` |
+|------|---------|------------------------------|
+| 本地开发（`wrangler dev`） | `packages/worker/.dev.vars` 文件（已 gitignore） | **不需要** |
+| 部署到 Cloudflare | 云端 secret | 需要，见第 5 步 |
+
+本地开发只需复制一份模板并改掉密码：
+
+```bash
 cd packages/worker
+cp .dev.vars.example .dev.vars
+# 打开 .dev.vars，把 ADMIN_TOKEN 改成你自己的本地密码（这就是后台登录密码）
+```
+
+打算部署到线上时，再登录 Cloudflare：
+
+```bash
 npx wrangler login
 npx wrangler whoami   # 确认已登录
 ```
@@ -74,9 +93,11 @@ pnpm db:seed:aff:local        # Affiliate 导航（167 站点）
 npx wrangler dev --port 8787
 ```
 
-打开 http://localhost:8787/login ，用 `kiro` / `admin` 登录（这是默认账号，见 `wrangler.toml`）。
+打开 http://localhost:8787/login 。用户名是 `wrangler.toml` 里的 `ADMIN_USER`（默认 `kiro`），密码是你刚才在 `.dev.vars` 里写的 `ADMIN_TOKEN`。
 
-登录后能看到 5 个页面：仪表盘、添加网站、待审核、所有网站、分类管理。此时数据库是空的，属正常。
+> 登录报「用户名或密码错误」？多半是没建 `.dev.vars`，或者密码填的不是 `.dev.vars` 里的 `ADMIN_TOKEN`。仓库里**不存在**默认密码，密钥不入库。
+
+登录后能看到 6 个页面：仪表盘、添加网站、待审核、所有网站、分类管理、站点设置。
 
 ### 1.3 启动前端
 
@@ -99,9 +120,13 @@ npx astro dev
 
 ### 2.1 先建分类
 
-在后台没有独立的「建分类」表单，用 API 建最快（后台运行时，另开终端）：
+**方式 A：后台页面（推荐）** 打开 http://localhost:8787/admin/categories ，填名称、slug、图标即可，图标支持 mdi 搜索选择。
+
+**方式 B：API（适合脚本批量）** 另开一个终端，先把密码放进环境变量（值就是 `.dev.vars` 里的 `ADMIN_TOKEN`）：
 
 ```bash
+export ADMIN_TOKEN='你在 .dev.vars 里设的值'
+
 # 建一个「云服务器」分类
 curl -X POST http://localhost:8787/api/admin/categories \
   -H "Authorization: Bearer $ADMIN_TOKEN" \
@@ -217,9 +242,16 @@ pnpm db:migrate:remote
 pnpm db:seed:aff:remote       # Affiliate 导航（167 站点）
 # pnpm db:seed:eooce:remote   # 或：老王导航（269 站点）
 
-# 5. 部署 Worker
+# 5. 注入云端密钥（.dev.vars 只作用于本地，云端读不到，必须单独注入一次）
+npx wrangler secret put ADMIN_TOKEN        # 后台密码，用强随机值，不要沿用本地的
+npx wrangler secret put TURNSTILE_SECRET   # Cloudflare 后台申请的真实 Turnstile secret
+
+# 6. 部署 Worker
 npx wrangler deploy
 ```
+
+> ⚠️ 第 5 步不能跳过。`.dev.vars` 是本地文件、不会上传，云端 Worker 读不到里面的值；漏了这步，线上后台的 `ADMIN_TOKEN` 为空，登录和所有写接口都会 401。
+> 也不要为了省事把密钥写回 `wrangler.toml [vars]` —— 那是明文并且会进 git。
 
 部署后拿到后台地址：`https://<worker名>.<你的子域>.workers.dev`
 
@@ -261,21 +293,20 @@ npx wrangler pages deploy dist --project-name=astro-nav --commit-dirty=true
 
 ## ⚠️ 上线前必做的安全设置
 
-默认配置只适合本地/演示，正式上线前务必改：
-
-1. **改后台账号密码**：`wrangler.toml` 的 `[vars]` 里 `ADMIN_USER` / `ADMIN_TOKEN` 是明文默认值（kiro/admin），任何人都能猜到。
-   - 更安全的做法：用 secret 而不是明文写在 toml 里
-     ```bash
-     cd packages/worker
-     npx wrangler secret put ADMIN_TOKEN   # 按提示输入，不会进 git
-     ```
-   - 同时把 `wrangler.toml` 里的明文 `ADMIN_TOKEN` 删掉。
-2. **不要把真实密钥提交进 git**：`TURNSTILE_SECRET` 等同理，用 `wrangler secret put`。
-3. 部署后立刻用新密码登录验证一次。
+1. **`ADMIN_TOKEN` 用强随机值**，且线上和本地不要用同一个。`wrangler.toml` 里只留非敏感的 `ADMIN_USER`，密钥一律 `wrangler secret put`，不要写回 `[vars]`。
+2. **`TURNSTILE_SECRET` 必须换成真实密钥**。`.dev.vars.example` 里的 `1x0000000000000000000000000000000AA` 是 Cloudflare 官方「总是通过」的测试密钥，线上继续用它等于关掉人机验证。去 Cloudflare 后台 Turnstile 申请一对真实 key。
+3. **本仓库 git 历史里存在过明文的 `ADMIN_TOKEN=admin`**。如果你 fork 的是这个仓库，历史仍可查到，务必设置全新的 token，不要沿用。
+4. 部署后立刻用新密码登录一次，确认 secret 生效。
 
 ---
 
 ## 常见问题
+
+**Q：我只想本地玩，必须跑 `wrangler secret put` 吗？**
+A：不用。那条命令是往**云端** Worker 写密钥，只有部署时才需要。本地开发只需 `cp .dev.vars.example .dev.vars` 并改掉里面的 `ADMIN_TOKEN`，连 `wrangler login` 都不用。
+
+**Q：本地能登录，部署到线上却一直 401？**
+A：漏了往云端注入密钥。`.dev.vars` 是本地文件、不会上传，云端读不到。执行 `npx wrangler secret put ADMIN_TOKEN`（和 `TURNSTILE_SECRET`）后重新 `wrangler deploy`。
 
 **Q：我在后台加了网站，前端怎么没变？**
 A：三步没走完。加完要「发布」，还要「重新构建部署前端」。见上面的日常更新流程。
@@ -298,11 +329,10 @@ A：不是。`--local` 操作的是本机 `.wrangler/state` 里的模拟库；`-
 
 想最快看到一个自己的导航站上线：
 
-1. `pnpm install` + `wrangler login`
+1. `pnpm install` + `cp packages/worker/.dev.vars.example .dev.vars` 并改掉 `ADMIN_TOKEN`（本地到这一步为止，不用登录 Cloudflare）
 2. 本地建表 → `wrangler dev` → 后台录几个分类和网站（设 approved）→ 发布
 3. 前端 `.env` 指向本地后台 → `astro dev` 看效果
-4. 满意后：部署 Worker（建 D1/KV、填 id、迁移、deploy）→ 部署 Pages（build + deploy）
-5. 改默认密码
+4. 满意后再上云：`wrangler login` → 建 D1/KV、填 id、迁移 → `wrangler secret put ADMIN_TOKEN` / `TURNSTILE_SECRET` → `wrangler deploy` → 部署 Pages（build + deploy）
 
 搞定。
 
