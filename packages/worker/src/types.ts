@@ -55,6 +55,15 @@ export interface CreateSiteBody {
   submitter_reason?: string;
 }
 
+export interface CreateCategoryBody {
+  name: string;
+  slug: string;
+  icon?: string;
+  description?: string;
+  sort_order?: number;
+  parent_id?: string | null;
+}
+
 export interface UpdateSiteBody {
   status?: "approved" | "rejected";
   reviewer_note?: string;

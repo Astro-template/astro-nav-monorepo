@@ -1,5 +1,6 @@
 ---
 import { buildLogoCandidates } from '../utils/logo';
+import { getSiteSlug } from '../utils/config';
 
 interface Props {
   title: string;
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const { title, description, url, logo } = Astro.props;
-const detailUrl = `/sites/${encodeURIComponent(title.toLowerCase().replace(/[\s/]+/g, '-'))}`;
+const detailUrl = `/sites/${encodeURIComponent(getSiteSlug(title, url))}`;
 
 const logoUrls = buildLogoCandidates(url, logo);
 const defaultLogo = title.charAt(0).toUpperCase();

@@ -1,7 +1,6 @@
 {
-  "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "strictNullChecks": true,
     "verbatimModuleSyntax": true,
     "jsx": "preserve",
     "jsxImportSource": "astro",

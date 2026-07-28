@@ -5,8 +5,11 @@ compatibility_flags = ["nodejs_compat"]
 
 [vars]
 ADMIN_USER = "kiro"
-ADMIN_TOKEN = "admin"
-TURNSTILE_SECRET = "1x0000000000000000000000000000000AA"
+
+# ADMIN_TOKEN / TURNSTILE_SECRET 是密钥，不能放 [vars]（明文且入库）。
+# 线上用 secret 注入，本地开发放 .dev.vars（已 gitignore）：
+#   npx wrangler secret put ADMIN_TOKEN
+#   npx wrangler secret put TURNSTILE_SECRET
 
 [[d1_databases]]
 binding = "DB"

@@ -50,15 +50,30 @@ npx wrangler deploy
 
 - API：https://astro-nav-api.ouraihub.workers.dev
 - 后台：https://astro-nav-api.ouraihub.workers.dev/login
-- 账号：kiro / admin
+- 账号：`ADMIN_USER` / `ADMIN_TOKEN`（见下方环境变量，密钥用 `wrangler secret` 注入）
 
-### 环境变量（wrangler.toml）
+### 环境变量
 
-| 变量 | 说明 |
-|------|------|
-| ADMIN_USER | 后台用户名 |
-| ADMIN_TOKEN | 后台密码 |
-| TURNSTILE_SECRET | Turnstile 验证密钥 |
+| 变量 | 位置 | 说明 |
+|------|------|------|
+| ADMIN_USER | `wrangler.toml [vars]` | 后台用户名（非敏感） |
+| ADMIN_TOKEN | **secret** | 后台密码 / API Bearer token |
+| TURNSTILE_SECRET | **secret** | Turnstile 服务端密钥 |
+
+前端还有两个可选变量（写 `packages/website/.env`）：
+
+| 变量 | 默认值 | 说明 |
+|------|--------|------|
+| PUBLIC_API_URL | 空（读 `static/config.json`） | Worker API 地址，构建时取数用 |
+| SITE_URL | https://astro-nav.pages.dev | 部署域名，用于 canonical 链接和 sitemap |
+
+密钥不写进 `wrangler.toml`（那是明文且入库），用 secret 注入；本地开发写 `.dev.vars`（见 `packages/worker/.dev.vars.example`）：
+
+```bash
+cd packages/worker
+npx wrangler secret put ADMIN_TOKEN
+npx wrangler secret put TURNSTILE_SECRET
+```
 
 ---
 
@@ -103,7 +118,7 @@ npx wrangler pages deploy dist --project-name=astro-nav --commit-dirty=true
 或命令行：
 ```bash
 curl -X POST https://astro-nav-api.ouraihub.workers.dev/api/sites/publish \
-  -H "Authorization: Bearer admin"
+  -H "Authorization: Bearer $ADMIN_TOKEN"
 ```
 
 发布后需要重新构建前端才能看到更新：

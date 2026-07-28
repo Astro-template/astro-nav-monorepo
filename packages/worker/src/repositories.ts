@@ -1,10 +1,12 @@
-import type { CategoryRow, SiteRow, CreateSiteBody, UpdateSiteBody, NavData, SiteSettings } from "./types";
+import type { CategoryRow, SiteRow, CreateSiteBody, CreateCategoryBody, UpdateSiteBody, NavData, SiteSettings } from "./types";
 import { KV_KEY, SITE_STATUS, DEFAULT_SETTINGS, SETTINGS_KEY } from "./constants";
 
 // --- Interfaces ---
 
 export interface ISiteRepository {
   create(data: CreateSiteBody): Promise<string>;
+  createApproved(data: CreateSiteBody & { featured?: boolean }): Promise<string>;
+  countByCategory(categoryId: string): Promise<number>;
   findById(id: string): Promise<SiteRow | null>;
   findByUrl(url: string): Promise<SiteRow | null>;
   listApproved(opts: { category?: string; featured?: boolean; limit: number }): Promise<{ sites: SiteRow[]; total: number }>;
@@ -16,6 +18,10 @@ export interface ISiteRepository {
 export interface ICategoryRepository {
   findById(id: string): Promise<CategoryRow | null>;
   listAll(): Promise<(CategoryRow & { siteCount: number })[]>;
+  create(data: CreateCategoryBody): Promise<string>;
+  delete(id: string): Promise<void>;
+  countChildren(parentId: string): Promise<number>;
+  setType(id: string, type: "single" | "tabs"): Promise<void>;
 }
 
 export interface IPublisher {
@@ -46,6 +52,30 @@ export class D1SiteRepository implements ISiteRepository {
       )
       .run();
     return id;
+  }
+
+  async createApproved(data: CreateSiteBody & { featured?: boolean }): Promise<string> {
+    const id = crypto.randomUUID();
+    await this.db
+      .prepare(
+        `INSERT INTO sites (id, title, url, description, logo, category_id, tags, status, featured, reviewed_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))`
+      )
+      .bind(
+        id, data.title, data.url, data.description, data.logo || "",
+        data.category_id, JSON.stringify(data.tags || []),
+        SITE_STATUS.APPROVED, data.featured ? 1 : 0
+      )
+      .run();
+    return id;
+  }
+
+  async countByCategory(categoryId: string): Promise<number> {
+    const row = await this.db
+      .prepare("SELECT COUNT(*) as n FROM sites WHERE category_id = ?")
+      .bind(categoryId)
+      .first<{ n: number }>();
+    return row?.n ?? 0;
   }
 
   async findById(id: string): Promise<SiteRow | null> {
@@ -118,6 +148,36 @@ export class D1CategoryRepository implements ICategoryRepository {
       .bind(SITE_STATUS.APPROVED)
       .all<CategoryRow & { siteCount: number }>();
     return results || [];
+  }
+
+  async create(data: CreateCategoryBody): Promise<string> {
+    const id = crypto.randomUUID();
+    await this.db
+      .prepare(
+        "INSERT INTO categories (id, name, slug, icon, description, sort_order, parent_id, type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+      )
+      .bind(
+        id, data.name, data.slug, data.icon || "", data.description || "",
+        data.sort_order || 0, data.parent_id || null, "single"
+      )
+      .run();
+    return id;
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.db.prepare("DELETE FROM categories WHERE id = ?").bind(id).run();
+  }
+
+  async countChildren(parentId: string): Promise<number> {
+    const row = await this.db
+      .prepare("SELECT COUNT(*) as n FROM categories WHERE parent_id = ?")
+      .bind(parentId)
+      .first<{ n: number }>();
+    return row?.n ?? 0;
+  }
+
+  async setType(id: string, type: "single" | "tabs"): Promise<void> {
+    await this.db.prepare("UPDATE categories SET type = ? WHERE id = ?").bind(type, id).run();
   }
 }
 

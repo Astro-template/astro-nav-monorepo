@@ -25,7 +25,7 @@ npx wrangler deploy
 ```
 
 线上地址：https://astro-nav-api.ouraihub.workers.dev
-后台登录：https://astro-nav-api.ouraihub.workers.dev/login（kiro / admin）
+后台登录：https://astro-nav-api.ouraihub.workers.dev/login（用户名 `ADMIN_USER`，密码 `ADMIN_TOKEN`，见下方环境变量）
 
 D1 数据库名：astro-nav-db
 KV namespace binding：KV
@@ -78,19 +78,35 @@ npx wrangler pages deploy dist --project-name=astro-nav --commit-dirty=true
 
 ## 环境变量
 
-### Worker（wrangler.toml [vars]）
+### Worker
+
+非敏感值放 `wrangler.toml [vars]`：
 
 | 变量 | 值 | 说明 |
 |------|---|------|
 | ADMIN_USER | kiro | 后台用户名 |
-| ADMIN_TOKEN | admin | 后台密码 |
-| TURNSTILE_SECRET | 1x000...AA | Turnstile 测试密钥 |
+
+**密钥不入库**，用 secret 注入（本地开发写 `.dev.vars`，见 `.dev.vars.example`）：
+
+| 变量 | 说明 |
+|------|------|
+| ADMIN_TOKEN | 后台密码 / API Bearer token |
+| TURNSTILE_SECRET | Turnstile 服务端密钥 |
+
+```bash
+cd packages/worker
+npx wrangler secret put ADMIN_TOKEN
+npx wrangler secret put TURNSTILE_SECRET
+```
+
+> ⚠️ 这两个值曾以明文提交在 `wrangler.toml`（`ADMIN_TOKEN=admin`、Turnstile 用官方测试密钥），git 历史中仍可查到。**必须轮换**：设置新的强随机 `ADMIN_TOKEN`，并在 Cloudflare 后台申请真实 Turnstile 密钥——测试密钥会让人机验证始终通过，等于没有防护。
 
 ### Website（.env）
 
 | 变量 | 值 | 说明 |
 |------|---|------|
-| PUBLIC_API_URL | https://astro-nav-api.ouraihub.workers.dev | Worker API 地址 |
+| PUBLIC_API_URL | https://astro-nav-api.ouraihub.workers.dev | Worker API 地址（不设则读 `static/config.json`） |
+| SITE_URL | https://astro-nav.pages.dev | 部署域名，影响 canonical 链接和 sitemap |
 
 ## 文件放置规范（严格遵守）
 

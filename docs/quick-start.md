@@ -104,13 +104,13 @@ npx astro dev
 ```bash
 # 建一个「云服务器」分类
 curl -X POST http://localhost:8787/api/admin/categories \
-  -H "Authorization: Bearer admin" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"name":"云服务器","slug":"cloud","icon":"☁️","sort_order":1}'
 
 # 再建一个「支付工具」
 curl -X POST http://localhost:8787/api/admin/categories \
-  -H "Authorization: Bearer admin" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"name":"支付工具","slug":"payment","icon":"💳","sort_order":2}'
 ```
@@ -127,7 +127,7 @@ curl -X POST http://localhost:8787/api/admin/categories \
 
 ```bash
 curl -X POST http://localhost:8787/api/admin/sites \
-  -H "Authorization: Bearer admin" \
+  -H "Authorization: Bearer $ADMIN_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"title":"AWS","url":"https://aws.amazon.com","description":"亚马逊云服务","category_id":"<上一步返回的分类id>","status":"approved"}'
 ```
@@ -144,7 +144,7 @@ curl -X POST http://localhost:8787/api/admin/sites \
 
 ```bash
 curl -X POST http://localhost:8787/api/sites/publish \
-  -H "Authorization: Bearer admin"
+  -H "Authorization: Bearer $ADMIN_TOKEN"
 ```
 
 返回 `{"message":"发布成功","totalSites":N}`，N 是已审核网站数。
